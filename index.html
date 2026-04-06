@@ -225,12 +225,61 @@
         .cert-img {
             width: 100%;
             height: 100%;
-            object-fit: contain; /* Para que el certificado se vea completo sin cortarse */
+            object-fit: cover; /* Cambiado para que llene totalmente el contenedor por ley */
             transition: transform 0.3s ease;
+            cursor: pointer; /* Cursor interactivo que invita al clic */
         }
         
         .cert-card:hover .cert-img {
             transform: scale(1.03);
+        }
+
+        /* === MODAL / LIGHTBOX PARA CERTIFICADOS === */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(10px); /* Magia: Desenfoque de fondo */
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90vh;
+            border-radius: 8px;
+            box-shadow: var(--shadow-hover);
+            object-fit: contain; /* En el modo grande no se recorta nada */
+            animation: zoomIn 0.3s ease;
+        }
+
+        @keyframes zoomIn {
+            from { transform: scale(0.95); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            color: #ffffff;
+            font-size: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close-btn:hover {
+            color: var(--accent-color);
         }
 
         .cert-content {
@@ -414,7 +463,7 @@
             <!-- FOTO DE PERFIL -->
             <div class="profile-wrapper">
                 <!-- 👇 AQUÍ PONES TU FOTO DE PERFIL 👇 -->
-                <img src="imagenes/perfil.png" alt="" class="profile-img">
+                <img src="imagenes/perfil.jpg" alt="" class="profile-img">
             </div>
             
             <h1>Shordy</h1>
@@ -441,24 +490,10 @@
 
             <div class="cert-grid">
                 
-                <!-- CERTIFICADO 1 -->
+                <!-- CERTIFICADO 1: El más fuerte académicamente -->
                 <div class="cert-card">
                     <div class="cert-img-wrapper">
-                        <!-- 👇 AQUÍ PONES TU CERTIFICADO 👇 -->
-                        <img src="imagenes/certificado-emotos.png" alt="" class="cert-img">
-                    </div>
-                    <div class="cert-content">
-                        <h3 class="cert-title">Customer Experience y Asistencia Virtual</h3>
-                        <span class="cert-issuer">Emotos Academy / CertiProf</span>
-                        <span class="cert-date">Expedición: Septiembre 2025</span>
-                    </div>
-                </div>
-
-                <!-- CERTIFICADO 2 -->
-                <div class="cert-card">
-                    <div class="cert-img-wrapper">
-                        <!-- 👇 AQUÍ PONES TU CERTIFICADO 👇 -->
-                        <img src="imagenes/certificado-utel.png" alt="" class="cert-img">
+                        <img src="imagenes/certificado-utel.png" alt="Diplomado Ingeniería" class="cert-img" onclick="openModal(this.src)">
                     </div>
                     <div class="cert-content">
                         <h3 class="cert-title">Diplomado Int. en Asesoría en Ingeniería en Computación</h3>
@@ -467,11 +502,22 @@
                     </div>
                 </div>
 
-                <!-- CERTIFICADO 3 -->
+                <!-- CERTIFICADO 2: Innovación y Negocios (EL NUEVO) -->
                 <div class="cert-card">
                     <div class="cert-img-wrapper">
-                        <!-- 👇 AQUÍ PONES TU CERTIFICADO 👇 -->
-                        <img src="imagenes/certificado-forense.jpg" alt="" class="cert-img">
+                        <img src="imagenes/certificado-hackathon.png" alt="Hackathon Ecommerce" class="cert-img" onclick="openModal(this.src)">
+                    </div>
+                    <div class="cert-content">
+                        <h3 class="cert-title">Hackathon Universitario: Innovación E-commerce</h3>
+                        <span class="cert-issuer">Utel & Tiendanube</span>
+                        <span class="cert-date">Marzo 2026</span>
+                    </div>
+                </div>
+
+                <!-- CERTIFICADO 3: Seguridad/Análisis -->
+                <div class="cert-card">
+                    <div class="cert-img-wrapper">
+                        <img src="imagenes/certificado-forense.png" alt="Informática Forense" class="cert-img" onclick="openModal(this.src)">
                     </div>
                     <div class="cert-content">
                         <h3 class="cert-title">Informática Forense (Campamento)</h3>
@@ -480,11 +526,22 @@
                     </div>
                 </div>
 
-                 <!-- CERTIFICADO 4 -->
+                <!-- CERTIFICADO 4: Enfoque al Usuario/Cliente -->
                 <div class="cert-card">
                     <div class="cert-img-wrapper">
-                        <!-- 👇 AQUÍ PONES TU CERTIFICADO 👇 -->
-                        <img src="imagenes/certificado-bionics.png" alt="" class="cert-img">
+                        <img src="imagenes/certificado-emotos.png" alt="Customer Experience" class="cert-img" onclick="openModal(this.src)">
+                    </div>
+                    <div class="cert-content">
+                        <h3 class="cert-title">Customer Experience y Asistencia Virtual</h3>
+                        <span class="cert-issuer">Emotos Academy / CertiProf</span>
+                        <span class="cert-date">Expedición: Septiembre 2025</span>
+                    </div>
+                </div>
+
+                <!-- CERTIFICADO 5: Tecnología Avanzada -->
+                <div class="cert-card">
+                    <div class="cert-img-wrapper">
+                        <img src="imagenes/certificado-bionics.png" alt="Bionic Prostheses" class="cert-img" onclick="openModal(this.src)">
                     </div>
                     <div class="cert-content">
                         <h3 class="cert-title">Introduction to Bionic Prostheses</h3>
@@ -493,28 +550,62 @@
                     </div>
                 </div>
 
-                <!-- CERTIFICADO 5 -->
-                 <div class="cert-card">
+                <!-- CERTIFICADO 6: Residuos Tecnológicos -->
+                <div class="cert-card">
                     <div class="cert-img-wrapper">
-                        <!-- 👇 AQUÍ PONES TU CERTIFICADO 👇 -->
-                        <img src="imagenes/certificado-cambioclimatico.png" alt="" class="cert-img">
+                        <img src="imagenes/certificado-raee-1.png" alt="Gestión de RAEE 1" class="cert-img" onclick="openModal(this.src)">
                     </div>
                     <div class="cert-content">
-                        <h3 class="cert-title">Cambio Climático, Bosques y REDD+</h3>
-                        <span class="cert-issuer">Ministerio del Ambiente (Ecuador)</span>
+                        <h3 class="cert-title">Gestión de Residuos Electrónicos (RAEE) - Parte 1</h3>
+                        <span class="cert-issuer">Ministerio del Ambiente</span>
                         <span class="cert-date">Expedición: Enero 2025</span>
                     </div>
                 </div>
 
-                <!-- CERTIFICADO 6 -->
+                <!-- CERTIFICADO 7: Residuos Tecnológicos -->
                 <div class="cert-card">
                     <div class="cert-img-wrapper">
-                        <!-- 👇 AQUÍ PONES TU CERTIFICADO 👇 -->
-                        <img src="imagenes/certificado-raee.png" alt="" class="cert-img">
+                        <img src="imagenes/certificado-raee-2.png" alt="Gestión de RAEE 2" class="cert-img" onclick="openModal(this.src)">
                     </div>
                     <div class="cert-content">
-                        <h3 class="cert-title">Gestión de Residuos de Aparatos Eléctricos y Electrónicos</h3>
-                        <span class="cert-issuer">Ministerio del Ambiente (Ecuador)</span>
+                        <h3 class="cert-title">Gestión de Residuos Electrónicos (RAEE) - Parte 2</h3>
+                        <span class="cert-issuer">Ministerio del Ambiente</span>
+                        <span class="cert-date">Expedición: Enero 2025</span>
+                    </div>
+                </div>
+
+                <!-- CERTIFICADO 8: Soft Skills / Valores -->
+                <div class="cert-card">
+                    <div class="cert-img-wrapper">
+                        <img src="imagenes/certificado-cambio-climatico.png" alt="Cambio Climático" class="cert-img" onclick="openModal(this.src)">
+                    </div>
+                    <div class="cert-content">
+                        <h3 class="cert-title">Cambio Climático, Bosques y REDD+</h3>
+                        <span class="cert-issuer">Ministerio del Ambiente</span>
+                        <span class="cert-date">Expedición: Enero 2025</span>
+                    </div>
+                </div>
+
+                <!-- CERTIFICADO 9: Soft Skills / Valores -->
+                <div class="cert-card">
+                    <div class="cert-img-wrapper">
+                        <img src="imagenes/certificado-buenas-practicas.png" alt="Buenas Prácticas" class="cert-img" onclick="openModal(this.src)">
+                    </div>
+                    <div class="cert-content">
+                        <h3 class="cert-title">Buenas Prácticas Ambientales</h3>
+                        <span class="cert-issuer">Ministerio del Ambiente</span>
+                        <span class="cert-date">Expedición: Enero 2025</span>
+                    </div>
+                </div>
+
+                <!-- CERTIFICADO 10: Soft Skills / Valores -->
+                <div class="cert-card">
+                    <div class="cert-img-wrapper">
+                        <img src="imagenes/certificado-manejo-fuego.png" alt="Manejo del Fuego" class="cert-img" onclick="openModal(this.src)">
+                    </div>
+                    <div class="cert-content">
+                        <h3 class="cert-title">Introducción al Manejo Integral del Fuego</h3>
+                        <span class="cert-issuer">Ministerio del Ambiente</span>
                         <span class="cert-date">Expedición: Enero 2025</span>
                     </div>
                 </div>
@@ -601,8 +692,32 @@
         </div>
     </footer>
 
-    <!-- SCRIPT PARA PWA (SIN ERRORES) -->
+    <!-- ESTRUCTURA DEL MODAL (LIGHTBOX) -->
+    <div id="imageModal" class="modal" onclick="closeModal(event)">
+        <span class="close-btn" onclick="closeModal(event)">&times;</span>
+        <img class="modal-content" id="expandedImg">
+    </div>
+
+    <!-- SCRIPT PARA PWA Y MODAL -->
     <script>
+        // Funcionalidad del Modal / Lightbox para certificados
+        const modal = document.getElementById("imageModal");
+        const expandedImg = document.getElementById("expandedImg");
+
+        function openModal(imageSrc) {
+            modal.classList.add("active");
+            expandedImg.src = imageSrc;
+            document.body.style.overflow = "hidden"; // Evita que la página haga scroll de fondo
+        }
+
+        function closeModal(event) {
+            // Solo cierra si se hace clic en el fondo oscuro desenfocado o en el botón de cerrar
+            if(event.target === modal || event.target.className === "close-btn") {
+                modal.classList.remove("active");
+                document.body.style.overflow = "auto"; // Restaura el scroll
+            }
+        }
+
         // Genera el manifiesto de la aplicación de forma segura
         const manifestData = {
             "name": "Shordy | Ingeniero B2B",
