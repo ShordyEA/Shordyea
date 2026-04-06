@@ -188,50 +188,92 @@
             margin: 0 auto;
         }
 
-        /* === NUEVA SECCIÓN: CERTIFICADOS (CONFIAZA) === */
+        /* === NUEVA SECCIÓN: CERTIFICADOS (GRILLA + BOTÓN EXPANDIR) === */
         .cert-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 30px;
+            padding: 10px;
         }
 
         .cert-card {
             background: #ffffff;
-            border-radius: 16px;
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: var(--shadow-subtle);
-            transition: all 0.3s ease;
-            border: 1px solid #E2E8F0;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            border: 1px solid rgba(15, 23, 42, 0.05);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
             display: flex;
             flex-direction: column;
         }
 
         .cert-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-hover);
-            border-color: var(--accent-color);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            border-color: rgba(59, 130, 246, 0.3);
+        }
+
+        /* Clase para ocultar certificados inicialmente */
+        .hidden-cert {
+            display: none !important;
+        }
+
+        /* Animación suave al revelar los certificados ocultos */
+        .fade-in-cert {
+            animation: fadeInCert 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+
+        @keyframes fadeInCert {
+            from { opacity: 0; transform: translateY(30px) scale(0.95); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .btn-expand-container {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--accent-color);
+            border: 2px solid var(--accent-color);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--accent-color);
+            color: #ffffff;
         }
 
         .cert-img-wrapper {
-            height: 200px;
-            overflow: hidden;
-            background-color: #F1F5F9;
+            height: 240px;
+            background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%); /* Fondo premium oscuro */
             display: flex;
             align-items: center;
             justify-content: center;
-            border-bottom: 1px solid #E2E8F0;
+            padding: 25px; /* Deja respirar al documento */
+            position: relative;
+        }
+
+        /* Brillo sutil de galería detrás del documento */
+        .cert-img-wrapper::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; height: 100%;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.05) 0%, transparent 100%);
+            pointer-events: none;
         }
 
         .cert-img {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Cambiado para que llene totalmente el contenedor por ley */
-            transition: transform 0.3s ease;
-            cursor: pointer; /* Cursor interactivo que invita al clic */
+            object-fit: contain; /* NO RECORTA LA IMAGEN, LA MUESTRA COMPLETA */
+            filter: drop-shadow(0 15px 20px rgba(0,0,0,0.4)); /* Sombra 3D increíble */
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: zoom-in;
         }
         
         .cert-card:hover .cert-img {
-            transform: scale(1.03);
+            transform: scale(1.06) rotate(-1.5deg); /* Efecto orgánico al pasar el ratón */
         }
 
         /* === MODAL / LIGHTBOX PARA CERTIFICADOS === */
@@ -446,6 +488,7 @@
             .hero h2 { font-size: 1.25rem; }
             .sales-pitch { font-size: 1.2rem; }
             .section-title { font-size: 1.75rem; }
+            
             .timeline::before { left: 10px; }
             .timeline-item { padding-left: 40px; }
             .timeline-marker { left: -2px; width: 24px; height: 24px; }
@@ -481,16 +524,15 @@
     <main class="container">
         
         <!-- === NUEVA SECCIÓN: GARANTÍA DE CALIDAD (CERTIFICADOS) === -->
-        <!-- Esta es tu prueba social para generar confianza -->
         <section class="section" id="credenciales">
             <div class="section-header">
                 <h2 class="section-title">Credenciales Verificadas</h2>
                 <p class="section-subtitle">Compromiso continuo con la excelencia técnica y la especialización profesional.</p>
             </div>
 
-            <div class="cert-grid">
+            <div class="cert-grid" id="certGrid">
                 
-                <!-- CERTIFICADO 1: El más fuerte académicamente -->
+                <!-- CERTIFICADO 1: El más fuerte académicamente (VISIBLE) -->
                 <div class="cert-card">
                     <div class="cert-img-wrapper">
                         <img src="imagenes/certificado-utel.png" alt="Diplomado Ingeniería" class="cert-img" onclick="openModal(this.src)">
@@ -502,7 +544,7 @@
                     </div>
                 </div>
 
-                <!-- CERTIFICADO 2: Innovación y Negocios (EL NUEVO) -->
+                <!-- CERTIFICADO 2: Innovación y Negocios (VISIBLE) -->
                 <div class="cert-card">
                     <div class="cert-img-wrapper">
                         <img src="imagenes/certificado-hackathon.png" alt="Hackathon Ecommerce" class="cert-img" onclick="openModal(this.src)">
@@ -514,7 +556,7 @@
                     </div>
                 </div>
 
-                <!-- CERTIFICADO 3: Seguridad/Análisis -->
+                <!-- CERTIFICADO 3: Seguridad/Análisis (VISIBLE) -->
                 <div class="cert-card">
                     <div class="cert-img-wrapper">
                         <img src="imagenes/certificado-forense.png" alt="Informática Forense" class="cert-img" onclick="openModal(this.src)">
@@ -526,8 +568,8 @@
                     </div>
                 </div>
 
-                <!-- CERTIFICADO 4: Enfoque al Usuario/Cliente -->
-                <div class="cert-card">
+                <!-- CERTIFICADO 4: Enfoque al Usuario/Cliente (OCULTO INICIALMENTE) -->
+                <div class="cert-card hidden-cert">
                     <div class="cert-img-wrapper">
                         <img src="imagenes/certificado-emotos.png" alt="Customer Experience" class="cert-img" onclick="openModal(this.src)">
                     </div>
@@ -538,8 +580,8 @@
                     </div>
                 </div>
 
-                <!-- CERTIFICADO 5: Tecnología Avanzada -->
-                <div class="cert-card">
+                <!-- CERTIFICADO 5: Tecnología Avanzada (OCULTO INICIALMENTE) -->
+                <div class="cert-card hidden-cert">
                     <div class="cert-img-wrapper">
                         <img src="imagenes/certificado-bionics.png" alt="Bionic Prostheses" class="cert-img" onclick="openModal(this.src)">
                     </div>
@@ -550,8 +592,8 @@
                     </div>
                 </div>
 
-                <!-- CERTIFICADO 6: Residuos Tecnológicos -->
-                <div class="cert-card">
+                <!-- CERTIFICADO 6: Residuos Tecnológicos (OCULTO INICIALMENTE) -->
+                <div class="cert-card hidden-cert">
                     <div class="cert-img-wrapper">
                         <img src="imagenes/certificado-raee-1.png" alt="Gestión de RAEE 1" class="cert-img" onclick="openModal(this.src)">
                     </div>
@@ -562,8 +604,8 @@
                     </div>
                 </div>
 
-                <!-- CERTIFICADO 7: Residuos Tecnológicos -->
-                <div class="cert-card">
+                <!-- CERTIFICADO 7: Residuos Tecnológicos (OCULTO INICIALMENTE) -->
+                <div class="cert-card hidden-cert">
                     <div class="cert-img-wrapper">
                         <img src="imagenes/certificado-raee-2.png" alt="Gestión de RAEE 2" class="cert-img" onclick="openModal(this.src)">
                     </div>
@@ -574,8 +616,8 @@
                     </div>
                 </div>
 
-                <!-- CERTIFICADO 8: Soft Skills / Valores -->
-                <div class="cert-card">
+                <!-- CERTIFICADO 8: Soft Skills / Valores (OCULTO INICIALMENTE) -->
+                <div class="cert-card hidden-cert">
                     <div class="cert-img-wrapper">
                         <img src="imagenes/certificado-cambio-climatico.png" alt="Cambio Climático" class="cert-img" onclick="openModal(this.src)">
                     </div>
@@ -586,8 +628,8 @@
                     </div>
                 </div>
 
-                <!-- CERTIFICADO 9: Soft Skills / Valores -->
-                <div class="cert-card">
+                <!-- CERTIFICADO 9: Soft Skills / Valores (OCULTO INICIALMENTE) -->
+                <div class="cert-card hidden-cert">
                     <div class="cert-img-wrapper">
                         <img src="imagenes/certificado-buenas-practicas.png" alt="Buenas Prácticas" class="cert-img" onclick="openModal(this.src)">
                     </div>
@@ -598,8 +640,8 @@
                     </div>
                 </div>
 
-                <!-- CERTIFICADO 10: Soft Skills / Valores -->
-                <div class="cert-card">
+                <!-- CERTIFICADO 10: Soft Skills / Valores (OCULTO INICIALMENTE) -->
+                <div class="cert-card hidden-cert">
                     <div class="cert-img-wrapper">
                         <img src="imagenes/certificado-manejo-fuego.png" alt="Manejo del Fuego" class="cert-img" onclick="openModal(this.src)">
                     </div>
@@ -610,6 +652,13 @@
                     </div>
                 </div>
 
+            </div>
+
+            <!-- BOTÓN PARA MOSTRAR/OCULTAR MÁS CERTIFICADOS -->
+            <div class="btn-expand-container">
+                <button id="btnToggleCerts" class="btn btn-outline" onclick="toggleCertificates()">
+                    Ver historial completo (7 más)
+                </button>
             </div>
         </section>
 
@@ -715,6 +764,32 @@
             if(event.target === modal || event.target.className === "close-btn") {
                 modal.classList.remove("active");
                 document.body.style.overflow = "auto"; // Restaura el scroll
+            }
+        }
+
+        // === NUEVO: FUNCIONALIDAD PARA EXPANDIR CERTIFICADOS ===
+        function toggleCertificates() {
+            const hiddenCerts = document.querySelectorAll('.hidden-cert');
+            const btn = document.getElementById('btnToggleCerts');
+            
+            if (hiddenCerts.length > 0) {
+                // Modo: Expandir (Mostrar todos)
+                hiddenCerts.forEach(cert => {
+                    cert.classList.remove('hidden-cert');
+                    cert.classList.add('fade-in-cert');
+                });
+                btn.innerHTML = 'Ocultar certificaciones adicionales';
+            } else {
+                // Modo: Contraer (Ocultar dejando solo los 3 primeros)
+                const allCerts = document.querySelectorAll('#certGrid .cert-card');
+                for (let i = 3; i < allCerts.length; i++) {
+                    allCerts[i].classList.add('hidden-cert');
+                    allCerts[i].classList.remove('fade-in-cert');
+                }
+                btn.innerHTML = 'Ver historial completo (7 más)';
+                
+                // Hace un scroll suave de regreso hacia la sección para no perderse
+                document.getElementById('credenciales').scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
         }
 
