@@ -47,30 +47,80 @@
             color: inherit;
         }
 
-        /* === HEADER HERO SECTION === */
-        .banner {
+        /* === BARRA DE NAVEGACIÓN (HUD MODERNO) === */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
-            height: 250px;
-            background-color: var(--text-primary);
-            /* 👇 AQUÍ PONES LA IMAGEN DEL BANNER 👇 */
-            background-image: url('imagenes/banner.jpg');
-            background-size: cover;
-            background-position: center;
+            background: rgba(248, 250, 252, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(15, 23, 42, 0.05);
+            transition: all 0.3s ease;
         }
 
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 1rem 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--text-primary);
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: #64748B;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .nav-cta {
+            background-color: var(--text-primary);
+            color: #ffffff;
+            padding: 0.5rem 1.25rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: background-color 0.3s;
+        }
+
+        .nav-cta:hover {
+            background-color: var(--accent-color);
+        }
+
+        /* === HEADER HERO SECTION === */
         .hero {
             text-align: center;
-            padding: 0 0 100px 0; /* Ajustado para el banner */
+            padding: 140px 0 80px 0; /* Espacio superior para que el HUD no tape el contenido */
             background: var(--bg-primary);
             border-bottom: 1px solid #E2E8F0;
         }
 
         .profile-wrapper {
             position: relative;
-            width: 180px;
-            height: 180px;
-            /* El margen negativo (-90px) hace que la foto suba y quede mitad dentro del banner */
-            margin: -90px auto 30px;
+            width: 160px; /* Tamaño elegante y centrado */
+            height: 160px;
+            margin: 0 auto 30px; /* Margen normal, ya no forzamos que suba */
             z-index: 10;
         }
 
@@ -78,9 +128,8 @@
             width: 100%;
             height: 100%;
             border-radius: 50%;
-            /* ESTA ES LA MAGIA: 'object-fit: cover' hace que la imagen se expanda automáticamente para llenar el círculo perfecto, sin importar su tamaño original */
             object-fit: cover;
-            border: 6px solid var(--bg-primary);
+            border: 4px solid #ffffff;
             box-shadow: var(--shadow-hover);
             background-color: #ffffff;
         }
@@ -147,6 +196,32 @@
             background-color: #2563EB; /* Un tono más oscuro al pasar el mouse */
         }
 
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-outline-light {
+            display: inline-block;
+            background-color: transparent;
+            color: var(--accent-color);
+            border: 2px solid var(--accent-color);
+            padding: 1rem 2.5rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            font-size: 1.125rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline-light:hover {
+            background-color: var(--accent-color);
+            color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-subtle);
+        }
+
         /* === SECCIONES === */
         main {
             padding: 80px 0;
@@ -190,13 +265,16 @@
 
         /* === NUEVA SECCIÓN: CERTIFICADOS (GRILLA + BOTÓN EXPANDIR) === */
         .cert-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 30px;
             padding: 10px;
         }
 
         .cert-card {
+            flex: 1 1 300px;
+            max-width: 340px;
             background: #ffffff;
             border-radius: 20px;
             overflow: hidden;
@@ -246,28 +324,20 @@
 
         .cert-img-wrapper {
             height: 240px;
-            background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%); /* Fondo premium oscuro */
+            background: #F1F5F9; /* Fondo claro, elegante y limpio */
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 25px; /* Deja respirar al documento */
             position: relative;
-        }
-
-        /* Brillo sutil de galería detrás del documento */
-        .cert-img-wrapper::after {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; height: 100%;
-            background: linear-gradient(to bottom, rgba(255,255,255,0.05) 0%, transparent 100%);
-            pointer-events: none;
+            border-bottom: 1px solid #E2E8F0;
         }
 
         .cert-img {
             width: 100%;
             height: 100%;
             object-fit: contain; /* NO RECORTA LA IMAGEN, LA MUESTRA COMPLETA */
-            filter: drop-shadow(0 15px 20px rgba(0,0,0,0.4)); /* Sombra 3D increíble */
+            filter: drop-shadow(0 8px 12px rgba(0,0,0,0.08)); /* Sombra 3D más suave para fondo claro */
             transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             cursor: zoom-in;
         }
@@ -482,13 +552,17 @@
 
         /* === RESPONSIVE === */
         @media (max-width: 768px) {
-            .banner { height: 150px; }
-            .profile-wrapper { width: 140px; height: 140px; margin-top: -70px; }
+            .nav-links { display: none; } /* En móvil ocultamos los links para mantener limpieza */
+            .hero { padding-top: 120px; }
+            .profile-wrapper { width: 140px; height: 140px; margin-top: 0; }
             .hero h1 { font-size: 2.5rem; }
             .hero h2 { font-size: 1.25rem; }
             .sales-pitch { font-size: 1.2rem; }
             .section-title { font-size: 1.75rem; }
             
+            .hero-buttons { flex-direction: column; padding: 0 20px; }
+            .hero-buttons a { width: 100%; }
+
             .timeline::before { left: 10px; }
             .timeline-item { padding-left: 40px; }
             .timeline-marker { left: -2px; width: 24px; height: 24px; }
@@ -499,8 +573,20 @@
 </head>
 <body>
 
+    <!-- === BARRA DE NAVEGACIÓN (HUD) === -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">Shordy.</a>
+            <ul class="nav-links">
+                <li><a href="#credenciales">Credenciales</a></li>
+                <li><a href="#experiencia">Trayectoria</a></li>
+                <li><a href="#stack">Stack</a></li>
+            </ul>
+            <a href="#contacto" class="nav-cta">Contactar</a>
+        </div>
+    </nav>
+
     <!-- === HERO SECTION: PRIMERA IMPRESIÓN === -->
-    <div class="banner"></div>
     <header class="hero">
         <div class="container">
             <!-- FOTO DE PERFIL -->
@@ -517,7 +603,11 @@
                 "Transformo procesos de negocio complejos en <span class="highlight">software eficiente que escala</span>. Mi enfoque es la ingeniería sólida para resultados reales."
             </p>
             
-            <a href="#contacto" class="btn">Hablemos de tu Proyecto</a>
+            <div class="hero-buttons">
+                <a href="#contacto" class="btn">Hablemos de tu Proyecto</a>
+                <!-- Botón con contexto: Explica QUÉ es LycodeLife -->
+                <a href="https://lycodelife.github.io/LycodeLife/" target="_blank" rel="noopener noreferrer" class="btn-outline-light">🏢 Conoce mi Agencia (LycodeLife) ↗</a>
+            </div>
         </div>
     </header>
 
@@ -676,7 +766,7 @@
                     <div class="timeline-marker"></div>
                     <div class="timeline-content">
                         <h3 class="job-title">Fundador & Desarrollador Principal</h3>
-                        <span class="company-name">LycodeLife</span>
+                        <a href="https://lycodelife.github.io/LycodeLife/" target="_blank" rel="noopener noreferrer" class="company-name" style="text-decoration: underline; text-underline-offset: 4px; display: inline-block;">LycodeLife ↗</a>
                         <span class="job-period">2023 - Presente</span>
                         <p>
                             Lidero el diseño y desarrollo de soluciones de software B2B a medida. 
@@ -707,7 +797,7 @@
         </section>
 
         <!-- === SECCIÓN: STACK TECNOLÓGICO (PÍLDORAS) === -->
-        <section class="section">
+        <section class="section" id="stack">
              <div class="section-header">
                 <h2 class="section-title">Arsenal Tecnológico</h2>
                 <p class="section-subtitle">Las herramientas modernas que utilizo para construir soluciones robustas.</p>
