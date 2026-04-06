@@ -48,10 +48,20 @@
         }
 
         /* === HEADER HERO SECTION === */
+        .banner {
+            width: 100%;
+            height: 250px;
+            background-color: var(--text-primary);
+            /* 👇 AQUÍ PONES LA IMAGEN DEL BANNER 👇 */
+            background-image: url('imagenes/banner.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
         .hero {
             text-align: center;
-            padding: 80px 0 100px;
-            background: linear-gradient(to bottom, #ffffff 0%, var(--bg-primary) 100%);
+            padding: 0 0 100px 0; /* Ajustado para el banner */
+            background: var(--bg-primary);
             border-bottom: 1px solid #E2E8F0;
         }
 
@@ -59,20 +69,20 @@
             position: relative;
             width: 180px;
             height: 180px;
-            margin: 0 auto 30px;
+            /* El margen negativo (-90px) hace que la foto suba y quede mitad dentro del banner */
+            margin: -90px auto 30px;
+            z-index: 10;
         }
 
         .profile-img {
             width: 100%;
             height: 100%;
             border-radius: 50%;
+            /* ESTA ES LA MAGIA: 'object-fit: cover' hace que la imagen se expanda automáticamente para llenar el círculo perfecto, sin importar su tamaño original */
             object-fit: cover;
-            border: 4px solid #ffffff;
-            box-shadow: var(--shadow-subtle);
-            /* La imagen de perfil debe estar en la carpeta 'imagenes' */
-            background-image: url('imagenes/perfil.jpg'); 
-            background-size: cover;
-            background-position: center;
+            border: 6px solid var(--bg-primary);
+            box-shadow: var(--shadow-hover);
+            background-color: #ffffff;
         }
         
         /* Círculo decorativo detrás */
@@ -381,6 +391,8 @@
 
         /* === RESPONSIVE === */
         @media (max-width: 768px) {
+            .banner { height: 150px; }
+            .profile-wrapper { width: 140px; height: 140px; margin-top: -70px; }
             .hero h1 { font-size: 2.5rem; }
             .hero h2 { font-size: 1.25rem; }
             .sales-pitch { font-size: 1.2rem; }
@@ -396,12 +408,13 @@
 <body>
 
     <!-- === HERO SECTION: PRIMERA IMPRESIÓN === -->
+    <div class="banner"></div>
     <header class="hero">
         <div class="container">
             <!-- FOTO DE PERFIL -->
             <div class="profile-wrapper">
-                <!-- La imagen se carga desde el CSS background-image -->
-                <div class="profile-img" role="img" aria-label="Foto de perfil de Shordy"></div>
+                <!-- 👇 AQUÍ PONES TU FOTO DE PERFIL 👇 -->
+                <img src="imagenes/perfil.png" alt="" class="profile-img">
             </div>
             
             <h1>Shordy</h1>
@@ -431,7 +444,8 @@
                 <!-- CERTIFICADO 1 -->
                 <div class="cert-card">
                     <div class="cert-img-wrapper">
-                        <img src="{3A139AA3-80D7-46D3-A39E-8AB5BDFC6706}.png" alt="Certificado Customer Experience y Asistencia Virtual" class="cert-img">
+                        <!-- 👇 AQUÍ PONES TU CERTIFICADO 👇 -->
+                        <img src="imagenes/certificado-emotos.png" alt="" class="cert-img">
                     </div>
                     <div class="cert-content">
                         <h3 class="cert-title">Customer Experience y Asistencia Virtual</h3>
@@ -443,7 +457,8 @@
                 <!-- CERTIFICADO 2 -->
                 <div class="cert-card">
                     <div class="cert-img-wrapper">
-                        <img src="{9960D7C0-8A67-4576-99DE-FF7AE454A436}.png" alt="Diplomado en Asesoría en Ingeniería en Computación" class="cert-img">
+                        <!-- 👇 AQUÍ PONES TU CERTIFICADO 👇 -->
+                        <img src="imagenes/certificado-utel.png" alt="" class="cert-img">
                     </div>
                     <div class="cert-content">
                         <h3 class="cert-title">Diplomado Int. en Asesoría en Ingeniería en Computación</h3>
@@ -455,7 +470,8 @@
                 <!-- CERTIFICADO 3 -->
                 <div class="cert-card">
                     <div class="cert-img-wrapper">
-                        <img src="{6FA8983D-BEE8-4750-8B80-4D56C98C4576}.jpg" alt="Certificado Informática Forense" class="cert-img">
+                        <!-- 👇 AQUÍ PONES TU CERTIFICADO 👇 -->
+                        <img src="imagenes/certificado-forense.jpg" alt="" class="cert-img">
                     </div>
                     <div class="cert-content">
                         <h3 class="cert-title">Informática Forense (Campamento)</h3>
@@ -467,7 +483,8 @@
                  <!-- CERTIFICADO 4 -->
                 <div class="cert-card">
                     <div class="cert-img-wrapper">
-                        <img src="{BE3FECA1-4D76-46E5-91C6-C40E39CA7585}.png" alt="Certificado Introduction to Bionic Prostheses" class="cert-img">
+                        <!-- 👇 AQUÍ PONES TU CERTIFICADO 👇 -->
+                        <img src="imagenes/certificado-bionics.png" alt="" class="cert-img">
                     </div>
                     <div class="cert-content">
                         <h3 class="cert-title">Introduction to Bionic Prostheses</h3>
@@ -479,7 +496,8 @@
                 <!-- CERTIFICADO 5 -->
                  <div class="cert-card">
                     <div class="cert-img-wrapper">
-                        <img src="{7EF55A47-EB80-443A-AC63-1D9E836190B9}.png" alt="Certificado Cambio Climático, Bosques y REDD+" class="cert-img">
+                        <!-- 👇 AQUÍ PONES TU CERTIFICADO 👇 -->
+                        <img src="imagenes/certificado-cambioclimatico.png" alt="" class="cert-img">
                     </div>
                     <div class="cert-content">
                         <h3 class="cert-title">Cambio Climático, Bosques y REDD+</h3>
@@ -491,7 +509,8 @@
                 <!-- CERTIFICADO 6 -->
                 <div class="cert-card">
                     <div class="cert-img-wrapper">
-                        <img src="{93C7E004-E9D0-4834-A7CC-D407FDF94B5B}.png" alt="Certificado Gestión de RAEE" class="cert-img">
+                        <!-- 👇 AQUÍ PONES TU CERTIFICADO 👇 -->
+                        <img src="imagenes/certificado-raee.png" alt="" class="cert-img">
                     </div>
                     <div class="cert-content">
                         <h3 class="cert-title">Gestión de Residuos de Aparatos Eléctricos y Electrónicos</h3>
