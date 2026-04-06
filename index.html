@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shordy | Ingeniero de Software B2B</title>
+    <meta name="theme-color" content="#0F172A">
+    <meta name="description" content="CV y Portafolio de Shordy. Soluciones de software B2B que impulsan tu negocio.">
+    
+    <!-- Tipografía Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* === PALETA MODERNA DE 3 COLORES === */
+        :root {
+            --bg-primary: #F8FAFC;    /* Blanco roto para fondo */
+            --text-primary: #0F172A;  /* Azul marino pizarra para texto */
+            --accent-color: #3B82F6;  /* Azul eléctrico vibrante para acentos */
+            --shadow-subtle: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        /* === RESET Y BASE === */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* === HEADER HERO SECTION === */
+        .hero {
+            text-align: center;
+            padding: 80px 0 100px;
+            background: linear-gradient(to bottom, #ffffff 0%, var(--bg-primary) 100%);
+            border-bottom: 1px solid #E2E8F0;
+        }
+
+        .profile-wrapper {
+            position: relative;
+            width: 180px;
+            height: 180px;
+            margin: 0 auto 30px;
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #ffffff;
+            box-shadow: var(--shadow-subtle);
+            /* La imagen de perfil debe estar en la carpeta 'imagenes' */
+            background-image: url('imagenes/perfil.jpg'); 
+            background-size: cover;
+            background-position: center;
+        }
+        
+        /* Círculo decorativo detrás */
+        .profile-wrapper::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border-radius: 50%;
+            background: var(--accent-color);
+            opacity: 0.1;
+            z-index: -1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            letter-spacing: -0.025em;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .hero h2 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: var(--accent-color);
+            margin-bottom: 2rem;
+        }
+
+        /* === GANCHO DE VENTAS (Sales Pitch) === */
+        .sales-pitch {
+            font-size: 1.4rem;
+            font-weight: 500;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            color: #334155;
+        }
+
+        .highlight {
+            color: var(--accent-color);
+            font-weight: 700;
+        }
+
+        /* === BOTÓN PRINCIPAL === */
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: #ffffff;
+            padding: 1rem 2.5rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            font-size: 1.125rem;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-subtle);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+            background-color: #2563EB; /* Un tono más oscuro al pasar el mouse */
+        }
+
+        /* === SECCIONES === */
+        main {
+            padding: 80px 0;
+        }
+
+        .section {
+            margin-bottom: 100px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title {
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            display: inline-block;
+            position: relative;
+        }
+        
+        /* Subrayado moderno */
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60%;
+            height: 4px;
+            background-color: var(--accent-color);
+            margin: 8px auto 0;
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            font-size: 1.125rem;
+            color: #64748B;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* === NUEVA SECCIÓN: CERTIFICADOS (CONFIAZA) === */
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .cert-card {
+            background: #ffffff;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow-subtle);
+            transition: all 0.3s ease;
+            border: 1px solid #E2E8F0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cert-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--accent-color);
+        }
+
+        .cert-img-wrapper {
+            height: 200px;
+            overflow: hidden;
+            background-color: #F1F5F9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 1px solid #E2E8F0;
+        }
+
+        .cert-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* Para que el certificado se vea completo sin cortarse */
+            transition: transform 0.3s ease;
+        }
+        
+        .cert-card:hover .cert-img {
+            transform: scale(1.03);
+        }
+
+        .cert-content {
+            padding: 24px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cert-title {
+            font-size: 1.125rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .cert-issuer {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+        
+        .cert-date {
+             font-size: 0.85rem;
+             color: #64748B;
+             margin-top: auto; /* Empuja la fecha al final */
+        }
+
+        /* === EXPERIENCIA B2B MODERNA === */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 20px;
+            width: 2px;
+            background-color: #E2E8F0;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 60px;
+            margin-bottom: 50px;
+        }
+
+        .timeline-marker {
+            position: absolute;
+            top: 0;
+            left: 8px;
+            width: 26px;
+            height: 26px;
+            background-color: #ffffff;
+            border: 3px solid var(--accent-color);
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .timeline-content {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: var(--shadow-subtle);
+            border: 1px solid #E2E8F0;
+        }
+
+        .job-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .company-name {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        
+        .job-period {
+            font-size: 0.9rem;
+            color: #64748B;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        /* === STACK TECNOLÓGICO (Píldoras) === */
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .skill-pill {
+            background-color: #ffffff;
+            color: var(--text-primary);
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            border: 1px solid #E2E8F0;
+            box-shadow: var(--shadow-subtle);
+            transition: all 0.3s ease;
+        }
+
+        .skill-pill:hover {
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-2px);
+        }
+
+        /* === FOOTER CALL TO ACTION === */
+        .cta-footer {
+            text-align: center;
+            padding: 100px 0;
+            background-color: var(--text-primary);
+            color: #ffffff;
+        }
+
+        .cta-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-text {
+            font-size: 1.25rem;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            color: #94A3B8;
+        }
+        
+        .btn-light {
+            background-color: #ffffff;
+            color: var(--text-primary);
+        }
+        
+        .btn-light:hover {
+            background-color: #F1F5F9;
+            color: var(--accent-color);
+        }
+
+        .copyright {
+            margin-top: 80px;
+            font-size: 0.9rem;
+            color: #64748B;
+        }
+
+        /* === RESPONSIVE === */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .hero h2 { font-size: 1.25rem; }
+            .sales-pitch { font-size: 1.2rem; }
+            .section-title { font-size: 1.75rem; }
+            .timeline::before { left: 10px; }
+            .timeline-item { padding-left: 40px; }
+            .timeline-marker { left: -2px; width: 24px; height: 24px; }
+            .timeline-content { padding: 20px; }
+            .cta-title { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- === HERO SECTION: PRIMERA IMPRESIÓN === -->
+    <header class="hero">
+        <div class="container">
+            <!-- FOTO DE PERFIL -->
+            <div class="profile-wrapper">
+                <!-- La imagen se carga desde el CSS background-image -->
+                <div class="profile-img" role="img" aria-label="Foto de perfil de Shordy"></div>
+            </div>
+            
+            <h1>Shordy</h1>
+            <h2>Ingeniero de Software | Especialista B2B</h2>
+            
+            <!-- GANCHO DE VENTAS: TU PROPUESTA DE VALOR -->
+            <p class="sales-pitch">
+                "Transformo procesos de negocio complejos en <span class="highlight">software eficiente que escala</span>. Mi enfoque es la ingeniería sólida para resultados reales."
+            </p>
+            
+            <a href="#contacto" class="btn">Hablemos de tu Proyecto</a>
+        </div>
+    </header>
+
+    <main class="container">
+        
+        <!-- === NUEVA SECCIÓN: GARANTÍA DE CALIDAD (CERTIFICADOS) === -->
+        <!-- Esta es tu prueba social para generar confianza -->
+        <section class="section" id="credenciales">
+            <div class="section-header">
+                <h2 class="section-title">Credenciales Verificadas</h2>
+                <p class="section-subtitle">Compromiso continuo con la excelencia técnica y la especialización profesional.</p>
+            </div>
+
+            <div class="cert-grid">
+                
+                <!-- CERTIFICADO 1 -->
+                <div class="cert-card">
+                    <div class="cert-img-wrapper">
+                        <img src="{3A139AA3-80D7-46D3-A39E-8AB5BDFC6706}.png" alt="Certificado Customer Experience y Asistencia Virtual" class="cert-img">
+                    </div>
+                    <div class="cert-content">
+                        <h3 class="cert-title">Customer Experience y Asistencia Virtual</h3>
+                        <span class="cert-issuer">Emotos Academy / CertiProf</span>
+                        <span class="cert-date">Expedición: Septiembre 2025</span>
+                    </div>
+                </div>
+
+                <!-- CERTIFICADO 2 -->
+                <div class="cert-card">
+                    <div class="cert-img-wrapper">
+                        <img src="{9960D7C0-8A67-4576-99DE-FF7AE454A436}.png" alt="Diplomado en Asesoría en Ingeniería en Computación" class="cert-img">
+                    </div>
+                    <div class="cert-content">
+                        <h3 class="cert-title">Diplomado Int. en Asesoría en Ingeniería en Computación</h3>
+                        <span class="cert-issuer">Utel Universidad</span>
+                        <span class="cert-date">Expedición: Julio 2025</span>
+                    </div>
+                </div>
+
+                <!-- CERTIFICADO 3 -->
+                <div class="cert-card">
+                    <div class="cert-img-wrapper">
+                        <img src="{6FA8983D-BEE8-4750-8B80-4D56C98C4576}.jpg" alt="Certificado Informática Forense" class="cert-img">
+                    </div>
+                    <div class="cert-content">
+                        <h3 class="cert-title">Informática Forense (Campamento)</h3>
+                        <span class="cert-issuer">Academia Progenios</span>
+                        <span class="cert-date">Expedición: Septiembre 2025</span>
+                    </div>
+                </div>
+
+                 <!-- CERTIFICADO 4 -->
+                <div class="cert-card">
+                    <div class="cert-img-wrapper">
+                        <img src="{BE3FECA1-4D76-46E5-91C6-C40E39CA7585}.png" alt="Certificado Introduction to Bionic Prostheses" class="cert-img">
+                    </div>
+                    <div class="cert-content">
+                        <h3 class="cert-title">Introduction to Bionic Prostheses</h3>
+                        <span class="cert-issuer">P4H Bionics</span>
+                        <span class="cert-date">Expedición: Diciembre 2024</span>
+                    </div>
+                </div>
+
+                <!-- CERTIFICADO 5 -->
+                 <div class="cert-card">
+                    <div class="cert-img-wrapper">
+                        <img src="{7EF55A47-EB80-443A-AC63-1D9E836190B9}.png" alt="Certificado Cambio Climático, Bosques y REDD+" class="cert-img">
+                    </div>
+                    <div class="cert-content">
+                        <h3 class="cert-title">Cambio Climático, Bosques y REDD+</h3>
+                        <span class="cert-issuer">Ministerio del Ambiente (Ecuador)</span>
+                        <span class="cert-date">Expedición: Enero 2025</span>
+                    </div>
+                </div>
+
+                <!-- CERTIFICADO 6 -->
+                <div class="cert-card">
+                    <div class="cert-img-wrapper">
+                        <img src="{93C7E004-E9D0-4834-A7CC-D407FDF94B5B}.png" alt="Certificado Gestión de RAEE" class="cert-img">
+                    </div>
+                    <div class="cert-content">
+                        <h3 class="cert-title">Gestión de Residuos de Aparatos Eléctricos y Electrónicos</h3>
+                        <span class="cert-issuer">Ministerio del Ambiente (Ecuador)</span>
+                        <span class="cert-date">Expedición: Enero 2025</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- === SECCIÓN: EXPERIENCIA B2B (TIMELINE MODERNO) === -->
+        <section class="section" id="experiencia">
+             <div class="section-header">
+                <h2 class="section-title">Trayectoria de Impacto</h2>
+                <p class="section-subtitle">Historial comprobado de entrega de soluciones tecnológicas que resuelven problemas reales.</p>
+            </div>
+
+            <div class="timeline">
+                
+                <!-- Trabajo 1 -->
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3 class="job-title">Fundador & Desarrollador Principal</h3>
+                        <span class="company-name">LycodeLife</span>
+                        <span class="job-period">2023 - Presente</span>
+                        <p>
+                            Lidero el diseño y desarrollo de soluciones de software B2B a medida. 
+                            Mi enfoque va desde la arquitectura del sistema hasta el despliegue, 
+                            asegurando que cada producto automatice procesos críticos y permita 
+                            a mis clientes escalar sus operaciones sin fricción técnica.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Trabajo 2 -->
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3 class="job-title">Desarrollador de Soluciones Independiente</h3>
+                        <span class="company-name">Proyectos Freelance</span>
+                        <span class="job-period">2022 - Presente</span>
+                        <p>
+                            Consultoría y desarrollo de aplicaciones web y sistemas de gestión de datos. 
+                            Especializado en crear interfaces de usuario intuitivas (UI/UX) que 
+                            simplifican flujos de trabajo complejos, optimizando el rendimiento y 
+                            la experiencia del usuario final.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- === SECCIÓN: STACK TECNOLÓGICO (PÍLDORAS) === -->
+        <section class="section">
+             <div class="section-header">
+                <h2 class="section-title">Arsenal Tecnológico</h2>
+                <p class="section-subtitle">Las herramientas modernas que utilizo para construir soluciones robustas.</p>
+            </div>
+
+            <div class="skills-grid">
+                <span class="skill-pill">JavaScript / TypeScript</span>
+                <span class="skill-pill">Node.js Backend</span>
+                <span class="skill-pill">React.js & Angular</span>
+                <span class="skill-pill">Bases de Datos SQL/NoSQL</span>
+                <span class="skill-pill">Arquitectura de Software</span>
+                <span class="skill-pill">Automatización de Procesos</span>
+                <span class="skill-pill">Diseño UI/UX Centrado en Usuario</span>
+                <span class="skill-pill">Git & DevOps Básico</span>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- === FOOTER: LLAMADA A LA ACCIÓN FINAL === -->
+    <footer class="cta-footer" id="contacto">
+        <div class="container">
+            <h2 class="cta-title">¿Listo para potenciar tu negocio con ingeniería de calidad?</h2>
+            <p class="cta-text">No busques solo un programador, busca un socio estratégico que entienda tus objetivos y los traduzca en software efectivo.</p>
+            
+            <a href="mailto:contacto@lycodelife.com" class="btn btn-light">Iniciar Conversación</a>
+            
+            <p class="copyright">
+                © 2026 Shordy | LycodeLife. Ingeniería y Desarrollo de Software B2B.
+            </p>
+        </div>
+    </footer>
+
+    <!-- SCRIPT PARA PWA (SIN ERRORES) -->
+    <script>
+        // Genera el manifiesto de la aplicación de forma segura
+        const manifestData = {
+            "name": "Shordy | Ingeniero B2B",
+            "short_name": "ShordyCV",
+            "start_url": ".",
+            "display": "standalone",
+            "background_color": "#F8FAFC",
+            "theme_color": "#0F172A",
+             "icons": [
+                {
+                    // Icono genérico en base64 para que funcione sin archivos externos
+                    "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' fill='%230F172A'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' fill='%233B82F6' font-size='250px' font-family='sans-serif' dy='.3em' font-weight='bold'%3ES%3C/text%3E%3C/svg%3E",
+                    "sizes": "512x512",
+                    "type": "image/svg+xml"
+                }
+            ]
+        };
+        const manifestBlob = new Blob([JSON.stringify(manifestData)], { type: 'application/json' });
+        const manifestLink = document.createElement('link');
+        manifestLink.rel = 'manifest';
+        manifestLink.href = URL.createObjectURL(manifestBlob);
+        document.head.appendChild(manifestLink);
+    </script>
+</body>
+</html>
