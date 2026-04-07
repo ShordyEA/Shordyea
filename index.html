@@ -47,14 +47,6 @@
             margin: 0 auto;
         }
 
-        /* === CLASES DE UTILIDAD === */
-        .text-justify {
-            text-align: justify;
-            hyphens: auto;
-            -webkit-hyphens: auto;
-            -moz-hyphens: auto;
-        }
-
         /* === HUD / NAVBAR FLOTANTE ESTILO PÍLDORA === */
         .hud-wrapper {
             position: fixed;
@@ -558,23 +550,24 @@
         .profile-header {
             display: flex;
             align-items: center;
-            gap: 20px;
-            margin-bottom: 24px;
+            gap: 24px;
+            margin-bottom: 30px;
+            flex-wrap: wrap; /* Evita que el texto se aplaste en tablets con la imagen más grande */
         }
 
-        .profile-avatar {
-            width: 140px;
-            height: 140px;
-            border-radius: 50%;
+        .profile-card-img {
+            width: 220px;
+            height: 280px;
+            border-radius: 16px; /* Formato tipo tarjeta vertical */
             object-fit: cover;
-            border: 3px solid var(--accent-primary);
-            box-shadow: 0 0 20px var(--accent-glow);
-            animation: floatAvatar 4s ease-in-out infinite;
+            border: 1px solid var(--border-light);
+            background-color: var(--card-bg);
+            animation: floatCard 5s ease-in-out infinite;
         }
 
-        @keyframes floatAvatar {
-            0%, 100% { transform: translateY(0px); box-shadow: 0 0 20px var(--accent-glow); }
-            50% { transform: translateY(-8px); box-shadow: 0 10px 25px rgba(37, 99, 235, 0.4); }
+        @keyframes floatCard {
+            0%, 100% { transform: translateY(0px); box-shadow: 0 15px 35px -10px rgba(37, 99, 235, 0.2); }
+            50% { transform: translateY(-10px); box-shadow: 0 25px 45px -10px rgba(37, 99, 235, 0.35); }
         }
 
         .profile-name {
@@ -668,13 +661,41 @@
         }
 
         @media (max-width: 600px) {
-            .hud-nav { display: none; } 
-            .hero { padding-top: 100px; }
-            .hero-title { font-size: 2.3rem; }
-            .hero-actions { flex-direction: column; align-items: stretch; }
-            .btn-primary, .btn-secondary { text-align: center; }
+            .hud-wrapper { top: 10px; }
+            .hud-nav { 
+                padding: 4px 6px;
+                gap: 2px;
+                max-width: 95%; 
+                overflow-x: auto; /* Permite deslizar si no cabe */
+            }
+            .hud-nav a {
+                padding: 6px 10px;
+                font-size: 0.75rem;
+                white-space: nowrap; /* Evita que los botones se rompan en dos líneas */
+            }
+            .hero { padding-top: 120px; padding-bottom: 60px; min-height: auto; }
+            .hero-title { font-size: 2.1rem; }
+            .hero-desc { font-size: 1.05rem; }
+            .hero-actions { flex-direction: column; align-items: stretch; width: 100%; }
+            .btn-primary, .btn-secondary { text-align: center; width: 100%; }
+            
+            .section { padding: 60px 0; }
+            .section-title { font-size: 2rem; }
             .cert-card { flex: 0 0 100%; }
             .carousel-btn { width: 36px; height: 36px; font-size: 1rem; }
+            
+            .profile-grid { gap: 30px; }
+            .profile-info { padding: 20px; }
+            .profile-header { flex-direction: column; text-align: center; gap: 12px; }
+            .skills-container { justify-content: center; }
+            
+            .timeline { padding-left: 20px; }
+            .timeline-item::before { left: -27px; width: 10px; height: 10px; }
+
+            .form-modal-content { padding: 24px; width: 95%; }
+            .float-btn { width: 50px; height: 50px; }
+            .floating-contact { bottom: 20px; right: 20px; gap: 10px; }
+            .float-btn svg { width: 24px; height: 24px; }
         }
     </style>
 </head>
@@ -702,7 +723,7 @@
                 
                 <h1 class="hero-title">Ingeniería de software adaptada a tus <span class="gradient-text">necesidades.</span></h1>
                 
-                <p class="hero-desc text-justify">
+                <p class="hero-desc">
                     <strong>Hola, soy Shordy.</strong> Me destaco por priorizar la experiencia del usuario final, optimizar cada proceso para garantizar un funcionamiento puro y adaptarme ágilmente a las exigencias de tu proyecto o empresa.
                 </p>
                 
@@ -727,16 +748,16 @@
             <div class="profile-grid">
                 <div>
                     <div class="profile-header">
-                        <!-- 👇 Actualizado a perfil.jpeg 👇 -->
-                        <img src="imagenes/perfil.jpeg" alt="Shordy" class="profile-avatar">
+                        <!-- 👇 Foto en formato tarjeta grande 👇 -->
+                        <img src="imagenes/perfil.jpeg" alt="Shordy" class="profile-card-img">
                         <div>
                             <span style="display: block; font-size: 0.95rem; color: var(--text-muted); font-weight: 600; margin-bottom: -4px; text-transform: uppercase; letter-spacing: 1px;">Hola, soy</span>
                             <h3 class="profile-name">Shordy</h3>
                         </div>
                     </div>
                     
-                    <!-- Párrafo justificado -->
-                    <p class="text-justify" style="color: var(--text-muted); font-size: 1.1rem; margin-bottom: 24px; line-height: 1.7;">
+                    <!-- Párrafo sin justificar -->
+                    <p style="color: var(--text-muted); font-size: 1.1rem; margin-bottom: 24px; line-height: 1.7;">
                         Soy desarrollador de software y <strong>próximo Ingeniero en Sistemas (titulación en octubre 2026)</strong>. Me enfoco en crear soluciones que realmente resuelvan problemas de negocio. No me limito a escribir código; analizo la raíz del problema y propongo una arquitectura escalable, segura y con una experiencia de usuario impecable.
                     </p>
                     
@@ -775,7 +796,7 @@
                     </div>
                     
                     <div style="margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--border-light);">
-                        <p class="text-justify" style="font-size: 0.95rem; color: var(--text-muted); font-style: italic;">
+                        <p style="font-size: 0.95rem; color: var(--text-muted); font-style: italic;">
                             "Mi objetivo es que la tecnología deje de ser un obstáculo para tu empresa y se convierta en el motor principal para escalar."
                         </p>
                     </div>
@@ -798,7 +819,7 @@
                     
                     <!-- CERTIFICADO 1 -->
                     <div class="cert-card">
-                        <div class="cert-img-wrapper" onclick="openModal(this.querySelector('img').src)">
+                        <div class="cert-img-wrapper" onclick="openModal(this.querySelector('img'))">
                             <img src="imagenes/certificado-utel.png" alt="Diplomado Ingeniería" class="cert-img">
                         </div>
                         <div class="cert-content">
@@ -810,7 +831,7 @@
 
                     <!-- CERTIFICADO 2 -->
                     <div class="cert-card">
-                        <div class="cert-img-wrapper" onclick="openModal(this.querySelector('img').src)">
+                        <div class="cert-img-wrapper" onclick="openModal(this.querySelector('img'))">
                             <img src="imagenes/certificado-hackathon.png" alt="Hackathon Ecommerce" class="cert-img">
                         </div>
                         <div class="cert-content">
@@ -822,7 +843,7 @@
 
                     <!-- CERTIFICADO 3 -->
                     <div class="cert-card">
-                        <div class="cert-img-wrapper" onclick="openModal(this.querySelector('img').src)">
+                        <div class="cert-img-wrapper" onclick="openModal(this.querySelector('img'))">
                             <img src="imagenes/certificado-forense.png" alt="Informática Forense" class="cert-img">
                         </div>
                         <div class="cert-content">
@@ -834,7 +855,7 @@
 
                     <!-- CERTIFICADO 4 (OCULTO INICIALMENTE) -->
                     <div class="cert-card hidden-cert">
-                        <div class="cert-img-wrapper" onclick="openModal(this.querySelector('img').src)">
+                        <div class="cert-img-wrapper" onclick="openModal(this.querySelector('img'))">
                             <img src="imagenes/certificado-emotos.png" alt="Customer Experience" class="cert-img">
                         </div>
                         <div class="cert-content">
@@ -846,7 +867,7 @@
 
                     <!-- CERTIFICADO 5 -->
                     <div class="cert-card hidden-cert">
-                        <div class="cert-img-wrapper" onclick="openModal(this.querySelector('img').src)">
+                        <div class="cert-img-wrapper" onclick="openModal(this.querySelector('img'))">
                             <img src="imagenes/certificado-bionics.png" alt="Bionic Prostheses" class="cert-img">
                         </div>
                         <div class="cert-content">
@@ -858,7 +879,7 @@
 
                     <!-- CERTIFICADO 6 -->
                     <div class="cert-card hidden-cert">
-                        <div class="cert-img-wrapper" onclick="openModal(this.querySelector('img').src)">
+                        <div class="cert-img-wrapper" onclick="openModal(this.querySelector('img'))">
                             <img src="imagenes/certificado-raee-1.png" alt="Gestión de RAEE 1" class="cert-img">
                         </div>
                         <div class="cert-content">
@@ -870,7 +891,7 @@
 
                     <!-- CERTIFICADO 7 -->
                     <div class="cert-card hidden-cert">
-                        <div class="cert-img-wrapper" onclick="openModal(this.querySelector('img').src)">
+                        <div class="cert-img-wrapper" onclick="openModal(this.querySelector('img'))">
                             <img src="imagenes/certificado-raee-2.png" alt="Gestión de RAEE 2" class="cert-img">
                         </div>
                         <div class="cert-content">
@@ -882,7 +903,7 @@
 
                     <!-- CERTIFICADO 8 -->
                     <div class="cert-card hidden-cert">
-                        <div class="cert-img-wrapper" onclick="openModal(this.querySelector('img').src)">
+                        <div class="cert-img-wrapper" onclick="openModal(this.querySelector('img'))">
                             <img src="imagenes/certificado-cambio-climatico.png" alt="Cambio Climático" class="cert-img">
                         </div>
                         <div class="cert-content">
@@ -894,7 +915,7 @@
 
                     <!-- CERTIFICADO 9 -->
                     <div class="cert-card hidden-cert">
-                        <div class="cert-img-wrapper" onclick="openModal(this.querySelector('img').src)">
+                        <div class="cert-img-wrapper" onclick="openModal(this.querySelector('img'))">
                             <img src="imagenes/certificado-buenas-practicas.png" alt="Buenas Prácticas" class="cert-img">
                         </div>
                         <div class="cert-content">
@@ -906,7 +927,7 @@
 
                     <!-- CERTIFICADO 10 -->
                     <div class="cert-card hidden-cert">
-                        <div class="cert-img-wrapper" onclick="openModal(this.querySelector('img').src)">
+                        <div class="cert-img-wrapper" onclick="openModal(this.querySelector('img'))">
                             <img src="imagenes/certificado-manejo-fuego.png" alt="Manejo del Fuego" class="cert-img">
                         </div>
                         <div class="cert-content">
@@ -946,8 +967,8 @@
                     <a href="https://lycodelife.github.io/LycodeLife/" target="_blank" class="company-link">
                         🏢 LycodeLife ↗
                     </a>
-                    <!-- Párrafo justificado -->
-                    <p class="job-desc text-justify">
+                    <!-- Párrafo sin justificar -->
+                    <p class="job-desc">
                         Lidero el diseño y desarrollo de software B2B a medida. Arquitectura de sistemas, desarrollo Full-Stack y automatización de procesos críticos para permitir a mis clientes escalar sus operaciones.
                     </p>
                 </div>
@@ -955,8 +976,8 @@
                 <div class="timeline-item">
                     <h3 class="job-title">Desarrollador de Soluciones</h3>
                     <div class="company-link" style="pointer-events: none; color: var(--text-muted);">Proyectos Independientes</div>
-                    <!-- Párrafo justificado -->
-                    <p class="job-desc text-justify">
+                    <!-- Párrafo sin justificar -->
+                    <p class="job-desc">
                         Consultoría y desarrollo de aplicaciones web. Especializado en crear interfaces intuitivas (UI/UX) que simplifican flujos de trabajo complejos y optimizan el rendimiento final.
                     </p>
                 </div>
@@ -1023,22 +1044,42 @@
 
     <!-- SCRIPTS -->
     <script>
-        // === Lógica Lightbox Intacta ===
+        // === Lógica Lightbox Mejorada con Teclado ===
         const modal = document.getElementById("imageModal");
         const expandedImg = document.getElementById("expandedImg");
+        let currentLightboxIndex = 0;
+        let lightboxImages = [];
 
-        function openModal(imageSrc) {
+        function openModal(imgElement) {
+            lightboxImages = Array.from(document.querySelectorAll('.cert-img'));
+            currentLightboxIndex = lightboxImages.indexOf(imgElement);
+            
             modal.classList.add("active");
-            expandedImg.src = imageSrc;
+            expandedImg.src = imgElement.src;
             document.body.style.overflow = "hidden";
         }
 
         function closeModal(event) {
-            if(event.target === modal || event.target.className === "close-btn") {
+            if(event === 'force' || event.target === modal || event.target.className.includes("close-btn")) {
                 modal.classList.remove("active");
                 document.body.style.overflow = "auto";
             }
         }
+
+        // Navegación por teclado para el Lightbox
+        document.addEventListener('keydown', function(event) {
+            if (!modal.classList.contains("active") || lightboxImages.length === 0) return;
+            
+            if (event.key === "Escape") {
+                closeModal('force');
+            } else if (event.key === "ArrowRight") {
+                currentLightboxIndex = (currentLightboxIndex + 1) % lightboxImages.length;
+                expandedImg.src = lightboxImages[currentLightboxIndex].src;
+            } else if (event.key === "ArrowLeft") {
+                currentLightboxIndex = (currentLightboxIndex - 1 + lightboxImages.length) % lightboxImages.length;
+                expandedImg.src = lightboxImages[currentLightboxIndex].src;
+            }
+        });
 
         // === Lógica Botón Mostrar Más ===
         function toggleCertificates() {
