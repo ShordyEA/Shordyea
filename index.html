@@ -111,10 +111,13 @@
         .hero-grid {
             display: flex;
             align-items: center;
+            justify-content: center;
         }
 
         .hero-content {
             max-width: 800px;
+            text-align: center;
+            margin: 0 auto;
         }
 
         .status-badge {
@@ -128,7 +131,7 @@
             font-size: 0.85rem;
             font-weight: 500;
             color: var(--text-muted);
-            margin-bottom: 24px;
+            margin: 0 auto 24px auto;
         }
 
         .status-dot {
@@ -173,6 +176,7 @@
             display: flex;
             gap: 16px;
             align-items: center;
+            justify-content: center;
         }
 
         .btn-primary {
@@ -555,8 +559,8 @@
         }
 
         .profile-avatar {
-            width: 80px;
-            height: 80px;
+            width: 110px;
+            height: 110px;
             border-radius: 50%;
             object-fit: cover;
             border: 3px solid var(--accent-primary);
@@ -582,6 +586,72 @@
 
         @keyframes shineText {
             to { background-position: 200% center; }
+        }
+
+        /* === FORMULARIO MODAL === */
+        .form-modal-content {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 16px;
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            text-align: left;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            font-family: inherit;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-primary);
+        }
+
+        .btn-form-wa {
+            background-color: #ffffff;
+            color: #25D366;
+            border: 1px solid #25D366;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .btn-form-wa:hover {
+            background-color: #f0fdf4;
+        }
+
+        /* === ANIMACIONES DE SCROLL === */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.5, 0, 0, 1), transform 0.8s cubic-bezier(0.5, 0, 0, 1);
+            will-change: opacity, transform;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         /* === RESPONSIVE === */
@@ -617,7 +687,7 @@
 
     <!-- === HERO SECTION SAAS === -->
     <header class="hero">
-        <div class="container hero-grid">
+        <div class="container hero-grid reveal">
             
             <div class="hero-content">
                 <div class="status-badge">
@@ -632,8 +702,8 @@
                 </p>
                 
                 <div class="hero-actions">
-                    <a href="#contacto" class="btn-primary">Iniciar Proyecto</a>
-                    <a href="https://lycodelife.github.io/LycodeLife/" target="_blank" rel="noopener noreferrer" class="btn-secondary">🏢 Conocer Agencia</a>
+                    <button onclick="openContactForm()" class="btn-primary" style="cursor: pointer; border: none; font-size: 1rem;">Iniciar Proyecto</button>
+                    <a href="https://lycodelife.github.io/LycodeLife/" target="_blank" rel="noopener noreferrer" class="btn-secondary">🏢 LyCodeLife</a>
                 </div>
             </div>
 
@@ -643,9 +713,9 @@
     <main class="container">
         
         <!-- === PERFIL PROFESIONAL === -->
-        <section class="section" id="perfil">
+        <section class="section reveal" id="perfil">
             <div class="section-header">
-                <h2 class="section-title">Conoceme</h2>
+                <h2 class="section-title">Conóceme</h2>
                 <p class="section-desc">Transparencia, comunicación directa y código limpio. Así es como trabajo.</p>
             </div>
 
@@ -661,7 +731,7 @@
                     </div>
                     
                     <p style="color: var(--text-muted); font-size: 1.1rem; margin-bottom: 24px; line-height: 1.7;">
-                        Soy un estudiante de ingenieria en sistemas enfocado en crear soluciones que realmente resuelvan problemas de negocio. No me limito a escribir código; analizo la raíz del problema y propongo una arquitectura escalable, segura y con una experiencia de usuario impecable.
+                        Soy un ingeniero de software enfocado en crear soluciones que realmente resuelvan problemas de negocio. No me limito a escribir código; analizo la raíz del problema y propongo una arquitectura escalable, segura y con una experiencia de usuario impecable.
                     </p>
                     
                     <h3 style="font-size: 1.2rem; margin-bottom: 16px;">Habilidades Clave (Core Skills)</h3>
@@ -689,7 +759,7 @@
                     </div>
                     
                     <div class="info-item">
-                        <span class="info-label">Proyecto Personal:</span>
+                        <span class="info-label">Proyecto personal:</span>
                         <a href="https://lycodelife.github.io/LycodeLife/" target="_blank" class="info-value company-link" style="margin-bottom: 0;">LycodeLife</a>
                     </div>
                     
@@ -708,7 +778,7 @@
         </section>
 
         <!-- === CREDENCIALES === -->
-        <section class="section" id="credenciales">
+        <section class="section reveal" id="credenciales">
             <div class="section-header">
                 <h2 class="section-title">Credenciales Verificadas</h2>
                 <p class="section-desc">Garantía de calidad. Un historial comprobado de especialización técnica y académica continua.</p>
@@ -851,7 +921,7 @@
         </section>
 
         <!-- === EXPERIENCIA === -->
-        <section class="section" id="experiencia">
+        <section class="section reveal" id="experiencia">
              <div class="section-header">
                 <h2 class="section-title">Trayectoria</h2>
                 <p class="section-desc">Entregando soluciones tecnológicas que resuelven problemas reales de negocio.</p>
@@ -883,7 +953,7 @@
     </main>
 
     <!-- === FOOTER === -->
-    <footer id="contacto" style="background: var(--text-main); color: #fff; padding: 100px 0; text-align: center; margin-top: 50px;">
+    <footer id="contacto" class="reveal" style="background: var(--text-main); color: #fff; padding: 100px 0; text-align: center; margin-top: 50px;">
         <div class="container">
             <h2 style="font-size: 2.5rem; font-weight: 800; margin-bottom: 24px;">¿Listo para trabajar juntos?</h2>
             <p style="color: #A1A1AA; font-size: 1.2rem; max-width: 600px; margin: 0 auto 40px;">Hablemos de cómo puedo aportar valor y optimización a tu equipo o proyecto.</p>
@@ -905,6 +975,34 @@
     <div id="imageModal" class="modal" onclick="closeModal(event)">
         <span class="close-btn" onclick="closeModal(event)">&times;</span>
         <img class="modal-content" id="expandedImg">
+    </div>
+
+    <!-- MODAL DE CONTACTO / PROYECTO -->
+    <div id="contactFormModal" class="modal" onclick="closeContactForm(event)">
+        <div class="form-modal-content" onclick="event.stopPropagation()">
+            <span class="close-btn" style="top: 15px; right: 20px; color: var(--text-muted);" onclick="closeContactForm('force')">&times;</span>
+            <h2 style="font-size: 1.8rem; font-weight: 800; margin-bottom: 8px;">Iniciemos tu proyecto</h2>
+            <p style="color: var(--text-muted); margin-bottom: 24px;">Déjame tu correo y detalles, y te contactaré a la brevedad.</p>
+            
+            <div class="form-group">
+                <label for="clientEmail">Tu Correo Electrónico</label>
+                <input type="email" id="clientEmail" placeholder="ejemplo@correo.com" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="clientMessage">Detalles del Proyecto</label>
+                <textarea id="clientMessage" rows="4" placeholder="Háblame de tus ideas, necesidades o problemas a resolver..." required></textarea>
+            </div>
+            
+            <button onclick="sendMailTo()" class="btn-primary" style="width: 100%; border: none; cursor: pointer; font-size: 1rem;">Enviar Detalles por Correo</button>
+            
+            <div style="text-align: center; margin: 16px 0; color: var(--text-muted); font-size: 0.9rem;">— o de forma directa —</div>
+            
+            <a href="https://wa.me/593984182834" target="_blank" class="btn-secondary btn-form-wa">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+                Escribir por WhatsApp
+            </a>
+        </div>
     </div>
 
     <!-- SCRIPTS -->
@@ -1036,6 +1134,58 @@
         // Iniciar el carrusel al cargar la página
         window.addEventListener('DOMContentLoaded', () => {
             initCarousel();
+        });
+
+        // === Lógica Formulario Modal ===
+        function openContactForm() {
+            const modal = document.getElementById("contactFormModal");
+            modal.classList.add("active");
+            document.body.style.overflow = "hidden";
+        }
+
+        function closeContactForm(event) {
+            const modal = document.getElementById("contactFormModal");
+            if (event === 'force' || event.target === modal || event.target.className.includes("close-btn")) {
+                modal.classList.remove("active");
+                document.body.style.overflow = "auto";
+            }
+        }
+
+        function sendMailTo() {
+            const email = document.getElementById('clientEmail').value;
+            const msg = document.getElementById('clientMessage').value;
+            
+            if (!email || !msg) {
+                alert("Por favor, completa tu correo y un mensaje.");
+                return;
+            }
+            
+            const subject = encodeURIComponent("Nuevo contacto para proyecto");
+            const body = encodeURIComponent(`He revisado tu portafolio y me gustaría hablar sobre un proyecto.\n\nMi correo de contacto: ${email}\n\nDetalles del proyecto:\n${msg}`);
+            
+            window.location.href = `mailto:shordy46.58@gmail.com?subject=${subject}&body=${body}`;
+            closeContactForm('force');
+        }
+
+        // === Animaciones de Scroll Reveal ===
+        document.addEventListener('DOMContentLoaded', () => {
+            const reveals = document.querySelectorAll('.reveal');
+            
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target); // Dejamos de observar una vez que aparece (más rendimiento)
+                    }
+                });
+            }, {
+                threshold: 0.1, // Aparece cuando el 10% del elemento es visible
+                rootMargin: "0px 0px -50px 0px"
+            });
+
+            reveals.forEach(reveal => {
+                revealObserver.observe(reveal);
+            });
         });
     </script>
 
