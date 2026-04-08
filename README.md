@@ -1,4 +1,4 @@
-[Documentación del Proyecto.md](https://github.com/user-attachments/files/26574972/Documentacion.del.Proyecto.md)
+
 # **Shordy | Ingeniería de Software B2B & IA 🚀**
 
 Bienvenido al repositorio oficial de mi portafolio profesional y plataforma de servicios. Este proyecto representa la convergencia entre el desarrollo de software tradicional de alto nivel y las capacidades disruptivas de la Inteligencia Artificial para el sector B2B.
