@@ -1,16 +1,60 @@
-### Hi there 👋
+[Documentación del Proyecto.md](https://github.com/user-attachments/files/26574972/Documentacion.del.Proyecto.md)
+# **Shordy | Ingeniería de Software B2B & IA 🚀**
 
-<!--
-**ShordyEA/Shordyea** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+Bienvenido al repositorio oficial de mi portafolio profesional y plataforma de servicios. Este proyecto representa la convergencia entre el desarrollo de software tradicional de alto nivel y las capacidades disruptivas de la Inteligencia Artificial para el sector B2B.
 
-Here are some ideas to get you started:
+## **📌 Sobre el Proyecto**
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+Esta plataforma ha sido diseñada bajo una estética **SaaS Premium**, priorizando la usabilidad, la velocidad de carga y una arquitectura limpia. No es solo un portafolio; es una herramienta de conversión para soluciones tecnológicas complejas, desde el desarrollo de software a medida hasta el mantenimiento crítico de infraestructura física.
+
+### **Características Principales:**
+
+* **Arquitectura Adaptativa:** Layout totalmente responsive diseñado para cualquier dispositivo (Mobile-First).  
+* **HUD Navbar:** Sistema de navegación flotante estilo píldora con desenfoque de fondo (glassmorphism).  
+* **Gestión de Credenciales:** Carrusel interactivo con sistema de Lightbox para la visualización de certificaciones técnicas.  
+* **AI-Enhanced Development:** Flujos de trabajo optimizados mediante ingeniería de prompts para asegurar un código robusto y eficiente.  
+* **Sección de Soporte IT:** Módulo dedicado a servicios de hardware y optimización de sistemas operativos.
+
+## **🛠️ Stack Tecnológico**
+
+El ecosistema de desarrollo de este proyecto y los servicios ofrecidos se basan en:
+
+* **Backend & Lógica:** \* **Java:** Utilizado para la estructuración de arquitecturas sólidas y escalables en soluciones empresariales.  
+* **Frontend:** \* **HTML5 & CSS3:** Uso extensivo de variables CSS y Flexbox/Grid para un diseño moderno.  
+  * **Vanilla JavaScript:** Lógica de componentes, animaciones de scroll (Reveal) y gestión del carrusel sin dependencias externas.  
+* **Diseño & UI:** \* **Tipografía Inter:** Optimizada para legibilidad en interfaces de software.  
+  * **Animaciones Fluidas:** Implementación de @keyframes para una experiencia de usuario dinámica.
+
+## **🚀 Instalación y Uso**
+
+Para ejecutar una copia local de este proyecto o explorar el código:
+
+1. **Clona el repositorio:**  
+   git clone \[https://github.com/tu-usuario/shordy-portfolio.git\](https://github.com/tu-usuario/shordy-portfolio.git)
+
+2. **Abre el archivo principal:**  
+   Simplemente abre index.html en tu navegador preferido. No requiere servidores externos para la visualización del frontend.  
+3. **Configuración de Java:**  
+   Si estás explorando los módulos de backend o microservicios (en caso de estar incluidos en ramas adicionales), asegúrate de tener instalado el JDK 17 o superior.
+
+## **📂 Estructura del Repositorio**
+
+├── index.html          \# Archivo principal (Estructura, Estilos y Lógica JS)  
+├── imagenes/           \# Activos visuales y certificados  
+└── README.md           \# Documentación del proyecto
+
+## **👨‍💻 Perfil del Desarrollador**
+
+**Shordy** \- Próximo Ingeniero en Sistemas (Octubre 2026).
+
+Especialista en desarrollo potenciado por IA y soluciones B2B. Mi enfoque se centra en multiplicar la productividad y entregar software de altísima calidad en tiempo récord, utilizando la IA como copiloto estratégico en cada línea de código.
+
+## **📩 Contacto**
+
+¿Tienes un proyecto en mente o necesitas consultoría técnica?
+
+* **Email:** [shordy46.58@gmail.com](mailto:shordy46.58@gmail.com)  
+* **WhatsApp:** [\+593 98 418 2834](https://wa.me/593984182834)  
+* **LinkedIn:** \[Tu Perfil de LinkedIn\]
+
+Desarrollado con precisión por **Shordy | LycodeLife**.
