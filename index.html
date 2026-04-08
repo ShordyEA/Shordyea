@@ -608,28 +608,26 @@
             border-color: var(--text-main);
         }
 
-        /* === ANIMACIONES PERFIL === */
-        .profile-header {
+        /* === ESTILOS PERFIL === */
+        .profile-header-card {
             display: flex;
+            flex-direction: row;
             align-items: center;
-            gap: 24px;
-            margin-bottom: 30px;
-            flex-wrap: wrap; 
+            text-align: left;
+            gap: 20px;
+            margin-bottom: 32px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid var(--border-light);
         }
 
-        .profile-card-img {
-            width: 220px;
-            height: 280px;
-            border-radius: 16px; 
+        .profile-avatar {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%; 
             object-fit: cover;
-            border: 1px solid var(--border-light);
+            border: 2px solid var(--border-light);
             background-color: var(--card-bg);
-            animation: floatCard 5s ease-in-out infinite;
-        }
-
-        @keyframes floatCard {
-            0%, 100% { transform: translateY(0px); box-shadow: 0 15px 35px -10px rgba(37, 99, 235, 0.2); }
-            50% { transform: translateY(-10px); box-shadow: 0 25px 45px -10px rgba(37, 99, 235, 0.35); }
+            box-shadow: 0 8px 20px -5px rgba(37, 99, 235, 0.15);
         }
 
         .profile-name {
@@ -749,8 +747,8 @@
             .carousel-btn { width: 36px; height: 36px; font-size: 1rem; }
             
             .profile-grid { gap: 30px; }
-            .profile-info { padding: 20px; }
-            .profile-header { flex-direction: column; text-align: center; gap: 12px; }
+            .profile-info { padding: 24px; }
+            .profile-header-card { padding-bottom: 20px; }
             .skills-container { justify-content: center; }
             
             .timeline { padding-left: 20px; }
@@ -790,18 +788,11 @@
                 </div>
 
                 <div class="profile-grid">
-                    <div>
-                        <div class="profile-header">
-                            <!-- 👇 Foto en formato tarjeta grande 👇 -->
-                            <img src="imagenes/perfil.jpeg" alt="Shordy" class="profile-card-img" onerror="this.src='https://placehold.co/220x280/F4F4F5/A1A1AA?text=Foto+Perfil'">
-                            <div>
-                                <span style="display: block; font-size: 0.95rem; color: var(--text-muted); font-weight: 600; margin-bottom: -4px; text-transform: uppercase; letter-spacing: 1px;">Hola, soy</span>
-                                <h3 class="profile-name">Shordy</h3>
-                            </div>
-                        </div>
-                        
-                        <p style="color: var(--text-muted); font-size: 1.1rem; margin-bottom: 24px; line-height: 1.7;">
-                            Soy desarrollador de software, <strong>programador con IA</strong> y próximo Ingeniero en Sistemas (titulación en octubre 2026). Integro inteligencia artificial en todo mi ciclo de desarrollo —desde la conceptualización hasta el despliegue— lo que me permite multiplicar mi productividad, resolver arquitecturas complejas y entregar software B2B de altísima calidad en tiempo récord.
+                    <!-- Columna Izquierda: Sobre Mí -->
+                    <div style="padding-top: 10px;">
+                        <h3 style="font-size: 1.8rem; font-weight: 800; margin-bottom: 20px; color: var(--text-main);">Sobre Mí</h3>
+                        <p style="color: var(--text-muted); font-size: 1.1rem; margin-bottom: 28px; line-height: 1.7;">
+                            Soy desarrollador de software, <strong>programador con IA</strong> y próximo Ingeniero en Sistemas (titulación en octubre 2026). Integro inteligencia artificial en todo mi ciclo de desarrollo —desde la conceptualización hasta el despliegue— lo que me permite multiplicar mi productividad, resolver arquitecturas complejas y entregar software B2B de altísima calidad en tiempo récord. Además, ofrezco servicios de <strong>soporte técnico especializado y mantenimiento de hardware</strong> para mantener tu infraestructura funcionando de manera óptima.
                         </p>
                         
                         <h3 style="font-size: 1.2rem; margin-bottom: 16px;">Habilidades Clave (Core Skills)</h3>
@@ -817,8 +808,15 @@
                         </div>
                     </div>
 
+                    <!-- Columna Derecha: Tarjeta de Contacto -->
                     <div class="profile-info">
-                        <h3 style="font-size: 1.3rem; margin-bottom: 24px;">Datos de Contacto Directo</h3>
+                        <div class="profile-header-card">
+                            <!-- Foto rediseñada para tarjeta -->
+                            <img src="imagenes/perfil.jpeg" alt="Shordy" class="profile-avatar" style="cursor: zoom-in;" onclick="openModal(this)" onerror="this.src='https://placehold.co/90x90/F4F4F5/A1A1AA?text=Foto'">
+                            <div>
+                                <h3 class="profile-name">Shordy</h3>
+                            </div>
+                        </div>
                         
                         <div class="info-item">
                             <span class="info-label">Email:</span>
@@ -846,7 +844,7 @@
                         </div>
                         
                         <div style="margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--border-light);">
-                            <p style="font-size: 0.95rem; color: var(--text-muted); font-style: italic;">
+                            <p style="font-size: 0.95rem; color: var(--text-muted); font-style: italic; text-align: center;">
                                 "Mi objetivo es que la tecnología y la inteligencia artificial dejen de ser un obstáculo o un misterio para tu empresa, y se conviertan en el motor principal para escalar."
                             </p>
                         </div>
@@ -1208,8 +1206,13 @@
         let lightboxImages = [];
 
         function openModal(imgElement) {
-            lightboxImages = Array.from(document.querySelectorAll('.cert-img'));
-            currentLightboxIndex = lightboxImages.indexOf(imgElement);
+            if (imgElement.classList.contains('cert-img')) {
+                lightboxImages = Array.from(document.querySelectorAll('.cert-img'));
+                currentLightboxIndex = lightboxImages.indexOf(imgElement);
+            } else {
+                lightboxImages = [imgElement];
+                currentLightboxIndex = 0;
+            }
             
             modal.classList.add("active");
             expandedImg.src = imgElement.src;
