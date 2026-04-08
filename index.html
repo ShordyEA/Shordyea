@@ -375,6 +375,65 @@
             transform: scale(1.3);
         }
 
+        /* === MANTENIMIENTO PC Y SERVICIOS === */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 16px;
+            border: 1px solid var(--border-light);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .service-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.05);
+            border-color: var(--accent-primary);
+        }
+
+        .service-icon {
+            width: 52px;
+            height: 52px;
+            background: var(--accent-glow);
+            color: var(--accent-primary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+        }
+
+        .service-icon svg {
+            width: 26px;
+            height: 26px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .service-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--text-main);
+        }
+
+        .service-desc {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
         /* === EXPERIENCIA === */
         .timeline {
             position: relative;
@@ -552,13 +611,13 @@
             align-items: center;
             gap: 24px;
             margin-bottom: 30px;
-            flex-wrap: wrap; /* Evita que el texto se aplaste en tablets con la imagen más grande */
+            flex-wrap: wrap; 
         }
 
         .profile-card-img {
             width: 220px;
             height: 280px;
-            border-radius: 16px; /* Formato tipo tarjeta vertical */
+            border-radius: 16px; 
             object-fit: cover;
             border: 1px solid var(--border-light);
             background-color: var(--card-bg);
@@ -666,12 +725,12 @@
                 padding: 4px 6px;
                 gap: 2px;
                 max-width: 95%; 
-                overflow-x: auto; /* Permite deslizar si no cabe */
+                overflow-x: auto; 
             }
             .hud-nav a {
                 padding: 6px 10px;
                 font-size: 0.75rem;
-                white-space: nowrap; /* Evita que los botones se rompan en dos líneas */
+                white-space: nowrap; 
             }
             .hero { padding-top: 120px; padding-bottom: 60px; min-height: auto; }
             .hero-title { font-size: 2.1rem; }
@@ -707,6 +766,7 @@
             <a href="#perfil">Perfil</a>
             <a href="#credenciales">Credenciales</a>
             <a href="#experiencia">Trayectoria</a>
+            <a href="#mantenimiento">Soporte PC</a>
             <a href="https://lycodelife.github.io/LycodeLife/" target="_blank" class="hud-cta">LycodeLife ↗</a>
         </nav>
     </div>
@@ -756,7 +816,6 @@
                         </div>
                     </div>
                     
-                    <!-- Párrafo sin justificar -->
                     <p style="color: var(--text-muted); font-size: 1.1rem; margin-bottom: 24px; line-height: 1.7;">
                         Soy desarrollador de software, <strong>programador con IA</strong> y próximo Ingeniero en Sistemas (titulación en octubre 2026). Integro inteligencia artificial en todo mi ciclo de desarrollo —desde la conceptualización hasta el despliegue— lo que me permite multiplicar mi productividad, resolver arquitecturas complejas y entregar software B2B de altísima calidad en tiempo récord.
                     </p>
@@ -770,7 +829,7 @@
                         <span class="skill-tag">Optimización UX/UI</span>
                         <span class="skill-tag">Sistemas B2B</span>
                         <span class="skill-tag">Bases de Datos</span>
-                        <span class="skill-tag">Resolución Lógica</span>
+                        <span class="skill-tag">Soporte Hardware</span>
                     </div>
                 </div>
 
@@ -969,7 +1028,6 @@
                     <a href="https://lycodelife.github.io/LycodeLife/" target="_blank" class="company-link">
                         🏢 LycodeLife ↗
                     </a>
-                    <!-- Párrafo sin justificar -->
                     <p class="job-desc">
                         Lidero el diseño y desarrollo de software B2B a medida. Arquitectura de sistemas, desarrollo Full-Stack y automatización de procesos críticos, <strong>apoyado siempre en la IA como copiloto estratégico</strong>, para permitir a mis clientes escalar sus operaciones con la más alta tecnología.
                     </p>
@@ -978,9 +1036,83 @@
                 <div class="timeline-item">
                     <h3 class="job-title">Desarrollador de Soluciones con IA</h3>
                     <div class="company-link" style="pointer-events: none; color: var(--text-muted);">Proyectos Independientes</div>
-                    <!-- Párrafo sin justificar -->
                     <p class="job-desc">
                         Consultoría y desarrollo de aplicaciones web. Especializado en crear interfaces intuitivas (UI/UX) e integrar modelos de Inteligencia Artificial que simplifican flujos de trabajo complejos, optimizan el rendimiento final y automatizan tareas.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- === NUEVO: MANTENIMIENTO Y HARDWARE === -->
+        <section class="section reveal" id="mantenimiento">
+            <div class="section-header">
+                <h2 class="section-title">Mantenimiento y Hardware</h2>
+                <p class="section-desc">Servicios especializados para diagnosticar, optimizar y prolongar al máximo la vida útil de tus equipos informáticos.</p>
+            </div>
+
+            <div class="services-grid">
+                
+                <!-- Tarjeta 1: Mantenimiento Físico -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Mantenimiento Físico</h3>
+                    <p class="service-desc">
+                        Desarmado minucioso de equipos portátiles y de escritorio. Realizo limpieza profunda, cambio de pasta térmica de alta calidad y ensamblaje seguro para evitar sobrecalentamientos.
+                    </p>
+                </div>
+
+                <!-- Tarjeta 2: Optimización de SO -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24">
+                            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Renovación de Software</h3>
+                    <p class="service-desc">
+                        Le doy una "segunda vida" a PCs antiguas o lentas mediante la instalación de sistemas operativos ligeros, optimizados y libres de malware o bloatware. Tu equipo volverá a volar.
+                    </p>
+                </div>
+
+                <!-- Tarjeta 3: Diagnóstico -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24">
+                            <rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect>
+                            <rect x="9" y="9" width="6" height="6"></rect>
+                            <line x1="9" y1="1" x2="9" y2="4"></line>
+                            <line x1="15" y1="1" x2="15" y2="4"></line>
+                            <line x1="9" y1="20" x2="9" y2="23"></line>
+                            <line x1="15" y1="20" x2="15" y2="23"></line>
+                            <line x1="20" y1="9" x2="23" y2="9"></line>
+                            <line x1="20" y1="14" x2="23" y2="14"></line>
+                            <line x1="1" y1="9" x2="4" y2="9"></line>
+                            <line x1="1" y1="14" x2="4" y2="14"></line>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Detección de Fallos</h3>
+                    <p class="service-desc">
+                        Análisis exhaustivo para detectar problemas de hardware reales (RAM, discos duros, fuentes de poder, etc). Diagnósticos precisos sin hacerte gastar dinero innecesariamente.
+                    </p>
+                </div>
+
+                <!-- Tarjeta 4: Asesoría de compras -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24">
+                            <circle cx="9" cy="21" r="1"></circle>
+                            <circle cx="20" cy="21" r="1"></circle>
+                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Asesoría y Ensamblaje</h3>
+                    <p class="service-desc">
+                        ¿No sabes qué componentes comprar? Te asesoro para adquirir el hardware ideal según tu presupuesto y necesidades (Gaming, Oficina, Diseño) y me encargo del ensamble y configuración.
                     </p>
                 </div>
 
@@ -993,7 +1125,7 @@
     <footer id="contacto" class="reveal" style="background: var(--text-main); color: #fff; padding: 100px 0; text-align: center; margin-top: 50px;">
         <div class="container">
             <h2 style="font-size: 2.5rem; font-weight: 800; margin-bottom: 24px;">¿Listo para trabajar juntos?</h2>
-            <p style="color: #A1A1AA; font-size: 1.2rem; max-width: 600px; margin: 0 auto 40px;">Hablemos de cómo la inteligencia artificial y el código a medida pueden aportar valor y optimización a tu equipo o proyecto.</p>
+            <p style="color: #A1A1AA; font-size: 1.2rem; max-width: 600px; margin: 0 auto 40px;">Hablemos de cómo la inteligencia artificial, el código a medida o un hardware optimizado pueden aportar valor a tu proyecto.</p>
             
             <a href="mailto:shordy46.58@gmail.com" class="btn-primary" style="background: #ffffff; color: var(--text-main); display: inline-block;">Contáctame por Correo</a>
             
@@ -1027,8 +1159,8 @@
             </div>
             
             <div class="form-group">
-                <label for="clientMessage">Detalles del Proyecto</label>
-                <textarea id="clientMessage" rows="4" placeholder="Háblame de tus ideas, necesidades o problemas a resolver..." required></textarea>
+                <label for="clientMessage">Detalles del Proyecto / Consulta</label>
+                <textarea id="clientMessage" rows="4" placeholder="Háblame de tus ideas, necesidades de desarrollo o problemas de hardware a resolver..." required></textarea>
             </div>
             
             <button onclick="sendMailTo()" class="btn-primary" style="width: 100%; border: none; cursor: pointer; font-size: 1rem;">Enviar Detalles por Correo</button>
@@ -1241,8 +1373,8 @@
                 return;
             }
             
-            const subject = encodeURIComponent("Nuevo contacto para proyecto");
-            const body = encodeURIComponent(`He revisado tu portafolio y me gustaría hablar sobre un proyecto.\n\nMi correo de contacto: ${email}\n\nDetalles del proyecto:\n${msg}`);
+            const subject = encodeURIComponent("Nuevo contacto para proyecto / Soporte");
+            const body = encodeURIComponent(`He revisado tu portafolio y me gustaría hablar sobre un proyecto.\n\nMi correo de contacto: ${email}\n\nDetalles del proyecto o requerimiento:\n${msg}`);
             
             window.location.href = `mailto:shordy46.58@gmail.com?subject=${subject}&body=${body}`;
             closeContactForm('force');
