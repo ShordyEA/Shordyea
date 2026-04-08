@@ -25,18 +25,6 @@ El ecosistema de desarrollo de este proyecto y los servicios ofrecidos se basan 
 * **Diseño & UI:** \* **Tipografía Inter:** Optimizada para legibilidad en interfaces de software.  
   * **Animaciones Fluidas:** Implementación de @keyframes para una experiencia de usuario dinámica.
 
-## **🚀 Instalación y Uso**
-
-Para ejecutar una copia local de este proyecto o explorar el código:
-
-1. **Clona el repositorio:**  
-   git clone \[https://github.com/tu-usuario/shordy-portfolio.git\](https://github.com/tu-usuario/shordy-portfolio.git)
-
-2. **Abre el archivo principal:**  
-   Simplemente abre index.html en tu navegador preferido. No requiere servidores externos para la visualización del frontend.  
-3. **Configuración de Java:**  
-   Si estás explorando los módulos de backend o microservicios (en caso de estar incluidos en ramas adicionales), asegúrate de tener instalado el JDK 17 o superior.
-
 ## **📂 Estructura del Repositorio**
 
 ├── index.html          \# Archivo principal (Estructura, Estilos y Lógica JS)  
