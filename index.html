@@ -28,6 +28,10 @@
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
 
+        body.locked {
+            overflow: hidden;
+        }
+
         body {
             background-color: var(--bg-page);
             color: var(--text-main);
@@ -72,6 +76,37 @@
         }
 
         .nav-links a:hover { color: var(--text-main); }
+
+        /* === PANTALLA DE PORTADA (COVER) === */
+        #cover-screen {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            background: var(--bg-page); z-index: 3000; display: flex;
+            align-items: center; justify-content: center;
+            transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.8s ease;
+        }
+        #cover-screen.hide { transform: translateY(-100vh); opacity: 0; pointer-events: none; }
+        .cover-bg-glow {
+            position: absolute; top: 50%; left: 50%; width: 800px; height: 800px;
+            background: radial-gradient(circle, rgba(0,0,0,0.04) 0%, rgba(255,255,255,0) 70%);
+            transform: translate(-50%, -50%); z-index: -1; border-radius: 50%; pointer-events: none;
+        }
+        .cover-content { text-align: center; max-width: 800px; padding: 20px; display: flex; flex-direction: column; align-items: center; z-index: 1; }
+        .cover-photo {
+            width: 220px; height: 220px; border-radius: 50%; object-fit: cover;
+            border: 4px solid var(--surface); box-shadow: 0 20px 40px -10px rgba(0,0,0,0.08);
+            margin-bottom: 30px; animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-15px); } 100% { transform: translateY(0px); } }
+        .cover-name { font-size: 4.5rem; font-weight: 900; letter-spacing: -0.04em; line-height: 1.1; margin-bottom: 16px; color: var(--text-main); }
+        .cover-desc { font-size: 1.25rem; color: var(--text-muted); margin-bottom: 40px; font-weight: 500; max-width: 600px; }
+        .btn-conoceme {
+            padding: 18px 40px; font-size: 1.1rem; background: var(--text-main); color: #ffffff;
+            font-weight: 600; border-radius: 100px; border: none; cursor: pointer; transition: all 0.3s ease;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2); display: inline-flex; align-items: center; gap: 12px;
+        }
+        .btn-conoceme:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 15px 30px -5px rgba(0,0,0,0.3); }
+        .btn-conoceme svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; transition: transform 0.3s ease; }
+        .btn-conoceme:hover svg { transform: translateY(3px); }
 
         /* === HERO & PERFIL COMBINADOS === */
         .hero-section {
@@ -339,6 +374,10 @@
         }
 
         @media (max-width: 500px) {
+            .cover-name { font-size: 2.8rem; }
+            .cover-photo { width: 160px; height: 160px; }
+            .cover-desc { font-size: 1.05rem; }
+            
             .hero-title { font-size: 2.5rem; }
             .bento-grid { grid-template-columns: 1fr; }
             .span-2 { grid-column: span 1; }
@@ -347,7 +386,21 @@
         }
     </style>
 </head>
-<body>
+<body class="locked">
+
+    <!-- === PANTALLA DE PORTADA === -->
+    <div id="cover-screen">
+        <div class="cover-bg-glow"></div>
+        <div class="cover-content">
+            <img src="imagenes/perfil.jpeg" alt="Shordy Simbaña" class="cover-photo" onerror="this.src='https://placehold.co/400x400/E4E4E7/71717A?text=Shordy'">
+            <h1 class="cover-name">Shordy Simbaña</h1>
+            <p class="cover-desc">Ingeniero en Software B2B & Especialista en Inteligencia Artificial.</p>
+            <button onclick="revealSite()" class="btn-conoceme">
+                Conóceme
+                <svg viewBox="0 0 24 24"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+            </button>
+        </div>
+    </div>
 
     <div class="container">
         <!-- HEADER COMPACTO -->
@@ -538,6 +591,19 @@
     </div>
 
     <script>
+        // === LÓGICA DE LA PORTADA ===
+        function revealSite() {
+            const cover = document.getElementById('cover-screen');
+            cover.classList.add('hide');
+            document.body.classList.remove('locked');
+            
+            // Forzar estar arriba al revelar
+            setTimeout(() => window.scrollTo(0, 0), 50);
+            
+            // Eliminar del DOM para no estorbar
+            setTimeout(() => cover.style.display = 'none', 800);
+        }
+
         // === LÓGICA DE CERTIFICADOS (HOVER A PREVIEW) ===
         const certItems = document.querySelectorAll('.cert-item');
         const previewImg = document.getElementById('mainPreviewImg');
