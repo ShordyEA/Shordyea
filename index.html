@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shordy Simbaña | Software & IA</title>
-    <meta name="theme-color" content="#09090b">
+    <meta name="theme-color" content="#061410">
     <meta name="description" content="Ingeniería de software B2B por Shordy Simbaña. Desarrollo potenciado por IA y soporte de hardware.">
     
     <!-- Tipografía Inter -->
@@ -13,18 +13,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <style>
-        /* === PALETA MINIMALISTA Y VARIABLES === */
+        /* === PALETA MINIMALISTA Y VARIABLES (Ultra-Clean) === */
         :root {
-            --bg-page: #FFFFFF;
-            --text-main: #1A2E24;
-            --text-muted: #5C7368;
-            --accent: #2A7A4D;
-            --border-light: #E1EBE5;
-            --surface: #F6FAF7;
-            --surface-hover: #EBF2ED;
-            --radius-lg: 24px;
-            --radius-md: 16px;
-            --radius-sm: 12px;
+            --bg-page: #040d0a; /* Fondo casi negro con toque Jade */
+            --text-main: #ffffff; /* Blanco puro para máxima legibilidad */
+            --text-muted: #94a3b8; /* Gris azulado/jade suave para textos secundarios */
+            --accent: #10b981; /* Verde Jade brillante */
+            --surface: rgba(16, 185, 129, 0.03); /* Superficie casi invisible */
+            --surface-hover: rgba(16, 185, 129, 0.08); /* Hover sutil */
+            --radius-lg: 32px; /* Esquinas más redondeadas, muy actual */
+            --radius-md: 24px;
+            --radius-sm: 16px;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
@@ -43,11 +42,11 @@
             position: relative;
         }
 
-        /* === FONDOS ORBES (Para el efecto Cristal) === */
+        /* === FONDOS ORBES (Efecto Cristal sin bordes) === */
         .bg-orbs { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -3; overflow: hidden; pointer-events: none; }
-        .orb { position: absolute; border-radius: 50%; filter: blur(100px); opacity: 0.6; }
-        .orb-1 { width: 500px; height: 500px; background: rgba(42, 122, 77, 0.2); top: -100px; left: -100px; }
-        .orb-2 { width: 600px; height: 600px; background: rgba(92, 115, 104, 0.15); bottom: -200px; right: -100px; }
+        .orb { position: absolute; border-radius: 50%; filter: blur(120px); opacity: 0.5; mix-blend-mode: screen; }
+        .orb-1 { width: 600px; height: 600px; background: rgba(16, 185, 129, 0.15); top: -150px; left: -150px; }
+        .orb-2 { width: 700px; height: 700px; background: rgba(5, 150, 105, 0.1); bottom: -250px; right: -150px; }
 
         a { text-decoration: none; color: inherit; }
 
@@ -60,40 +59,40 @@
         }
         #cover-screen.hide { transform: translateY(-100vh); opacity: 0; pointer-events: none; }
         .cover-bg-glow {
-            position: absolute; top: 50%; left: 50%; width: 800px; height: 800px;
-            background: radial-gradient(circle, rgba(0,0,0,0.04) 0%, rgba(255,255,255,0) 70%);
-            transform: translate(-50%, -50%); z-index: -1; border-radius: 50%; pointer-events: none;
+            position: absolute; top: 50%; left: 50%; width: 1000px; height: 1000px;
+            background: radial-gradient(circle, rgba(16,185,129,0.1) 0%, rgba(16,185,129,0) 70%);
+            transform: translate(-50%, -50%); z-index: -1; border-radius: 50%; pointer-events: none; filter: blur(40px);
         }
         .cover-content { text-align: center; max-width: 800px; padding: 20px; display: flex; flex-direction: column; align-items: center; z-index: 1; }
         .cover-photo {
-            width: 200px; height: 200px; border-radius: 50%; object-fit: cover;
-            border: 4px solid var(--surface); box-shadow: 0 20px 40px -10px rgba(0,0,0,0.08);
-            margin-bottom: 30px; animation: float 6s ease-in-out infinite;
+            width: 220px; height: 220px; border-radius: 50%; object-fit: cover;
+            box-shadow: 0 30px 60px -15px rgba(0,0,0,0.8); /* Sombra fuerte en lugar de borde */
+            margin-bottom: 40px; animation: float 8s ease-in-out infinite;
         }
-        @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-15px); } 100% { transform: translateY(0px); } }
-        .cover-name { font-size: 4rem; font-weight: 900; letter-spacing: -0.04em; line-height: 1.1; margin-bottom: 12px; color: var(--text-main); }
-        .cover-desc { font-size: 1.2rem; color: var(--text-muted); margin-bottom: 40px; font-weight: 500; max-width: 600px; }
+        @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-20px); } 100% { transform: translateY(0px); } }
+        .cover-name { font-size: 4.5rem; font-weight: 800; letter-spacing: -0.05em; line-height: 1; margin-bottom: 16px; color: var(--text-main); }
+        .cover-desc { font-size: 1.25rem; color: var(--text-muted); margin-bottom: 50px; font-weight: 500; max-width: 600px; }
         
         .btn-conoceme {
-            padding: 16px 36px; font-size: 1.05rem; background: var(--text-main); color: #ffffff;
-            font-weight: 600; border-radius: 100px; border: none; cursor: pointer; transition: all 0.3s ease;
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2); display: inline-flex; align-items: center; gap: 12px;
+            padding: 18px 40px; font-size: 1.1rem; background: var(--text-main); color: #000;
+            font-weight: 700; border-radius: 100px; border: none; cursor: pointer; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 20px 40px -10px rgba(255,255,255,0.1); display: inline-flex; align-items: center; gap: 12px;
         }
-        .btn-conoceme:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 15px 30px -5px rgba(0,0,0,0.3); }
-        .btn-conoceme svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; transition: transform 0.3s ease; }
-        .btn-conoceme:hover svg { transform: translateY(3px); }
+        .btn-conoceme:hover { transform: translateY(-4px) scale(1.03); box-shadow: 0 25px 50px -10px rgba(255,255,255,0.2); background: var(--accent); color: #000;}
+        .btn-conoceme svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; transition: transform 0.3s ease; }
+        .btn-conoceme:hover svg { transform: translateY(4px); }
 
         /* === HUD LATERAL (SIDEBAR) === */
         aside.hud-sidebar {
             position: sticky;
             top: 0;
-            width: 320px;
+            width: 340px;
             height: 100vh;
-            background: rgba(246, 250, 247, 0.65);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-right: 1px solid rgba(255, 255, 255, 0.6);
-            padding: 40px 30px;
+            background: rgba(4, 13, 10, 0.8);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            /* ELIMINADO EL BORDE DERECHO */
+            padding: 60px 40px;
             display: flex;
             flex-direction: column;
             z-index: 100;
@@ -101,28 +100,28 @@
 
         .hud-profile {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 60px;
         }
 
         .hud-profile img {
-            width: 140px;
-            height: 140px;
+            width: 150px;
+            height: 150px;
             border-radius: 50%;
             object-fit: cover;
-            margin-bottom: 20px;
-            border: 1px solid var(--border-light);
-            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.08);
+            margin-bottom: 24px;
+            /* ELIMINADO EL BORDE */
+            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.6);
         }
 
         .hud-profile h2 {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             font-weight: 800;
-            letter-spacing: -0.02em;
-            margin-bottom: 4px;
+            letter-spacing: -0.03em;
+            margin-bottom: 8px;
         }
 
         .hud-profile p {
-            font-size: 0.95rem;
+            font-size: 1rem;
             color: var(--text-muted);
             font-weight: 500;
         }
@@ -130,171 +129,184 @@
         .hud-nav {
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 12px;
             flex-grow: 1;
         }
 
         .hud-nav a {
             display: flex;
             align-items: center;
-            padding: 14px 20px;
+            padding: 16px 24px;
             border-radius: var(--radius-sm);
             color: var(--text-muted);
             font-weight: 600;
-            font-size: 0.95rem;
-            transition: all 0.2s ease;
+            font-size: 1.05rem;
+            transition: all 0.3s ease;
+            background: transparent; /* Sin fondo inicial */
         }
 
         .hud-nav a:hover {
             background: var(--surface-hover);
             color: var(--text-main);
-            transform: translateX(4px);
+            transform: translateX(8px);
         }
 
         .hud-footer {
             margin-top: auto;
-            border-top: 1px solid var(--border-light);
-            padding-top: 24px;
+            /* ELIMINADO EL BORDE SUPERIOR */
+            padding-top: 30px;
         }
 
         .social-links {
             display: flex;
             justify-content: center;
-            gap: 16px;
+            gap: 20px;
         }
 
         .social-links a {
             color: var(--text-muted);
-            transition: color 0.2s;
+            transition: color 0.3s, transform 0.3s;
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: var(--bg-page);
-            border: 1px solid var(--border-light);
+            width: 48px;
+            height: 48px;
+            /* ELIMINADOS BORDES Y FONDOS PESADOS */
+            background: transparent;
         }
 
         .social-links a:hover {
-            color: var(--text-main);
-            background: var(--surface-hover);
+            color: var(--accent);
+            transform: translateY(-4px);
         }
 
         /* === CONTENIDO PRINCIPAL === */
         main.content-area {
             flex: 1;
-            padding: 20px 40px; /* Reducido para permitir al hero ocupar la pantalla vertical */
-            max-width: 1200px; /* Un poco más de espacio para respirar */
+            padding: 0;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .content-wrapper {
+            max-width: 1200px;
             margin: 0 auto;
+            padding: 80px 40px;
+            width: 100%;
         }
 
         /* === HERO SECTION === */
         .hero-section {
             position: relative;
-            margin-bottom: 80px;
-            padding: 60px 20px;
-            min-height: calc(100vh - 40px); /* Ocupa toda la pantalla verticalmente */
+            min-height: 100vh;
             justify-content: center;
             text-align: center;
             display: flex;
             flex-direction: column;
             align-items: center;
-            border-radius: var(--radius-lg);
             overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.03);
+            /* ELIMINADO EL BORDE INFERIOR */
         }
 
         .hero-bg-img {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background-image: url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop'); /* Fondo tech con luz verde suave */
+            background-image: url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=2070&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
             z-index: -2;
-            opacity: 0.4;
+            opacity: 0.15; 
+            filter: grayscale(80%) sepia(20%) hue-rotate(100deg); /* Tonos jade más unificados */
         }
 
         .hero-bg-gradient {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(to bottom, rgba(255,255,255,0.1) 0%, rgba(255,255,255,1) 85%);
+            background: linear-gradient(to bottom, rgba(4,13,10,0.2) 0%, rgba(4,13,10,1) 100%); /* Transición muy suave */
             z-index: -1;
         }
 
         .hero-photo-main {
-            width: 150px; height: 150px; border-radius: 50%; object-fit: cover;
-            border: 4px solid var(--surface); box-shadow: 0 10px 30px rgba(42, 122, 77, 0.15);
-            margin-bottom: 24px;
+            width: 160px; height: 160px; border-radius: 50%; object-fit: cover;
+            /* ELIMINADO EL BORDE */
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+            margin-bottom: 32px;
         }
 
         .hero-title {
-            font-size: 3.5rem;
+            font-size: 4rem;
             font-weight: 800;
-            line-height: 1.05;
-            letter-spacing: -0.04em;
-            margin-bottom: 12px;
+            line-height: 1.1;
+            letter-spacing: -0.05em;
+            margin-bottom: 16px;
             color: var(--text-main);
         }
 
         .hero-subtitle {
-            font-size: 0.95rem;
+            font-size: 1rem;
             font-weight: 700;
             color: var(--accent);
             text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 20px;
+            letter-spacing: 0.1em;
+            margin-bottom: 24px;
         }
 
         .hero-desc {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             color: var(--text-muted);
-            margin-bottom: 0; /* Margen removido ya que no hay botones abajo */
+            margin-bottom: 0;
             max-width: 800px;
-            line-height: 1.7;
+            line-height: 1.8;
+            font-weight: 400; /* Legibilidad mejorada */
         }
 
-        .btn-group { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
+        /* === SECCIONES GLOBALES === */
+        .section { margin-bottom: 120px; }
+        .section-header { margin-bottom: 50px; text-align: center; }
+        .section-title { font-size: 2.5rem; font-weight: 800; letter-spacing: -0.04em; margin-bottom: 12px; }
+        .section-subtitle { color: var(--text-muted); font-size: 1.15rem; font-weight: 400;}
 
-        /* === BENTO SKILLS === */
+        /* === BENTO SKILLS (Modernizado, sin bordes) === */
         .bento-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 32px; /* Cartas más separadas (modernizado) */
+            gap: 24px; 
         }
 
         .bento-item {
-            background: rgba(255, 255, 255, 0.5);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            box-shadow: 0 10px 30px rgba(42, 122, 77, 0.05);
+            background: rgba(255, 255, 255, 0.02); /* Fondo apenas perceptible */
             border-radius: var(--radius-lg);
-            padding: 40px; /* Mayor espacio interior */
+            padding: 48px 40px;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            /* SIN BORDES, solo una sombra sutil para separar */
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            position: relative;
+            overflow: hidden;
         }
 
-        .bento-item:hover { border-color: var(--accent); transform: translateY(-6px); box-shadow: 0 15px 35px rgba(42, 122, 77, 0.1); }
-        .bento-icon { margin-bottom: 20px; color: var(--text-main); }
-        .bento-title { font-weight: 700; font-size: 1.2rem; margin-bottom: 10px; }
-        .bento-desc { font-size: 1rem; color: var(--text-muted); line-height: 1.6; }
+        /* Efecto de luz al hacer hover en lugar de bordes */
+        .bento-item::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(800px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(16, 185, 129, 0.06), transparent 40%);
+            opacity: 0; transition: opacity 0.5s; z-index: 0; pointer-events: none;
+        }
+
+        .bento-item:hover { transform: translateY(-8px); background: rgba(255, 255, 255, 0.04); }
+        .bento-item:hover::before { opacity: 1; }
+
+        .bento-item > * { z-index: 1; position: relative; } /* Asegura que el texto esté sobre la luz */
+
+        .bento-icon { margin-bottom: 24px; color: var(--accent); }
+        .bento-title { font-weight: 700; font-size: 1.3rem; margin-bottom: 12px; color: var(--text-main); }
+        .bento-desc { font-size: 1.05rem; color: var(--text-muted); line-height: 1.7; }
 
         .span-2 { grid-column: span 2; }
-        .bg-dark { 
-            background: rgba(26, 46, 36, 0.85); 
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            color: #fff; 
-            border: 1px solid rgba(42, 122, 77, 0.3);
-        }
-        .bg-dark .bento-icon { color: #fff; }
-        .bg-dark .bento-desc { color: #A1A1AA; }
-
-        /* === CERTIFICADOS === */
+        
+        /* === CERTIFICADOS (Sin bordes) === */
         .certs-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -302,176 +314,164 @@
             align-items: start;
         }
 
-        .certs-list { display: flex; flex-direction: column; gap: 12px; }
+        .certs-list { display: flex; flex-direction: column; gap: 16px; }
 
         .cert-item {
-            padding: 20px 24px;
+            padding: 24px 30px;
             border-radius: var(--radius-md);
             cursor: pointer;
-            transition: all 0.2s ease;
-            border: 1px solid rgba(255, 255, 255, 0.5);
+            transition: all 0.3s ease;
+            /* SIN BORDES */
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(255, 255, 255, 0.4);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            background: rgba(255,255,255,0.02);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
 
         .cert-item:hover, .cert-item.active {
-            border-color: rgba(255, 255, 255, 0.9);
-            background: rgba(255, 255, 255, 0.7);
-            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.05);
-            transform: translateX(8px);
+            background: rgba(16,185,129,0.05);
+            transform: translateX(12px);
         }
 
-        .cert-info h4 { font-size: 1.05rem; font-weight: 600; margin-bottom: 4px; }
-        .cert-info p { font-size: 0.9rem; color: var(--text-muted); }
+        .cert-info h4 { font-size: 1.1rem; font-weight: 600; margin-bottom: 6px; color: var(--text-main); }
+        .cert-info p { font-size: 0.95rem; color: var(--text-muted); }
         .cert-year {
-            font-size: 0.85rem; font-weight: 600; color: var(--text-main);
-            background: var(--bg-page); padding: 6px 14px; border-radius: 100px;
-            border: 1px solid var(--border-light);
+            font-size: 0.9rem; font-weight: 700; color: var(--accent);
+            background: rgba(16,185,129,0.1); padding: 8px 16px; border-radius: 100px;
+            /* SIN BORDES */
         }
 
         .cert-preview-area {
             position: sticky; top: 40px;
-            background: rgba(255, 255, 255, 0.5); 
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            border-radius: var(--radius-lg); padding: 16px; aspect-ratio: 4/3;
+            background: rgba(0,0,0,0.2); 
+            border-radius: var(--radius-lg); padding: 20px; aspect-ratio: 4/3;
             display: flex; align-items: center; justify-content: center; overflow: hidden;
-            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.06); cursor: zoom-in;
+            /* SIN BORDES */
+            box-shadow: 0 30px 60px rgba(0,0,0,0.5); cursor: zoom-in;
         }
 
-        .cert-preview-img { width: 100%; height: 100%; object-fit: contain; transition: opacity 0.3s ease, transform 0.3s ease; }
-        .cert-preview-area:hover .cert-preview-img { transform: scale(1.02); }
+        .cert-preview-img { width: 100%; height: 100%; object-fit: contain; transition: opacity 0.4s ease, transform 0.4s ease; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));}
+        .cert-preview-area:hover .cert-preview-img { transform: scale(1.03); }
 
         .btn-more-certs {
-            margin-top: 10px; width: 100%; text-align: center; padding: 16px;
-            font-size: 0.95rem; font-weight: 500; color: var(--text-muted); cursor: pointer;
-            background: transparent; border: 1px dashed var(--border-light);
-            border-radius: var(--radius-md); transition: all 0.2s;
+            margin-top: 16px; width: 100%; text-align: center; padding: 20px;
+            font-size: 1rem; font-weight: 600; color: var(--text-muted); cursor: pointer;
+            background: rgba(255,255,255,0.02); /* Fondo muy tenue en lugar de borde punteado */
+            border: none;
+            border-radius: var(--radius-md); transition: all 0.3s;
         }
-        .btn-more-certs:hover { background: var(--surface); color: var(--text-main); border-style: solid; }
+        .btn-more-certs:hover { background: rgba(255,255,255,0.05); color: var(--text-main); transform: translateY(-2px); }
 
         /* === EXPERIENCIA === */
         .timeline-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 60px;
+            gap: 80px;
             align-items: stretch;
         }
 
-        .timeline { border-left: 2px solid var(--border-light); margin-left: 10px; }
-        .timeline-item { padding-left: 30px; position: relative; margin-bottom: 40px; }
+        .timeline { position: relative; padding-left: 20px; }
+        /* Línea de tiempo más sutil y difuminada */
+        .timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, var(--accent) 0%, rgba(16,185,129,0) 100%); opacity: 0.3;}
+        
+        .timeline-item { position: relative; margin-bottom: 60px; }
         .timeline-item:last-child { margin-bottom: 0; }
-        .timeline-item::before {
-            content: ''; position: absolute; left: -7px; top: 6px; width: 12px; height: 12px;
-            border-radius: 50%; background: var(--text-main); box-shadow: 0 0 0 6px var(--bg-page);
+        /* Punto de la línea de tiempo modernizado */
+        .timeline-item::after {
+            content: ''; position: absolute; left: -25px; top: 8px; width: 12px; height: 12px;
+            border-radius: 50%; background: var(--accent); box-shadow: 0 0 15px var(--accent);
         }
-        .timeline-title { font-size: 1.2rem; font-weight: 700; margin-bottom: 4px; }
-        .timeline-company { font-size: 0.95rem; color: var(--text-main); font-weight: 500; margin-bottom: 12px; display: inline-block; text-decoration: underline; text-decoration-color: var(--border-light); text-underline-offset: 4px;}
-        .timeline-desc { font-size: 1rem; color: var(--text-muted); line-height: 1.6; }
+        .timeline-title { font-size: 1.3rem; font-weight: 700; margin-bottom: 6px; color: var(--text-main); }
+        .timeline-company { font-size: 1rem; color: var(--accent); font-weight: 600; margin-bottom: 16px; display: inline-block; }
+        .timeline-desc { font-size: 1.05rem; color: var(--text-muted); line-height: 1.7; font-weight: 400; }
 
-        /* CTA Final Integrado */
+        /* CTA Final Integrado (Sin bordes) */
         .cta-box {
-            background: rgba(255, 255, 255, 0.5);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            padding: 50px 40px; border-radius: var(--radius-lg);
-            border: 1px solid rgba(255, 255, 255, 0.8); text-align: center;
+            background: linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
+            padding: 80px 40px; border-radius: var(--radius-lg);
+            text-align: center;
             display: flex; flex-direction: column; justify-content: center; align-items: center;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.02);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+            /* SIN BORDES */
         }
 
-        /* === MODALES === */
+        .btn-primary { background: var(--text-main); color: #000; padding: 18px 36px; border-radius: 100px; font-weight: 800; font-size: 1.1rem; cursor: pointer; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); border: none; }
+        .btn-primary:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(255,255,255,0.15); background: var(--accent); color: #000; }
+        
+        /* === MODALES (Sin bordes) === */
         .modal {
             display: none; position: fixed; z-index: 9999; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(9, 9, 11, 0.9); backdrop-filter: blur(8px);
-            align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s;
+            background: rgba(0, 0, 0, 0.9); backdrop-filter: blur(10px);
+            align-items: center; justify-content: center; opacity: 0; transition: opacity 0.4s ease;
         }
         .modal.active { display: flex; opacity: 1; }
-        .modal-content { max-width: 90%; max-height: 90vh; border-radius: 8px; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
+        .modal-content { max-width: 90%; max-height: 90vh; border-radius: 16px; box-shadow: 0 30px 60px rgba(0,0,0,0.8); }
         
         .form-box {
-            background: var(--surface); padding: 40px; border-radius: var(--radius-lg);
-            width: 90%; max-width: 450px; position: relative;
+            background: #0a1813; padding: 50px; border-radius: var(--radius-lg);
+            width: 90%; max-width: 500px; position: relative;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.8);
+            /* SIN BORDES */
         }
-        .close-btn { position: absolute; top: 20px; right: 24px; font-size: 28px; cursor: pointer; color: var(--text-muted); transition: color 0.2s;}
-        .close-btn:hover { color: var(--text-main); }
-        .form-input { width: 100%; padding: 14px; margin-bottom: 16px; border: 1px solid var(--border-light); border-radius: var(--radius-sm); font-family: inherit; background: var(--bg-page);}
-        .form-input:focus { outline: none; border-color: var(--text-main); background: var(--surface); }
+        .close-btn { position: absolute; top: 24px; right: 30px; font-size: 32px; cursor: pointer; color: var(--text-muted); transition: color 0.3s;}
+        .close-btn:hover { color: var(--accent); }
+        
+        /* Inputs ultra-modernos (línea debajo, sin caja de borde) */
+        .form-input { 
+            width: 100%; padding: 16px 0; margin-bottom: 24px; 
+            border: none; border-bottom: 2px solid rgba(255,255,255,0.1); 
+            border-radius: 0; font-family: inherit; font-size: 1.1rem;
+            background: transparent; color: var(--text-main);
+            transition: border-color 0.3s;
+        }
+        .form-input:focus { outline: none; border-bottom-color: var(--accent); }
+        .form-input::placeholder { color: rgba(255,255,255,0.3); }
 
         /* === RESPONSIVE === */
         @media (max-width: 1000px) {
-            .hero-title { font-size: 3.2rem; }
+            .hero-title { font-size: 3.5rem; }
             .bento-grid { grid-template-columns: 1fr 1fr; }
             .span-2 { grid-column: span 2; }
-            .timeline-container { grid-template-columns: 1fr; gap: 40px; }
+            .timeline-container { grid-template-columns: 1fr; gap: 60px; }
         }
 
         @media (max-width: 800px) {
             body { flex-direction: column; }
             
-            /* HUD cambia a cabecera superior en móviles */
+            /* HUD oculto totalmente en móviles */
             aside.hud-sidebar {
-                position: relative;
-                width: 100%;
-                height: auto;
-                background: rgba(246, 250, 247, 0.85); /* Asegurar que el blur aplique */
-                border-right: none;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.5);
-                padding: 24px;
-                display: block; /* Rompemos el flex column */
+                display: none !important;
             }
 
-            .hud-profile {
-                display: flex;
-                align-items: center;
-                gap: 16px;
-                text-align: left;
-                margin-bottom: 24px;
-            }
+            main.content-area { padding: 0; width: 100%; }
+            .content-wrapper { padding: 40px 20px; }
 
-            .hud-profile img { width: 60px; height: 60px; margin-bottom: 0; }
-            .hud-profile h2 { display: none; }
-            .hud-profile p { display: none; }
-
-            .hud-nav {
-                flex-direction: row;
-                flex-wrap: wrap;
-                gap: 12px;
-                justify-content: flex-start;
-            }
-            
-            .hud-nav a { padding: 10px 16px; background: var(--bg-page); border: 1px solid var(--border-light); border-radius: 100px; }
-            
-            .hud-footer { display: none; /* Ocultamos iconos sociales en mobile para ahorrar espacio, o podrías moverlos */ }
-
-            main.content-area { padding: 20px 5%; width: 100%; }
-
-            .hero-section { text-align: left; margin-bottom: 60px; min-height: auto; padding: 40px 20px; }
-            .hero-title { font-size: 2.8rem; }
+            .hero-section { text-align: left; min-height: 100vh; padding: 40px 24px; align-items: flex-start; justify-content: flex-end; padding-bottom: 80px;}
+            .hero-title { font-size: 3rem; text-align: left; }
+            .hero-subtitle { text-align: left; }
+            .hero-desc { text-align: left; }
+            .hero-photo-main { align-self: flex-start; }
             
             .certs-container { grid-template-columns: 1fr; gap: 24px; }
             .cert-preview-area { display: none; }
             
             .bento-grid { grid-template-columns: 1fr; }
             .span-2 { grid-column: span 1; }
+            
+            .section-header { text-align: left; }
+            .cta-box { padding: 40px 24px; text-align: left; align-items: flex-start;}
         }
 
         @media (max-width: 500px) {
-            .cover-name { font-size: 2.8rem; }
+            .cover-name { font-size: 3rem; }
             .cover-photo { width: 160px; height: 160px; }
-            .btn-group { flex-direction: column; width: 100%; }
-            .btn { justify-content: center; width: 100%; }
         }
     </style>
 </head>
 <body class="locked">
 
-    <!-- === FONDOS ORBES (Para el Efecto Cristal) === -->
+    <!-- === FONDOS ORBES (Efecto Cristal suave) === -->
     <div class="bg-orbs">
         <div class="orb orb-1"></div>
         <div class="orb orb-2"></div>
@@ -481,9 +481,9 @@
     <div id="cover-screen">
         <div class="cover-bg-glow"></div>
         <div class="cover-content">
-            <img src="imagenes/perfil.jpeg" alt="Shordy Simbaña" class="cover-photo" onerror="this.src='https://placehold.co/400x400/E4E4E7/71717A?text=Shordy'">
+            <img src="imagenes/perfil.jpeg" alt="Shordy Simbaña" class="cover-photo" onerror="this.src='https://placehold.co/400x400/0a1813/10b981?text=Shordy'">
             <h1 class="cover-name">Shordy Simbaña</h1>
-            <p class="cover-desc">Ingeniero en Software B2B & Especialista en IA.</p>
+            <p class="cover-desc">Ingeniero de Software B2B y Especialista en IA.</p>
             <button onclick="revealSite()" class="btn-conoceme">
                 Entrar al Portafolio
                 <svg viewBox="0 0 24 24"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
@@ -494,7 +494,7 @@
     <!-- === HUD LATERAL (SIDEBAR) === -->
     <aside class="hud-sidebar">
         <div class="hud-profile">
-            <img src="imagenes/perfil.jpeg" alt="Shordy Simbaña" onerror="this.src='https://placehold.co/400x400/E4E4E7/71717A?text=Shordy'">
+            <img src="imagenes/perfil.jpeg" alt="Shordy Simbaña" onerror="this.src='https://placehold.co/400x400/0a1813/10b981?text=Shordy'">
         </div>
         
         <nav class="hud-nav">
@@ -505,9 +505,9 @@
 
         <div class="hud-footer">
             <div class="social-links">
-                <a href="https://github.com/ShordyEA" target="_blank" aria-label="GitHub"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
-                <a href="https://wa.me/593984182834" target="_blank" aria-label="WhatsApp"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg></a>
-                <a href="mailto:shordy46.58@gmail.com" aria-label="Email"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4C2.9 4 2.01 4.9 2.01 6L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></a>
+                <a href="https://github.com/ShordyEA" target="_blank" aria-label="GitHub"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
+                <a href="https://wa.me/593984182834" target="_blank" aria-label="WhatsApp"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg></a>
+                <a href="mailto:shordy46.58@gmail.com" aria-label="Email"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4C2.9 4 2.01 4.9 2.01 6L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></a>
             </div>
         </div>
     </aside>
@@ -520,40 +520,41 @@
             <div class="hero-bg-img"></div>
             <div class="hero-bg-gradient"></div>
             
-            <img src="imagenes/perfil.jpeg" alt="Shordy Simbaña" class="hero-photo-main" onerror="this.src='https://placehold.co/400x400/E1EBE5/5C7368?text=Shordy'">
+            <img src="imagenes/perfil.jpeg" alt="Shordy Simbaña" class="hero-photo-main" onerror="this.src='https://placehold.co/400x400/0a1813/10b981?text=Shordy'">
             
             <h1 class="hero-title">Shordy Simbaña</h1>
-            <h2 class="hero-subtitle">Estudiante en ingeniería en sistemas | Desarrollador de soluciones personalizadas con IA</h2>
+            <h2 class="hero-subtitle">Desarrollador de soluciones personalizadas con IA</h2>
             <p class="hero-desc">
-                Estudiante de la licenciatura en Ingeniería en sistemas computacionales por UTEL, especializado en transformar tareas manuales a automatizadas a través de la tecnología, la optimización y mantenimiento de sistemas.
+                Estudiante de la Licenciatura en Ingeniería en Sistemas Computacionales por UTEL, especializado en transformar tareas manuales en automatizadas a través de la tecnología, la optimización y el mantenimiento de sistemas.
             </p>
         </section>
 
-        <!-- BENTO SKILLS -->
-        <section class="section" id="habilidades">
-            <div class="section-header">
-                <h2 class="section-title">Especialidades</h2>
-                <p class="section-subtitle">Lo que hago mejor, condensado.</p>
-            </div>
-            
-            <div class="bento-grid">
-                <!-- Skill 1 -->
-                <div class="bento-item span-2 bg-dark">
-                    <svg class="bento-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-                    <h3 class="bento-title">Desarrollo con IA</h3>
-                    <p class="bento-desc">Integración de LLMs, automatización y prompt engineering avanzado para acelerar el desarrollo B2B y crear herramientas inteligentes.</p>
+        <div class="content-wrapper">
+            <!-- BENTO SKILLS -->
+            <section class="section" id="habilidades">
+                <div class="section-header">
+                    <h2 class="section-title">Especialidades</h2>
+                    <p class="section-subtitle">Lo que hago mejor, condensado y sin ruido.</p>
+                </div>
+                
+                <div class="bento-grid">
+                    <!-- Skill 1 -->
+                    <div class="bento-item span-2" onmousemove="handleMouseMove(event, this)">
+                        <svg class="bento-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                        <h3 class="bento-title">Desarrollo con IA</h3>
+                        <p class="bento-desc">Integración de LLMs, automatización e ingeniería de prompts avanzada para acelerar el desarrollo B2B y crear herramientas inteligentes.</p>
                 </div>
                 
                 <!-- Skill 2 -->
-                <div class="bento-item">
-                    <svg class="bento-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                <div class="bento-item" onmousemove="handleMouseMove(event, this)">
+                    <svg class="bento-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
                     <h3 class="bento-title">Full Stack</h3>
-                    <p class="bento-desc">Arquitecturas limpias, modulares y completamente escalables.</p>
+                    <p class="bento-desc">Arquitecturas limpias, modulares y completamente escalables sin código innecesario.</p>
                 </div>
 
                 <!-- Skill 3 -->
-                <div class="bento-item">
-                    <svg class="bento-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect><rect x="9" y="9" width="6" height="6"></rect></svg>
+                <div class="bento-item" onmousemove="handleMouseMove(event, this)">
+                    <svg class="bento-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect><rect x="9" y="9" width="6" height="6"></rect></svg>
                     <h3 class="bento-title">Hardware</h3>
                     <p class="bento-desc">Mantenimiento preventivo y optimización de equipos informáticos.</p>
                 </div>
@@ -564,7 +565,7 @@
         <section class="section" id="certificados">
             <div class="section-header">
                 <h2 class="section-title">Credenciales</h2>
-                <p class="section-subtitle">Historial académico verificado. Pasa el cursor para ver el detalle.</p>
+                <p class="section-subtitle">Historial académico verificado. Pasa el cursor para ver los detalles.</p>
             </div>
 
             <div class="certs-container">
@@ -619,7 +620,7 @@
 
                 <!-- Área de previsualización (Solo visible en Desktop) -->
                 <div class="cert-preview-area" onclick="openLightboxPreview()">
-                    <img id="mainPreviewImg" src="imagenes/certificado-utel.png" class="cert-preview-img" onerror="this.src='https://placehold.co/600x400/E4E4E7/71717A?text=Certificado'">
+                    <img id="mainPreviewImg" src="imagenes/certificado-utel.png" class="cert-preview-img" onerror="this.src='https://placehold.co/600x400/0a1813/10b981?text=Certificado'">
                 </div>
             </div>
         </section>
@@ -630,7 +631,7 @@
             <div class="timeline-container">
                 <!-- Experiencia -->
                 <div>
-                    <div class="section-header" style="margin-bottom: 30px;">
+                    <div class="section-header" style="margin-bottom: 40px; text-align: left;">
                         <h2 class="section-title">Trayectoria</h2>
                     </div>
                     <div class="timeline">
@@ -641,7 +642,7 @@
                         </div>
                         <div class="timeline-item">
                             <h3 class="timeline-title">Consultor Independiente</h3>
-                            <span class="timeline-company" style="text-decoration: none; color: var(--text-muted);">Proyectos Autónomos</span>
+                            <span class="timeline-company" style="text-decoration: none;">Proyectos Autónomos</span>
                             <p class="timeline-desc">Desarrollo UI/UX, integración de modelos de IA y optimización de hardware a medida para clientes locales.</p>
                         </div>
                     </div>
@@ -649,19 +650,20 @@
 
                 <!-- Caja de CTA / Contacto -->
                 <div class="cta-box">
-                    <h2 style="font-size: 2rem; font-weight: 800; margin-bottom: 8px; letter-spacing: -0.03em;">¿Trabajamos juntos?</h2>
-                    <p style="color: var(--text-muted); margin-bottom: 32px; font-size: 1rem;">Hablemos de código, IA o cómo optimizar la tecnología de tu negocio.</p>
-                    <button class="btn btn-primary" style="width: 100%; justify-content: center; padding: 16px;" onclick="openContact()">Contactar ahora</button>
-                    <a href="https://wa.me/593984182834" target="_blank" style="margin-top: 20px; font-size: 0.95rem; color: var(--text-muted); text-decoration: underline;">O envíame un WhatsApp</a>
+                    <h2 style="font-size: 2.5rem; font-weight: 800; margin-bottom: 12px; letter-spacing: -0.04em; color: var(--text-main);">¿Trabajamos juntos?</h2>
+                    <p style="color: var(--text-muted); margin-bottom: 40px; font-size: 1.1rem; line-height: 1.6;">Hablemos de código, IA o cómo optimizar la tecnología de tu negocio.</p>
+                    <button class="btn btn-primary" style="width: 100%; justify-content: center; padding: 20px;" onclick="openContact()">Contactar ahora</button>
+                    <a href="https://wa.me/593984182834" target="_blank" style="margin-top: 24px; font-size: 1rem; color: var(--text-muted); transition: color 0.3s;">O envíame un WhatsApp ↗</a>
                 </div>
             </div>
 
         </section>
         
-        <footer style="padding-top: 40px; border-top: 1px solid var(--border-light); font-size: 0.9rem; color: var(--text-muted); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
+        <footer style="padding-top: 50px; font-size: 1rem; color: var(--text-muted); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
             <span>© 2026 Shordy Simbaña.</span>
             <span>Menos ruido, más código.</span>
         </footer>
+        </div>
 
     </main>
 
@@ -677,36 +679,41 @@
     <div id="contactModal" class="modal" onclick="closeModal('contactModal', event)">
         <div class="form-box" onclick="event.stopPropagation()">
             <span class="close-btn" onclick="closeModal('contactModal', 'force')">&times;</span>
-            <h2 style="font-size: 1.8rem; font-weight: 800; margin-bottom: 8px; letter-spacing: -0.02em;">Hola.</h2>
-            <p style="color: var(--text-muted); margin-bottom: 24px; font-size: 0.95rem;">Déjame tu correo y te escribo lo antes posible.</p>
+            <h2 style="font-size: 2.2rem; font-weight: 800; margin-bottom: 12px; letter-spacing: -0.04em; color: var(--text-main);">Hola.</h2>
+            <p style="color: var(--text-muted); margin-bottom: 40px; font-size: 1.1rem;">Déjame tu correo y te escribo lo antes posible.</p>
             
-            <input type="email" id="cEmail" class="form-input" placeholder="tu@correo.com" required>
-            <textarea id="cMsg" class="form-input" rows="4" placeholder="¿En qué te puedo ayudar?" required></textarea>
+            <input type="email" id="cEmail" class="form-input" placeholder="Tu correo" required>
+            <input type="text" id="cMsg" class="form-input" placeholder="¿En qué te puedo ayudar?" required>
             
-            <button onclick="sendMail()" class="btn btn-primary" style="width: 100%; justify-content: center;">Enviar mensaje</button>
+            <button onclick="sendMail()" class="btn btn-primary" style="width: 100%; justify-content: center; margin-top: 16px;">Enviar mensaje</button>
         </div>
     </div>
 
     <script>
+        // === EFECTO DE LUZ EN EL RATÓN (Bento Hover) ===
+        function handleMouseMove(e, element) {
+            const rect = element.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            element.style.setProperty('--mouse-x', `${x}px`);
+            element.style.setProperty('--mouse-y', `${y}px`);
+        }
+
         // === LÓGICA DE LA PORTADA ===
         function revealSite() {
             const cover = document.getElementById('cover-screen');
             cover.classList.add('hide');
             document.body.classList.remove('locked');
             
-            // Forzar estar arriba al revelar
             setTimeout(() => window.scrollTo(0, 0), 50);
-            
-            // Eliminar del DOM para no estorbar
             setTimeout(() => cover.style.display = 'none', 800);
         }
 
-        // === LÓGICA DE CERTIFICADOS (HOVER A PREVIEW) ===
+        // === LÓGICA DE CERTIFICADOS ===
         const certItems = document.querySelectorAll('.cert-item');
         const previewImg = document.getElementById('mainPreviewImg');
 
         certItems.forEach(item => {
-            // Evento Hover para Desktop
             item.addEventListener('mouseenter', function() {
                 certItems.forEach(c => c.classList.remove('active'));
                 this.classList.add('active');
@@ -716,13 +723,12 @@
                 
                 setTimeout(() => {
                     previewImg.src = newSrc;
-                    previewImg.onerror = () => { previewImg.src = 'https://placehold.co/600x400/E4E4E7/71717A?text=Certificado'; };
+                    previewImg.onerror = () => { previewImg.src = 'https://placehold.co/600x400/0a1813/10b981?text=Certificado'; };
                     previewImg.style.opacity = '1';
                 }, 150);
             });
         });
 
-        // Mostrar / Ocultar certificados
         function toggleCerts() {
             const hiddens = document.querySelectorAll('.hidden-cert');
             const btn = document.getElementById('btnToggleCerts');
@@ -736,7 +742,7 @@
             }
         }
 
-        // === LIGHTBOX (CELULAR Y CLICK EN PREVIEW) ===
+        // === LIGHTBOX ===
         function openLightbox(element) {
             if(window.innerWidth <= 800) {
                 const src = element.getAttribute('data-img');
@@ -767,7 +773,7 @@
         function sendMail() {
             const email = document.getElementById('cEmail').value;
             const msg = document.getElementById('cMsg').value;
-            if(!email || !msg) return alert("Llena todos los campos, por favor.");
+            if(!email || !msg) return alert("Completa todos los campos, por favor.");
             
             const subject = encodeURIComponent("Contacto Portafolio");
             const body = encodeURIComponent(`De: ${email}\n\nMensaje:\n${msg}`);
