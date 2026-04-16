@@ -486,28 +486,6 @@
         .form-input:focus { outline: none; border-bottom-color: var(--accent); }
         .form-input::placeholder { color: rgba(255,255,255,0.3); }
 
-        /* === AI MODAL STYLES === */
-        .ai-output-box {
-            background: rgba(16, 185, 129, 0.05);
-            border-left: 4px solid var(--accent);
-            padding: 20px;
-            border-radius: 8px;
-            margin-top: 20px;
-            font-size: 0.95rem;
-            color: var(--text-main);
-            display: none;
-            max-height: 250px;
-            overflow-y: auto;
-            white-space: pre-wrap;
-            line-height: 1.5;
-        }
-        .spinner {
-            display: none; width: 40px; height: 40px; border: 4px solid rgba(255,255,255,0.1);
-            border-left-color: var(--accent); border-radius: 50%;
-            animation: spin 1s linear infinite; margin: 20px auto;
-        }
-        @keyframes spin { 100% { transform: rotate(360deg); } }
-
         /* === RESPONSIVE === */
         @media (max-width: 1000px) {
             .hero-title { font-size: 3.5rem; }
@@ -762,8 +740,7 @@
                         <div class="cta-box">
                             <h2 style="font-size: 2.5rem; font-weight: 800; margin-bottom: 12px; letter-spacing: -0.04em; color: var(--text-main);">¿Trabajamos juntos?</h2>
                             <p style="color: var(--text-muted); margin-bottom: 40px; font-size: 1.1rem; line-height: 1.6;">Hablemos de código, IA o cómo optimizar la tecnología de tu negocio.</p>
-                            <button class="btn btn-primary" style="width: 100%; justify-content: center; padding: 20px; margin-bottom: 16px;" onclick="openAiModal()">Consultor IA de Proyectos ✨</button>
-                            <button class="btn btn-primary" style="width: 100%; justify-content: center; padding: 20px; background: transparent; border: 2px solid var(--text-main); color: var(--text-main);" onclick="openContact()">Contacto Tradicional</button>
+                            <button class="btn btn-primary" style="width: 100%; justify-content: center; padding: 20px;" onclick="openContact()">Contactar ahora</button>
                             <a href="https://wa.me/593984182834" target="_blank" style="margin-top: 24px; font-size: 1rem; color: var(--text-muted); transition: color 0.3s;">O envíame un WhatsApp ↗</a>
                         </div>
                     </div>
@@ -815,25 +792,6 @@
             <input type="text" id="cMsg" class="form-input" placeholder="¿En qué te puedo ayudar?" required>
             
             <button onclick="sendMail()" class="btn btn-primary" style="width: 100%; justify-content: center; margin-top: 16px;">Enviar mensaje</button>
-        </div>
-    </div>
-
-    <!-- Modal Consultor IA -->
-    <div id="aiModal" class="modal" onclick="closeModal('aiModal', event)">
-        <div class="form-box" onclick="event.stopPropagation()" style="max-width: 600px;">
-            <span class="close-btn" onclick="closeModal('aiModal', 'force')">&times;</span>
-            <h2 style="font-size: 2.2rem; font-weight: 800; margin-bottom: 12px; letter-spacing: -0.04em; color: var(--text-main);">Tu Visión + IA ✨</h2>
-            <p style="color: var(--text-muted); margin-bottom: 24px; font-size: 1.0rem;">Describe brevemente tu idea o el problema de tu negocio. Mi asistente IA analizará cómo podemos resolverlo tecnológicamente.</p>
-            
-            <textarea id="aiInput" class="form-input" placeholder="Ej: Tengo una tienda y quiero automatizar la atención al cliente con IA..." rows="3" style="resize: none;"></textarea>
-            
-            <button id="aiSubmitBtn" onclick="analyzeProject()" class="btn btn-primary" style="width: 100%; justify-content: center;">Analizar viabilidad ✨</button>
-            
-            <div id="aiLoading" class="spinner"></div>
-            
-            <div id="aiOutput" class="ai-output-box"></div>
-            
-            <button id="aiEmailBtn" onclick="sendAiMail()" class="btn btn-primary" style="width: 100%; justify-content: center; margin-top: 16px; display: none; background: rgba(16, 185, 129, 0.1); border: 1px solid var(--accent); color: var(--accent);">Hacerlo realidad (Enviar a Shordy)</button>
         </div>
     </div>
 
@@ -943,94 +901,6 @@
             const body = encodeURIComponent(`De: ${email}\n\nMensaje:\n${msg}`);
             window.location.href = `mailto:shordy46.58@gmail.com?subject=${subject}&body=${body}`;
             closeModal('contactModal', 'force');
-        }
-
-        // === INTEGRACIÓN GEMINI API ✨ ===
-        const apiKey = ""; // La API key se provee automáticamente por el entorno de ejecución
-
-        function openAiModal() {
-            document.getElementById('aiModal').classList.add('active');
-            document.getElementById('aiInput').value = '';
-            document.getElementById('aiOutput').style.display = 'none';
-            document.getElementById('aiEmailBtn').style.display = 'none';
-            document.getElementById('aiLoading').style.display = 'none';
-            document.getElementById('aiSubmitBtn').style.display = 'flex';
-            document.getElementById('aiSubmitBtn').innerText = 'Analizar viabilidad ✨';
-        }
-
-        async function fetchWithRetry(url, options, retries = 5, delay = 1000) {
-            for (let i = 0; i < retries; i++) {
-                try {
-                    const response = await fetch(url, options);
-                    if (!response.ok) throw new Error(`Error HTTP! estado: ${response.status}`);
-                    return await response.json();
-                } catch (e) {
-                    if (i === retries - 1) throw e;
-                    await new Promise(res => setTimeout(res, delay));
-                    delay *= 2; // Exponential backoff
-                }
-            }
-        }
-
-        async function analyzeProject() {
-            const input = document.getElementById('aiInput').value.trim();
-            if (!input) {
-                const outBox = document.getElementById('aiOutput');
-                outBox.innerText = "Por favor, describe tu proyecto para que la IA pueda analizarlo.";
-                outBox.style.display = 'block';
-                return;
-            }
-
-            // Actualizaciones de UI (Cargando)
-            document.getElementById('aiSubmitBtn').style.display = 'none';
-            document.getElementById('aiLoading').style.display = 'block';
-            document.getElementById('aiOutput').style.display = 'none';
-            document.getElementById('aiEmailBtn').style.display = 'none';
-
-            // Instrucción del sistema (Contexto para Gemini)
-            const systemInstruction = "Eres el asistente de IA preventa integrado en el portafolio de Shordy Simbaña, un desarrollador de software e IA. Un cliente potencial te acaba de dar una idea de proyecto o problema. Analiza rápidamente su viabilidad y propón una solución tecnológica de alto nivel destacando cómo Shordy lo construiría usando sus habilidades (Python, Full-Stack, automatización, IA). Sé entusiasta, profesional, visionario y conciso (máximo 2 párrafos). Termina motivando al usuario a enviarle la propuesta a Shordy. No uses negritas ni markdown complejo, solo texto claro.";
-
-            const payload = {
-                contents: [{ parts: [{ text: input }] }],
-                systemInstruction: { parts: [{ text: systemInstruction }] }
-            };
-
-            try {
-                const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
-                const result = await fetchWithRetry(url, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-
-                const text = result.candidates?.[0]?.content?.parts?.[0]?.text || "Lo siento, mis circuitos están descansando. Intenta contactar a Shordy directamente.";
-                
-                // Actualizaciones de UI (Éxito)
-                document.getElementById('aiOutput').innerText = text;
-                document.getElementById('aiOutput').style.display = 'block';
-                document.getElementById('aiEmailBtn').style.display = 'flex';
-                document.getElementById('aiSubmitBtn').innerText = "Replantear idea ✨";
-                document.getElementById('aiSubmitBtn').style.display = 'flex';
-
-            } catch (error) {
-                console.error("Error de la API de Gemini:", error);
-                document.getElementById('aiOutput').innerText = "Hubo un problema de conexión evaluando tu proyecto. Por favor, contáctame por el método tradicional.";
-                document.getElementById('aiOutput').style.display = 'block';
-                document.getElementById('aiSubmitBtn').style.display = 'flex';
-            } finally {
-                document.getElementById('aiLoading').style.display = 'none';
-            }
-        }
-
-        function sendAiMail() {
-            const input = document.getElementById('aiInput').value;
-            const aiResponse = document.getElementById('aiOutput').innerText;
-            
-            const subject = encodeURIComponent("Propuesta de Proyecto analizada por tu IA ✨");
-            const body = encodeURIComponent(`Hola Shordy,\n\nEstuve usando el Consultor IA de tu portafolio y me pareció muy interesante.\n\nMI IDEA / PROBLEMA:\n${input}\n\nLO QUE SUGIRIÓ TU IA:\n${aiResponse}\n\nMe gustaría conversar más sobre esto para hacerlo realidad.\n\nSaludos!`);
-            
-            window.location.href = `mailto:shordy46.58@gmail.com?subject=${subject}&body=${body}`;
-            closeModal('aiModal', 'force');
         }
     </script>
 </body>
