@@ -472,6 +472,19 @@
         }
         .project-info li strong { color: var(--text-main); font-weight: 600; margin-right: 4px;}
 
+        /* Estilo para botón secundario (enlaces de proyectos) */
+        .btn-outline {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 10px 20px; font-size: 0.95rem; font-weight: 600;
+            color: var(--text-main); background: transparent;
+            border: 1px solid rgba(255,255,255,0.2); border-radius: 100px;
+            cursor: pointer; transition: all 0.3s ease; margin-top: 24px;
+            text-decoration: none; width: fit-content;
+        }
+        .btn-outline:hover {
+            border-color: var(--accent); color: var(--accent); background: rgba(16,185,129,0.05); transform: translateY(-2px);
+        }
+
         /* === EXPERIENCIA === */
         .timeline-container {
             display: grid;
@@ -777,20 +790,43 @@
                     <p class="section-subtitle">Construyendo ideas, uniendo tecnología y negocios.</p>
                 </div>
                 
-                <div class="project-card">
-                    <!-- Ahora la imagen llama a openSingleImage para el lightbox y no se recorta -->
-                    <div class="project-img-wrapper">
-                        <img src="imagenes/proyectos/tienda nube.png" alt="Hackathon UTEL Tiendanube" onclick="openSingleImage(this.src)" onerror="this.src='https://placehold.co/800x600/0a1813/10b981?text=Proyecto+NubIA'">
+                <div style="display: flex; flex-direction: column; gap: 40px;">
+                    <!-- Proyecto 1: Hackathon -->
+                    <div class="project-card">
+                        <!-- Ahora la imagen llama a openSingleImage para el lightbox y no se recorta -->
+                        <div class="project-img-wrapper">
+                            <img src="imagenes/proyectos/tienda nube.png" alt="Hackathon UTEL Tiendanube" onclick="openSingleImage(this.src)" onerror="this.src='https://placehold.co/800x600/0a1813/10b981?text=Proyecto+NubIA'">
+                        </div>
+                        <div class="project-info">
+                            <h3>Hackathon - UTEL / Tiendanube</h3>
+                            <span class="project-role">Lead Developer & Project Manager (Marzo 2026)</span>
+                            <ul>
+                                <li><strong>Estrategia y equipo:</strong> Alineé a las áreas de IA, negocios e infraestructura para trabajar con máxima agilidad.</li>
+                                <li><strong>Liderazgo técnico:</strong> Lideré el frontend y la arquitectura en GitHub, asegurando la calidad del código.</li>
+                                <li><strong>Impulso con IA:</strong> Utilicé Gemini CLI para agilizar el desarrollo y la toma de decisiones bajo presión.</li>
+                                <li><strong>Nacimiento de "NubIA":</strong> Diseñé la arquitectura de este asistente inteligente para emprendedores.</li>
+                            </ul>
+                            <a href="https://github.com/ShordyEA/hackathon-TiendaNube/tree/main" target="_blank" class="btn-outline">
+                                Ver Repositorio
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                            </a>
+                        </div>
                     </div>
-                    <div class="project-info">
-                        <h3>Hackathon - UTEL / Tiendanube</h3>
-                        <span class="project-role">Lead Developer & Project Manager (Marzo 2026)</span>
-                        <ul>
-                            <li><strong>Estrategia y equipo:</strong> Alineé a las áreas de IA, negocios e infraestructura para trabajar con máxima agilidad.</li>
-                            <li><strong>Liderazgo técnico:</strong> Lideré el frontend y la arquitectura en GitHub, asegurando la calidad del código.</li>
-                            <li><strong>Impulso con IA:</strong> Utilicé Gemini CLI para agilizar el desarrollo y la toma de decisiones bajo presión.</li>
-                            <li><strong>Nacimiento de "NubIA":</strong> Diseñé la arquitectura de este asistente inteligente para emprendedores.</li>
-                        </ul>
+
+                    <!-- Proyecto 2: MAATE -->
+                    <div class="project-card">
+                        <div class="project-img-wrapper">
+                            <img src="imagenes/proyectos/mate.png" alt="Digitalización Archivo MAATE" onclick="openSingleImage(this.src)" onerror="this.src='https://placehold.co/800x600/0a1813/10b981?text=Proyecto+MAATE'">
+                        </div>
+                        <div class="project-info">
+                            <h3>Digitalización Histórica - MAATE</h3>
+                            <span class="project-role">Gestión de Datos & Archivo (Proyecto de 4 meses)</span>
+                            <ul>
+                                <li><strong>Rescate patrimonial:</strong> Nos sumergimos en la historia para extraer y preservar información invaluable, ¡algunos documentos databan del año 1850!</li>
+                                <li><strong>Estructuración de datos:</strong> Construimos una sólida base de datos consolidando miles de registros, cédulas y hojas de vida de ex-empleados.</li>
+                                <li><strong>Transformación digital:</strong> Ayudé a modernizar el archivo físico, convirtiendo enormes cantidades de papel en información estructurada, segura y de fácil acceso.</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </section>
