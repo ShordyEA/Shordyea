@@ -276,10 +276,71 @@
         .hero-desc {
             font-size: 1.2rem;
             color: var(--text-muted);
-            margin-bottom: 0;
+            margin-bottom: 40px; /* Cambiado para dar espacio a la nueva tarjeta */
             max-width: 800px;
             line-height: 1.8;
             font-weight: 400;
+        }
+
+        /* === TARJETA LYCODELIFE EN HERO === */
+        .hero-cta-card {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            padding: 24px;
+            border-radius: var(--radius-lg);
+            max-width: 850px;
+            text-align: left;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+        .hero-cta-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 40px 80px rgba(16, 185, 129, 0.15);
+            border-color: rgba(16, 185, 129, 0.4);
+        }
+        .hero-cta-card img {
+            width: 180px;
+            height: 140px;
+            border-radius: var(--radius-md);
+            object-fit: cover;
+            flex-shrink: 0;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+        .hero-cta-content h3 {
+            font-size: 1.3rem;
+            color: var(--text-main);
+            margin-bottom: 8px;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+        .hero-cta-content p {
+            font-size: 1rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        .btn-glow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 28px;
+            background: var(--text-main);
+            color: #000;
+            font-weight: 800;
+            font-size: 0.95rem;
+            border-radius: 100px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+        }
+        .btn-glow:hover {
+            transform: scale(1.05);
+            background: var(--accent);
+            box-shadow: 0 0 25px rgba(16, 185, 129, 0.4);
         }
 
         /* === SECCIONES GLOBALES === */
@@ -563,6 +624,7 @@
             .bento-grid { grid-template-columns: 1fr 1fr; }
             .project-card { grid-template-columns: 1fr; gap: 24px; padding: 24px; }
             .timeline-container { grid-template-columns: 1fr; gap: 60px; }
+            .hero-cta-card { margin: 0 20px; }
         }
 
         @media (max-width: 800px) {
@@ -576,14 +638,18 @@
             main.content-area { padding: 0; width: 100%; }
             .content-wrapper { padding: 40px 20px; }
 
-            .hero-section { text-align: left; min-height: 100vh; padding: 40px 24px; align-items: flex-start; justify-content: flex-end; padding-bottom: 80px;}
+            .hero-section { text-align: left; min-height: 100vh; padding: 100px 24px 80px; align-items: flex-start; justify-content: center;}
             
             /* CAMBIOS APLICADOS AQUÍ PARA CENTRAR FOTO Y NOMBRE */
             .hero-title { font-size: 3rem; text-align: center; align-self: center; width: 100%; }
             .hero-subtitle { text-align: left; }
-            .hero-desc { text-align: left; }
+            .hero-desc { text-align: left; margin-bottom: 32px; }
             .hero-photo-main { align-self: center; }
             
+            /* Tarjeta LyCodeLife Móvil */
+            .hero-cta-card { flex-direction: column; text-align: center; padding: 24px; margin: 0; }
+            .hero-cta-card img { width: 100%; height: 180px; }
+
             .certs-container { grid-template-columns: 1fr; gap: 24px; }
             .cert-preview-area { display: none; }
             
@@ -671,6 +737,19 @@
             <p class="hero-desc">
                 Estudiante de la Licenciatura en Ingeniería en Sistemas Computacionales por UTEL, especializado en transformar tareas manuales en automatizadas a través de la tecnología, la optimización y el mantenimiento de sistemas.
             </p>
+
+            <!-- NUEVA TARJETA LYCODELIFE -->
+            <div class="hero-cta-card">
+                <img src="imagenes/lycodelife.png" alt="LyCodeLife Agencia" onerror="this.src='https://placehold.co/400x300/0a1813/10b981?text=LyCodeLife'">
+                <div class="hero-cta-content">
+                    <h3>¿Deseas conocer con pruebas rápidas lo que puedo hacer?</h3>
+                    <p>Ofrezco <strong>servicios de creación de software B2B personalizados</strong>. Explora demos interactivas y descubre cómo transformo ideas en tecnología funcional para empresas.</p>
+                    <a href="https://lycodelife.github.io/LycodeLife/" target="_blank" class="btn-glow">
+                        Visitar LyCodeLife
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-left:4px;"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    </a>
+                </div>
+            </div>
         </section>
 
         <div class="content-wrapper">
