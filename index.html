@@ -276,13 +276,13 @@
         .hero-desc {
             font-size: 1.2rem;
             color: var(--text-muted);
-            margin-bottom: 40px; /* Cambiado para dar espacio a la nueva tarjeta */
+            margin-bottom: 40px; 
             max-width: 800px;
             line-height: 1.8;
             font-weight: 400;
         }
 
-        /* === TARJETA LYCODELIFE EN HERO === */
+        /* === TARJETA LYCODELIFE === */
         .hero-cta-card {
             display: flex;
             align-items: center;
@@ -291,11 +291,12 @@
             border: 1px solid rgba(16, 185, 129, 0.2);
             padding: 24px;
             border-radius: var(--radius-lg);
-            max-width: 850px;
+            max-width: 100%;
             text-align: left;
             backdrop-filter: blur(12px);
             box-shadow: 0 30px 60px rgba(0,0,0,0.5);
             transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            margin-bottom: 40px;
         }
         .hero-cta-card:hover {
             transform: translateY(-4px);
@@ -503,7 +504,7 @@
         .project-img-wrapper img {
             width: 100%;
             height: auto;
-            object-fit: contain; /* CRUCIAL para que no se recorte */
+            object-fit: contain; 
             transition: transform 0.5s ease;
             cursor: zoom-in;
         }
@@ -511,7 +512,6 @@
         .project-info h3 { font-size: 1.5rem; font-weight: 800; color: var(--text-main); margin-bottom: 4px; letter-spacing: -0.02em;}
         .project-role { font-size: 0.95rem; font-weight: 700; color: var(--accent); margin-bottom: 16px; display: inline-block; }
         
-        /* FIX: Texto alineado perfectamente */
         .project-info ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
         .project-info li { 
             position: relative; 
@@ -548,10 +548,9 @@
 
         /* === EXPERIENCIA === */
         .timeline-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
-            align-items: stretch;
+            display: block; /* Cambiado a block ya que movimos la caja CTA */
+            max-width: 800px;
+            margin: 0 auto;
         }
 
         .timeline { position: relative; padding-left: 20px; }
@@ -574,6 +573,8 @@
             text-align: center;
             display: flex; flex-direction: column; justify-content: center; align-items: center;
             box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+            max-width: 800px;
+            margin: 0 auto;
         }
 
         .btn-primary { background: var(--text-main); color: #000; padding: 18px 36px; border-radius: 100px; font-weight: 800; font-size: 1.1rem; cursor: pointer; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); border: none; }
@@ -623,31 +624,27 @@
             .hero-title { font-size: 3.5rem; }
             .bento-grid { grid-template-columns: 1fr 1fr; }
             .project-card { grid-template-columns: 1fr; gap: 24px; padding: 24px; }
-            .timeline-container { grid-template-columns: 1fr; gap: 60px; }
-            .hero-cta-card { margin: 0 20px; }
+            .hero-cta-card { margin: 0 20px 40px; }
         }
 
         @media (max-width: 800px) {
             body { flex-direction: column; }
             
             /* HUD oculto totalmente en móviles */
-            aside.hud-sidebar {
-                display: none !important;
-            }
+            aside.hud-sidebar { display: none !important; }
 
             main.content-area { padding: 0; width: 100%; }
             .content-wrapper { padding: 40px 20px; }
 
             .hero-section { text-align: left; min-height: 100vh; padding: 100px 24px 80px; align-items: flex-start; justify-content: center;}
             
-            /* CAMBIOS APLICADOS AQUÍ PARA CENTRAR FOTO Y NOMBRE */
             .hero-title { font-size: 3rem; text-align: center; align-self: center; width: 100%; }
             .hero-subtitle { text-align: left; }
             .hero-desc { text-align: left; margin-bottom: 32px; }
             .hero-photo-main { align-self: center; }
             
             /* Tarjeta LyCodeLife Móvil */
-            .hero-cta-card { flex-direction: column; text-align: center; padding: 24px; margin: 0; }
+            .hero-cta-card { flex-direction: column; text-align: center; padding: 24px; margin: 0 0 40px 0; }
             .hero-cta-card img { width: 100%; height: 180px; }
 
             .certs-container { grid-template-columns: 1fr; gap: 24px; }
@@ -702,11 +699,12 @@
             <img src="imagenes/avatar.png" alt="Avatar Shordy" onerror="this.src='https://placehold.co/400x400/0a1813/10b981?text=Shordy'">
         </div>
         
+        <!-- Nuevo orden lógico en la navegación -->
         <nav class="hud-nav">
             <a href="#habilidades">Habilidades</a>
-            <a href="#certificados">Certificados</a>
             <a href="#proyectos">Proyectos</a>
             <a href="#experiencia">Experiencia</a>
+            <a href="#certificados">Certificados</a>
         </nav>
 
         <div class="hud-footer">
@@ -725,7 +723,7 @@
     <!-- === CONTENIDO PRINCIPAL === -->
     <main class="content-area">
         
-        <!-- HERO SECTION -->
+        <!-- PASO 1: INTRODUCCIÓN (Hero Section Limpio) -->
         <section class="hero-section">
             <div class="hero-bg-img"></div>
             <div class="hero-bg-gradient"></div>
@@ -738,22 +736,16 @@
                 Estudiante de la Licenciatura en Ingeniería en Sistemas Computacionales por UTEL, especializado en transformar tareas manuales en automatizadas a través de la tecnología, la optimización y el mantenimiento de sistemas.
             </p>
 
-            <!-- NUEVA TARJETA LYCODELIFE -->
-            <div class="hero-cta-card">
-                <img src="imagenes/lycodelife.png" alt="LyCodeLife Agencia" onerror="this.src='https://placehold.co/400x300/0a1813/10b981?text=LyCodeLife'">
-                <div class="hero-cta-content">
-                    <h3>¿Deseas conocer con pruebas rápidas lo que puedo hacer?</h3>
-                    <p>Ofrezco <strong>servicios de creación de software B2B personalizados</strong>. Explora demos interactivas y descubre cómo transformo ideas en tecnología funcional para empresas.</p>
-                    <a href="https://lycodelife.github.io/LycodeLife/" target="_blank" class="btn-glow">
-                        Visitar LyCodeLife
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-left:4px;"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-                    </a>
-                </div>
-            </div>
+            <!-- Llamado sutil a explorar el perfil en lugar de vender de golpe -->
+            <a href="#habilidades" class="btn-outline" style="margin-top: 0;">
+                Explorar mi perfil
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 6px;"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+            </a>
         </section>
 
         <div class="content-wrapper">
-            <!-- BENTO SKILLS -->
+            
+            <!-- PASO 2: VALOR & HABILIDADES -->
             <section class="section" id="habilidades">
                 <div class="section-header">
                     <h2 class="section-title">Especialidades</h2>
@@ -789,9 +781,111 @@
                         <p class="bento-desc">Reducción de tiempos operativos mediante scripts y flujos de trabajo eficientes para empresas.</p>
                     </div>
                 </div>
+
+                <!-- TECNOLOGÍAS & HERRAMIENTAS (Fusionado sutilmente debajo de habilidades) -->
+                <div class="tech-container">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" alt="HTML5" title="HTML5" class="tech-icon" />
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" alt="CSS3" title="CSS3" class="tech-icon" />
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" alt="Python" title="Python" class="tech-icon" />
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linux/linux-original.svg" alt="Linux" title="Linux" class="tech-icon" />
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/windows8/windows8-original.svg" alt="Windows" title="Windows" class="tech-icon" />
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg" alt="VS Code" title="VS Code" class="tech-icon" />
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/googlecloud/googlecloud-original.svg" alt="Google Cloud" title="Google Cloud" class="tech-icon" />
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Microsoft_365_%282022%29.svg/256px-Microsoft_365_%282022%29.svg.png" alt="Microsoft 365" title="Microsoft 365" class="tech-icon" onerror="this.src='https://api.iconify.design/logos:microsoft-icon.svg'" />
+                    <img src="https://www.gstatic.com/lamda/images/gemini_sparkle_v002_d4735304ff6292a690345.svg" alt="Google Gemini" title="Google Gemini" class="tech-icon" />
+                </div>
             </section>
 
-            <!-- CERTIFICADOS INTERACTIVOS -->
+            <!-- PASO 3: PRUEBAS / PROYECTOS -->
+            <section class="section" id="proyectos">
+                <div class="section-header">
+                    <h2 class="section-title">Proyectos Destacados</h2>
+                    <p class="section-subtitle">Construyendo ideas, uniendo tecnología y negocios.</p>
+                </div>
+                
+                <div style="display: flex; flex-direction: column; gap: 40px;">
+                    <!-- Proyecto 1: Hackathon -->
+                    <div class="project-card">
+                        <div class="project-img-wrapper">
+                            <img src="imagenes/proyectos/tienda nube.png" alt="Hackathon UTEL Tiendanube" onclick="openSingleImage(this.src)" onerror="this.src='https://placehold.co/800x600/0a1813/10b981?text=Proyecto+NubIA'">
+                        </div>
+                        <div class="project-info">
+                            <h3>Hackathon - UTEL / Tiendanube</h3>
+                            <span class="project-role">Lead Developer & Project Manager (Marzo 2026)</span>
+                            <ul>
+                                <li><strong>Estrategia y equipo:</strong> Alineé a las áreas de IA, negocios e infraestructura para trabajar con máxima agilidad.</li>
+                                <li><strong>Liderazgo técnico:</strong> Lideré el frontend y la arquitectura en GitHub, asegurando la calidad del código.</li>
+                                <li><strong>Impulso con IA:</strong> Utilicé Gemini CLI para agilizar el desarrollo y la toma de decisiones bajo presión.</li>
+                                <li><strong>Nacimiento de "NubIA":</strong> Diseñé la arquitectura de este asistente inteligente para emprendedores.</li>
+                            </ul>
+                            <a href="https://github.com/ShordyEA/hackathon-TiendaNube/tree/main" target="_blank" class="btn-outline">
+                                Ver Repositorio
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Proyecto 2: MAATE -->
+                    <div class="project-card">
+                        <div class="project-img-wrapper">
+                            <img src="imagenes/proyectos/mate.png" alt="Digitalización Archivo MAATE" onclick="openSingleImage(this.src)" onerror="this.src='https://placehold.co/800x600/0a1813/10b981?text=Proyecto+MAATE'">
+                        </div>
+                        <div class="project-info">
+                            <h3>Digitalización Histórica - MAATE</h3>
+                            <span class="project-role">Gestión de Datos & Archivo (Proyecto de 4 meses)</span>
+                            <ul>
+                                <li><strong>Rescate patrimonial:</strong> Nos sumergimos en la historia para extraer y preservar información invaluable, ¡algunos documentos databan del año 1850!</li>
+                                <li><strong>Estructuración de datos:</strong> Construimos una sólida base de datos consolidando miles de registros, cédulas y hojas de vida de ex-empleados.</li>
+                                <li><strong>Transformación digital:</strong> Ayudé a modernizar el archivo físico, convirtiendo enormes cantidades de papel en información estructurada, segura y de fácil acceso.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PASO 4: EXPERIENCIA & AGENCIA B2B (Aquí entra la venta sutil de LyCodeLife) -->
+            <section class="section" id="experiencia">
+                <div class="section-header">
+                    <h2 class="section-title">Experiencia & Servicios</h2>
+                    <p class="section-subtitle">De mi trayectoria técnica hacia la creación de soluciones empresariales.</p>
+                </div>
+                
+                <!-- TARJETA LYCODELIFE MOVIDA AQUÍ: Hace sentido tras ver tus habilidades y proyectos -->
+                <div class="hero-cta-card">
+                    <img src="imagenes/lycodelife.png" alt="LyCodeLife Agencia" onerror="this.src='https://placehold.co/400x300/0a1813/10b981?text=LyCodeLife'">
+                    <div class="hero-cta-content">
+                        <h3>¿Deseas conocer con pruebas rápidas lo que puedo hacer por tu negocio?</h3>
+                        <p>Además de mi perfil técnico, dirijo mi propia agencia, donde ofrezco <strong>servicios de creación de software B2B personalizados</strong>. Explora demos interactivas y descubre cómo transformo ideas en tecnología funcional para empresas.</p>
+                        <a href="https://lycodelife.github.io/LycodeLife/" target="_blank" class="btn-glow">
+                            Visitar LyCodeLife
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-left:4px;"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Timeline de Experiencia Profesional -->
+                <div class="timeline-container">
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <h3 class="timeline-title">Fundador & Lead Developer</h3>
+                            <a href="https://lycodelife.github.io/LycodeLife/" target="_blank" class="timeline-company">LycodeLife ↗</a>
+                            <p class="timeline-desc">Arquitectura B2B, desarrollo Full-Stack y automatización de procesos internos utilizando Inteligencia Artificial.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h3 class="timeline-title">Consultor Independiente</h3>
+                            <span class="timeline-company" style="text-decoration: none;">Proyectos Autónomos</span>
+                            <p class="timeline-desc">Desarrollo UI/UX, integración de modelos de IA y optimización de hardware a medida para clientes locales.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h3 class="timeline-title">Asistente de Archivo</h3>
+                            <span class="timeline-company" style="text-decoration: none;">Ministerio del Ambiente (Jóvenes en Acción)</span>
+                            <p class="timeline-desc">En febrero de 2025 participé en el programa Jóvenes en Acción. Trabajé en el área de archivo, donde desarrollé habilidades para gestionar, crear y ordenar documentos históricos de gran importancia.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PASO 5: CONFIANZA / CERTIFICADOS -->
             <section class="section" id="certificados">
                 <div class="section-header">
                     <h2 class="section-title">Credenciales</h2>
@@ -862,113 +956,15 @@
                 </div>
             </section>
 
-            <!-- PROYECTOS -->
-            <section class="section" id="proyectos">
-                <div class="section-header">
-                    <h2 class="section-title">Proyectos Destacados</h2>
-                    <p class="section-subtitle">Construyendo ideas, uniendo tecnología y negocios.</p>
-                </div>
-                
-                <div style="display: flex; flex-direction: column; gap: 40px;">
-                    <!-- Proyecto 1: Hackathon -->
-                    <div class="project-card">
-                        <!-- Ahora la imagen llama a openSingleImage para el lightbox y no se recorta -->
-                        <div class="project-img-wrapper">
-                            <img src="imagenes/proyectos/tienda nube.png" alt="Hackathon UTEL Tiendanube" onclick="openSingleImage(this.src)" onerror="this.src='https://placehold.co/800x600/0a1813/10b981?text=Proyecto+NubIA'">
-                        </div>
-                        <div class="project-info">
-                            <h3>Hackathon - UTEL / Tiendanube</h3>
-                            <span class="project-role">Lead Developer & Project Manager (Marzo 2026)</span>
-                            <ul>
-                                <li><strong>Estrategia y equipo:</strong> Alineé a las áreas de IA, negocios e infraestructura para trabajar con máxima agilidad.</li>
-                                <li><strong>Liderazgo técnico:</strong> Lideré el frontend y la arquitectura en GitHub, asegurando la calidad del código.</li>
-                                <li><strong>Impulso con IA:</strong> Utilicé Gemini CLI para agilizar el desarrollo y la toma de decisiones bajo presión.</li>
-                                <li><strong>Nacimiento de "NubIA":</strong> Diseñé la arquitectura de este asistente inteligente para emprendedores.</li>
-                            </ul>
-                            <a href="https://github.com/ShordyEA/hackathon-TiendaNube/tree/main" target="_blank" class="btn-outline">
-                                Ver Repositorio
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Proyecto 2: MAATE -->
-                    <div class="project-card">
-                        <div class="project-img-wrapper">
-                            <img src="imagenes/proyectos/mate.png" alt="Digitalización Archivo MAATE" onclick="openSingleImage(this.src)" onerror="this.src='https://placehold.co/800x600/0a1813/10b981?text=Proyecto+MAATE'">
-                        </div>
-                        <div class="project-info">
-                            <h3>Digitalización Histórica - MAATE</h3>
-                            <span class="project-role">Gestión de Datos & Archivo (Proyecto de 4 meses)</span>
-                            <ul>
-                                <li><strong>Rescate patrimonial:</strong> Nos sumergimos en la historia para extraer y preservar información invaluable, ¡algunos documentos databan del año 1850!</li>
-                                <li><strong>Estructuración de datos:</strong> Construimos una sólida base de datos consolidando miles de registros, cédulas y hojas de vida de ex-empleados.</li>
-                                <li><strong>Transformación digital:</strong> Ayudé a modernizar el archivo físico, convirtiendo enormes cantidades de papel en información estructurada, segura y de fácil acceso.</li>
-                            </ul>
-                        </div>
-                    </div>
+            <!-- PASO 6: CALL TO ACTION FINAL -->
+            <section class="section" style="margin-bottom: 60px;">
+                <div class="cta-box">
+                    <h2 style="font-size: 2.5rem; font-weight: 800; margin-bottom: 12px; letter-spacing: -0.04em; color: var(--text-main);">¿Trabajamos juntos?</h2>
+                    <p style="color: var(--text-muted); margin-bottom: 40px; font-size: 1.1rem; line-height: 1.6;">Hablemos de código, IA o cómo optimizar la tecnología de tu negocio.</p>
+                    <button class="btn btn-primary" style="width: 100%; justify-content: center; padding: 20px;" onclick="openContact()">Contactar ahora</button>
                 </div>
             </section>
 
-            <!-- EXPERIENCIA & CONTACTO -->
-            <section class="section" id="experiencia">
-                
-                <div class="timeline-container">
-                    <!-- Experiencia -->
-                    <div>
-                        <div class="section-header" style="margin-bottom: 40px; text-align: left;">
-                            <h2 class="section-title">Trayectoria</h2>
-                        </div>
-                        <div class="timeline">
-                            <div class="timeline-item">
-                                <h3 class="timeline-title">Fundador & Lead Developer</h3>
-                                <a href="https://lycodelife.github.io/LycodeLife/" target="_blank" class="timeline-company">LycodeLife ↗</a>
-                                <p class="timeline-desc">Arquitectura B2B, desarrollo Full-Stack y automatización de procesos internos utilizando Inteligencia Artificial.</p>
-                            </div>
-                            <div class="timeline-item">
-                                <h3 class="timeline-title">Consultor Independiente</h3>
-                                <span class="timeline-company" style="text-decoration: none;">Proyectos Autónomos</span>
-                                <p class="timeline-desc">Desarrollo UI/UX, integración de modelos de IA y optimización de hardware a medida para clientes locales.</p>
-                            </div>
-                            <div class="timeline-item">
-                                <h3 class="timeline-title">Asistente de Archivo</h3>
-                                <span class="timeline-company" style="text-decoration: none;">Ministerio del Ambiente (Jóvenes en Acción)</span>
-                                <p class="timeline-desc">En febrero de 2025 participé en el programa Jóvenes en Acción. Trabajé en el área de archivo, donde desarrollé habilidades para gestionar, crear y ordenar documentos históricos de gran importancia.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Caja de CTA / Contacto -->
-                    <div>
-                        <!-- CTA Box -->
-                        <div class="cta-box">
-                            <h2 style="font-size: 2.5rem; font-weight: 800; margin-bottom: 12px; letter-spacing: -0.04em; color: var(--text-main);">¿Trabajamos juntos?</h2>
-                            <p style="color: var(--text-muted); margin-bottom: 40px; font-size: 1.1rem; line-height: 1.6;">Hablemos de código, IA o cómo optimizar la tecnología de tu negocio.</p>
-                            <button class="btn btn-primary" style="width: 100%; justify-content: center; padding: 20px;" onclick="openContact()">Contactar ahora</button>
-                        </div>
-                    </div>
-                </div>
-
-            </section>
-
-            <!-- TECNOLOGÍAS & HERRAMIENTAS -->
-            <section class="section" style="margin-bottom: 40px;">
-                <div class="section-header" style="margin-bottom: 30px;">
-                    <h2 class="section-title" style="font-size: 2rem;">Herramientas empleadas</h2>
-                </div>
-                <div class="tech-container" style="margin-top: 0;">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" alt="HTML5" title="HTML5" class="tech-icon" />
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" alt="CSS3" title="CSS3" class="tech-icon" />
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" alt="Python" title="Python" class="tech-icon" />
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linux/linux-original.svg" alt="Linux" title="Linux" class="tech-icon" />
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/windows8/windows8-original.svg" alt="Windows" title="Windows" class="tech-icon" />
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg" alt="VS Code" title="VS Code" class="tech-icon" />
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/googlecloud/googlecloud-original.svg" alt="Google Cloud" title="Google Cloud" class="tech-icon" />
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Microsoft_365_%282022%29.svg/256px-Microsoft_365_%282022%29.svg.png" alt="Microsoft 365" title="Microsoft 365" class="tech-icon" onerror="this.src='https://api.iconify.design/logos:microsoft-icon.svg'" />
-                    <img src="https://www.gstatic.com/lamda/images/gemini_sparkle_v002_d4735304ff6292a690345.svg" alt="Google Gemini" title="Google Gemini" class="tech-icon" />
-                </div>
-            </section>
-        
             <footer style="padding-top: 50px; font-size: 1rem; color: var(--text-muted); text-align: center; border-top: 1px solid rgba(255,255,255,0.05); margin-top: 40px;">
                 <p>© 2026 Shordy Simbaña. La informática es una nueva forma de vida.</p>
             </footer>
