@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shordy Simbaña | Software & IA</title>
-    <meta name="theme-color" content="#061410">
+    <meta name="theme-color" content="#040d0a">
     <meta name="description" content="Ingeniería de software B2B por Shordy Simbaña. Desarrollo potenciado por IA y soporte de hardware.">
     
     <!-- Tipografía Inter -->
@@ -16,7 +16,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
     <style>
-        /* === PALETA MINIMALISTA Y VARIABLES (Ultra-Clean) === */
+        /* === PALETA MINIMALISTA Y VARIABLES (Ultra-Clean Jade Web) === */
         :root {
             --bg-page: #040d0a; /* Fondo casi negro con toque Jade */
             --text-main: #ffffff; /* Blanco puro para máxima legibilidad */
@@ -24,7 +24,7 @@
             --accent: #10b981; /* Verde Jade brillante */
             --surface: rgba(16, 185, 129, 0.03); /* Superficie casi invisible */
             --surface-hover: rgba(16, 185, 129, 0.08); /* Hover sutil */
-            --radius-lg: 32px; /* Esquinas más redondeadas, muy actual */
+            --radius-lg: 32px;
             --radius-md: 24px;
             --radius-sm: 16px;
         }
@@ -63,13 +63,13 @@
         #cover-screen.hide { transform: translateY(-100vh); opacity: 0; pointer-events: none; }
         .cover-bg-glow {
             position: absolute; top: 50%; left: 50%; width: 1000px; height: 1000px;
-            background: radial-gradient(circle, rgba(16,185,129,0.1) 0%, rgba(16,185,129,0) 70%);
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, rgba(16, 185, 129, 0) 70%);
             transform: translate(-50%, -50%); z-index: -1; border-radius: 50%; pointer-events: none; filter: blur(40px);
         }
         .cover-content { text-align: center; max-width: 800px; padding: 20px; display: flex; flex-direction: column; align-items: center; z-index: 1; }
         .cover-photo {
             width: 220px; height: 220px; border-radius: 50%; object-fit: cover;
-            box-shadow: 0 30px 60px -15px rgba(0,0,0,0.8); /* Sombra fuerte en lugar de borde */
+            box-shadow: 0 30px 60px -15px rgba(0,0,0,0.8);
             margin-bottom: 40px; animation: float 8s ease-in-out infinite;
         }
         @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-20px); } 100% { transform: translateY(0px); } }
@@ -98,7 +98,7 @@
             display: flex;
             flex-direction: column;
             z-index: 100;
-            overflow: hidden; /* Añadido para contener el degradado de la bandera */
+            overflow: hidden;
         }
 
         .hud-profile {
@@ -158,7 +158,7 @@
             padding-top: 20px;
             text-align: center;
             position: relative;
-            z-index: 1; /* Mantiene el texto por encima de la bandera */
+            z-index: 1;
         }
 
         .hud-footer-text {
@@ -344,6 +344,7 @@
         .btn-glow:hover {
             transform: scale(1.05);
             background: var(--accent);
+            color: #000;
             box-shadow: 0 0 25px rgba(16, 185, 129, 0.4);
         }
 
@@ -450,7 +451,7 @@
         }
 
         .cert-item:hover, .cert-item.active {
-            background: rgba(16,185,129,0.05);
+            background: rgba(16, 185, 129, 0.05);
             transform: translateX(12px);
         }
 
@@ -464,7 +465,7 @@
         .cert-info p { font-size: 0.95rem; color: var(--text-muted); }
         .cert-year {
             font-size: 0.9rem; font-weight: 700; color: var(--accent);
-            background: rgba(16,185,129,0.1); padding: 8px 16px; border-radius: 100px;
+            background: rgba(16, 185, 129, 0.1); padding: 8px 16px; border-radius: 100px;
         }
 
         .cert-preview-area {
@@ -569,18 +570,18 @@
             text-decoration: none; width: fit-content;
         }
         .btn-outline:hover {
-            border-color: var(--accent); color: var(--accent); background: rgba(16,185,129,0.05); transform: translateY(-2px);
+            border-color: var(--accent); color: var(--accent); background: rgba(16, 185, 129, 0.05); transform: translateY(-2px);
         }
 
         /* === EXPERIENCIA === */
         .timeline-container {
-            display: block; /* Cambiado a block ya que movimos la caja CTA */
+            display: block;
             max-width: 800px;
             margin: 0 auto;
         }
 
         .timeline { position: relative; padding-left: 20px; }
-        .timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, var(--accent) 0%, rgba(16,185,129,0) 100%); opacity: 0.3;}
+        .timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, var(--accent) 0%, rgba(16, 185, 129, 0) 100%); opacity: 0.3;}
         
         .timeline-item { position: relative; margin-bottom: 60px; }
         .timeline-item:last-child { margin-bottom: 0; }
@@ -661,6 +662,7 @@
         .form-input::placeholder { color: rgba(255,255,255,0.3); }
 
         /* === ESTILOS HOJA DE VIDA (DOCUMENTO PDF) === */
+        /* OJO: Aquí re-declaramos el accent a azul (#3b82f6) SOLO para la hoja de vida */
         .resume-controls {
             position: sticky;
             top: 0;
@@ -669,7 +671,7 @@
             justify-content: flex-end;
             align-items: center;
             width: 100%;
-            max-width: 850px;
+            max-width: 794px;
             margin: 0 auto 20px;
             background: rgba(0,0,0,0.8);
             padding: 15px;
@@ -679,44 +681,44 @@
             gap: 16px;
         }
         .resume-document {
+            --accent: #3b82f6; /* AZUL ELEGANTE forzado internamente */
             background: #ffffff;
             color: #111827;
             width: 100%;
-            max-width: 850px; /* Ancho ajustado para 2 columnas */
+            max-width: 794px; /* Ancho optimizado para tamaño A4 exacto */
             margin: 0 auto;
-            padding: 40px; /* Padding reducido para ahorrar espacio vertical */
+            padding: 30px 40px; /* Reducido para ganar espacio vertical */
             border-radius: 8px;
-            box-shadow: 0 20px 60px rgba(16, 185, 129, 0.2);
+            box-shadow: 0 20px 60px rgba(59, 130, 246, 0.2); /* Sombra azul para el doc flotante */
             font-family: 'Inter', sans-serif;
             text-align: left;
-            line-height: 1.5;
+            line-height: 1.35; /* Interlineado más compacto */
         }
         .resume-document h1, .resume-document h2, .resume-document h3 { color: #111827; }
-        .resume-header { border-bottom: 2px solid var(--accent); padding-bottom: 16px; margin-bottom: 24px; }
-        .resume-header h1 { font-size: 2.2rem; font-weight: 800; margin-bottom: 4px; letter-spacing: -0.03em; }
-        .resume-header p { font-size: 1rem; color: #4b5563; font-weight: 600; margin-bottom: 12px; }
-        .resume-contact { display: flex; flex-wrap: wrap; gap: 12px 20px; font-size: 0.85rem; color: #374151; font-weight: 500;}
-        .resume-contact span { display: flex; align-items: center; gap: 6px; }
-        .resume-contact svg { width: 14px; height: 14px; stroke: var(--accent); stroke-width: 2.5;}
+        .resume-header { border-bottom: 2px solid var(--accent); padding-bottom: 8px; margin-bottom: 16px; }
+        .resume-header h1 { font-size: 2rem; font-weight: 800; margin-bottom: 2px; letter-spacing: -0.03em; }
+        .resume-header p { font-size: 0.9rem; color: #4b5563; font-weight: 600; margin-bottom: 8px; }
+        .resume-contact { display: flex; flex-wrap: wrap; gap: 6px 12px; font-size: 0.8rem; color: #374151; font-weight: 500;}
+        .resume-contact span { display: flex; align-items: center; gap: 4px; }
         
         /* Layout de 2 columnas para un diseño de 1 página compacto */
-        .resume-body { display: grid; grid-template-columns: 32% 1fr; gap: 32px; align-items: start; }
+        .resume-body { display: grid; grid-template-columns: 32% 1fr; gap: 20px; align-items: start; }
         
-        .resume-section { margin-bottom: 24px; }
+        .resume-section { margin-bottom: 16px; }
         .resume-section:last-child { margin-bottom: 0; }
-        .resume-section h2 { font-size: 1.1rem; font-weight: 800; color: var(--accent); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 1px solid #e5e7eb; padding-bottom: 6px;}
+        .resume-section h2 { font-size: 1rem; font-weight: 800; color: var(--accent); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 1px solid #e5e7eb; padding-bottom: 4px;}
         
-        .resume-item { margin-bottom: 16px; }
+        .resume-item { margin-bottom: 10px; }
         .resume-item:last-child { margin-bottom: 0; }
-        .resume-item-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 4px; }
-        .resume-item-title { font-size: 1.05rem; font-weight: 800; color: #111827;}
-        .resume-item-subtitle { font-size: 0.9rem; color: var(--accent); font-weight: 700; display: block;}
-        .resume-item-date { font-size: 0.85rem; color: #6b7280; font-weight: 600; text-align: right; white-space: nowrap; margin-left: 12px;}
+        .resume-item-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 2px; }
+        .resume-item-title { font-size: 0.95rem; font-weight: 800; color: #111827;}
+        .resume-item-subtitle { font-size: 0.85rem; color: var(--accent); font-weight: 700; display: block;}
+        .resume-item-date { font-size: 0.8rem; color: #6b7280; font-weight: 600; text-align: right; white-space: nowrap; margin-left: 8px;}
         .resume-item-desc { font-size: 0.85rem; color: #374151; }
         
-        .resume-skills-grid { display: flex; flex-direction: column; gap: 16px; }
-        .resume-list { padding-left: 16px; margin-top: 6px; font-size: 0.85rem; color: #374151; display: flex; flex-direction: column; gap: 4px;}
-        .resume-list li { padding-left: 4px; }
+        .resume-skills-grid { display: flex; flex-direction: column; gap: 8px; }
+        .resume-list { padding-left: 14px; margin-top: 2px; font-size: 0.85rem; color: #374151; display: flex; flex-direction: column; gap: 2px;}
+        .resume-list li { padding-left: 2px; }
         
         /* Botón descargar Imagen */
         .btn-capture {
@@ -908,7 +910,7 @@
                     </div>
                 </div>
 
-                <!-- TECNOLOGÍAS & HERRAMIENTAS (Fusionado sutilmente debajo de habilidades) -->
+                <!-- TECNOLOGÍAS & HERRAMIENTAS -->
                 <div class="tech-container">
                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" alt="HTML5" title="HTML5" class="tech-icon" />
                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" alt="CSS3" title="CSS3" class="tech-icon" />
@@ -969,14 +971,13 @@
                 </div>
             </section>
 
-            <!-- PASO 4: EXPERIENCIA & AGENCIA B2B (Aquí entra la venta sutil de LyCodeLife) -->
+            <!-- PASO 4: EXPERIENCIA & AGENCIA B2B -->
             <section class="section" id="experiencia">
                 <div class="section-header">
                     <h2 class="section-title">Experiencia & Servicios</h2>
                     <p class="section-subtitle">De mi trayectoria técnica hacia la creación de soluciones empresariales.</p>
                 </div>
                 
-                <!-- TARJETA LYCODELIFE MOVIDA AQUÍ: Hace sentido tras ver tus habilidades y proyectos -->
                 <div class="hero-cta-card">
                     <img src="imagenes/lycodelife.png" alt="LyCodeLife Agencia" onerror="this.src='https://placehold.co/400x300/0a1813/10b981?text=LyCodeLife'">
                     <div class="hero-cta-content">
@@ -1146,10 +1147,12 @@
                     <h1>Shordy Simbaña</h1>
                     <p>Desarrollador de soluciones personalizadas con IA | Estudiante Ing. en Sistemas</p>
                     <div class="resume-contact">
-                        <span><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg> shordy46.58@gmail.com</span>
-                        <span><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg> +593 98 418 2834</span>
-                        <span><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg> linkedin.com/in/shordy</span>
-                        <span><svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg> github.com/ShordyEA</span>
+                        <!-- Iconos SVG con parámetros explicitos en Azul Elegante (#3b82f6) -->
+                        <span><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg> shordy46.58@gmail.com</span>
+                        <span><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg> +593 98 418 2834</span>
+                        <span><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg> linkedin.com/in/shordy</span>
+                        <span><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg> github.com/ShordyEA</span>
+                        <span><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg> shordyea.github.io</span>
                     </div>
                 </div>
 
@@ -1183,11 +1186,11 @@
                         <div class="resume-section">
                             <h2>Educación & Cert.</h2>
                             <ul class="resume-list" style="padding-left: 0; list-style: none;">
-                                <li style="margin-bottom: 8px;"><strong>Ing. en Sistemas Computacionales</strong><br><span style="color: #6b7280;">UTEL Universidad (Estudiante)</span></li>
-                                <li style="margin-bottom: 8px;"><strong>Hackathon: Innovación E-commerce</strong><br><span style="color: #6b7280;">UTEL & Tiendanube (2026)</span></li>
-                                <li style="margin-bottom: 8px;"><strong>Informática Forense</strong><br><span style="color: #6b7280;">Academia Progenios (2025)</span></li>
-                                <li style="margin-bottom: 8px;"><strong>Customer Experience y Asistencia</strong><br><span style="color: #6b7280;">Remotos Academy / CertiProf (2025)</span></li>
-                                <li style="margin-bottom: 8px;"><strong>Intro. to Bionic Prostheses</strong><br><span style="color: #6b7280;">P4H Bionics (2024)</span></li>
+                                <li style="margin-bottom: 4px;"><strong>Ing. en Sistemas Computacionales</strong><br><span style="color: #6b7280;">UTEL Universidad (Estudiante)</span></li>
+                                <li style="margin-bottom: 4px;"><strong>Hackathon: Innovación E-commerce</strong><br><span style="color: #6b7280;">UTEL & Tiendanube (2026)</span></li>
+                                <li style="margin-bottom: 4px;"><strong>Informática Forense</strong><br><span style="color: #6b7280;">Academia Progenios (2025)</span></li>
+                                <li style="margin-bottom: 4px;"><strong>Customer Experience y Asistencia</strong><br><span style="color: #6b7280;">Remotos Academy / CertiProf (2025)</span></li>
+                                <li style="margin-bottom: 4px;"><strong>Intro. to Bionic Prostheses</strong><br><span style="color: #6b7280;">P4H Bionics (2024)</span></li>
                                 <li><strong>Gestión de RAEE (Parte 1 y 2)</strong><br><span style="color: #6b7280;">Ministerio del Ambiente (2025)</span></li>
                             </ul>
                         </div>
@@ -1277,10 +1280,15 @@
             
             // Opciones para la librería html2pdf
             const opt = {
-                margin:       [10, 0, 10, 0], // Margen arriba, derecha, abajo, izquierda
+                margin:       0, // Eliminamos el margen externo para que se ajuste exactamente usando el padding CSS
                 filename:     'Hoja_de_Vida_Shordy_Simbana.pdf',
-                image:        { type: 'jpeg', quality: 1 },
-                html2canvas:  { scale: 2, useCORS: true, letterRendering: true },
+                image:        { type: 'jpeg', quality: 0.98 },
+                html2canvas:  { 
+                    scale: 2, 
+                    useCORS: true, 
+                    letterRendering: true,
+                    scrollY: 0 // <-- ESTA ES LA MAGIA: Esto elimina el espacio gigante en blanco de arriba
+                },
                 jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
             };
             
