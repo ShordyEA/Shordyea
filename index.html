@@ -11,6 +11,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Librería para exportar a PDF y capturar Imagen -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
     <style>
         /* === PALETA MINIMALISTA Y VARIABLES (Ultra-Clean) === */
@@ -611,6 +614,13 @@
         }
         .modal.active { display: flex; opacity: 1; }
         
+        /* Ajuste para modal de Hoja de Vida (scrollable) */
+        .modal.resume-modal {
+            align-items: flex-start;
+            overflow-y: auto;
+            padding: 40px 20px;
+        }
+
         /* IMAGEN EXPANDIDA EN EL MODAL: ESQUINAS REDONDAS Y RESPLANDOR */
         .modal-content { 
             max-width: 85%; 
@@ -650,12 +660,85 @@
         .form-input:focus { outline: none; border-bottom-color: var(--accent); }
         .form-input::placeholder { color: rgba(255,255,255,0.3); }
 
+        /* === ESTILOS HOJA DE VIDA (DOCUMENTO PDF) === */
+        .resume-controls {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            width: 100%;
+            max-width: 850px;
+            margin: 0 auto 20px;
+            background: rgba(0,0,0,0.8);
+            padding: 15px;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            gap: 16px;
+        }
+        .resume-document {
+            background: #ffffff;
+            color: #111827;
+            width: 100%;
+            max-width: 850px; /* Ancho ajustado para 2 columnas */
+            margin: 0 auto;
+            padding: 40px; /* Padding reducido para ahorrar espacio vertical */
+            border-radius: 8px;
+            box-shadow: 0 20px 60px rgba(16, 185, 129, 0.2);
+            font-family: 'Inter', sans-serif;
+            text-align: left;
+            line-height: 1.5;
+        }
+        .resume-document h1, .resume-document h2, .resume-document h3 { color: #111827; }
+        .resume-header { border-bottom: 2px solid var(--accent); padding-bottom: 16px; margin-bottom: 24px; }
+        .resume-header h1 { font-size: 2.2rem; font-weight: 800; margin-bottom: 4px; letter-spacing: -0.03em; }
+        .resume-header p { font-size: 1rem; color: #4b5563; font-weight: 600; margin-bottom: 12px; }
+        .resume-contact { display: flex; flex-wrap: wrap; gap: 12px 20px; font-size: 0.85rem; color: #374151; font-weight: 500;}
+        .resume-contact span { display: flex; align-items: center; gap: 6px; }
+        .resume-contact svg { width: 14px; height: 14px; stroke: var(--accent); stroke-width: 2.5;}
+        
+        /* Layout de 2 columnas para un diseño de 1 página compacto */
+        .resume-body { display: grid; grid-template-columns: 32% 1fr; gap: 32px; align-items: start; }
+        
+        .resume-section { margin-bottom: 24px; }
+        .resume-section:last-child { margin-bottom: 0; }
+        .resume-section h2 { font-size: 1.1rem; font-weight: 800; color: var(--accent); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 1px solid #e5e7eb; padding-bottom: 6px;}
+        
+        .resume-item { margin-bottom: 16px; }
+        .resume-item:last-child { margin-bottom: 0; }
+        .resume-item-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 4px; }
+        .resume-item-title { font-size: 1.05rem; font-weight: 800; color: #111827;}
+        .resume-item-subtitle { font-size: 0.9rem; color: var(--accent); font-weight: 700; display: block;}
+        .resume-item-date { font-size: 0.85rem; color: #6b7280; font-weight: 600; text-align: right; white-space: nowrap; margin-left: 12px;}
+        .resume-item-desc { font-size: 0.85rem; color: #374151; }
+        
+        .resume-skills-grid { display: flex; flex-direction: column; gap: 16px; }
+        .resume-list { padding-left: 16px; margin-top: 6px; font-size: 0.85rem; color: #374151; display: flex; flex-direction: column; gap: 4px;}
+        .resume-list li { padding-left: 4px; }
+        
+        /* Botón descargar Imagen */
+        .btn-capture {
+            background: transparent; color: var(--text-muted); border: 1px dashed rgba(255,255,255,0.2); 
+            padding: 12px 24px; border-radius: 100px; font-weight: 600; cursor: pointer; transition: all 0.3s;
+            margin-top: 24px; display: inline-flex; align-items: center; gap: 8px;
+        }
+        .btn-capture:hover { background: rgba(255,255,255,0.05); color: var(--text-main); border-color: var(--accent); }
+
         /* === RESPONSIVE === */
         @media (max-width: 1000px) {
             .hero-title { font-size: 3.5rem; }
             .bento-grid { grid-template-columns: 1fr 1fr; }
             .project-card { grid-template-columns: 1fr; gap: 24px; padding: 24px; }
             .hero-cta-card { margin: 0 20px 40px; }
+            
+            .resume-document { padding: 30px 20px; }
+            .resume-header h1 { font-size: 2rem; }
+            .resume-body { grid-template-columns: 1fr; gap: 20px; } /* Se apila en móvil */
+            .resume-skills-grid { grid-template-columns: 1fr; }
+            .resume-item-header { flex-direction: column; justify-content: flex-start; align-items: flex-start;}
+            .resume-item-date { text-align: left; margin-bottom: 8px; margin-left: 0; }
         }
 
         @media (max-width: 800px) {
@@ -694,6 +777,12 @@
             .cta-box { padding: 40px 24px; text-align: left; align-items: flex-start;}
             
             .nav-btn { padding: 10px; font-size: 30px; }
+
+            .resume-document { padding: 30px 20px; }
+            .resume-header h1 { font-size: 2rem; }
+            .resume-skills-grid { grid-template-columns: 1fr; }
+            .resume-item-header { flex-direction: column; justify-content: flex-start; align-items: flex-start;}
+            .resume-item-date { text-align: left; margin-bottom: 8px; }
         }
 
         @media (max-width: 500px) {
@@ -767,11 +856,17 @@
                 Estudiante de la Licenciatura en Ingeniería en Sistemas Computacionales por UTEL, especializado en transformar tareas manuales en automatizadas a través de la tecnología, la optimización y el mantenimiento de sistemas.
             </p>
 
-            <!-- Llamado sutil a explorar el perfil en lugar de vender de golpe -->
-            <a href="#habilidades" class="btn-outline" style="margin-top: 0;">
-                Explorar mi perfil
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 6px;"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
-            </a>
+            <!-- Botones principales -->
+            <div style="display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; z-index: 10;">
+                <a href="#habilidades" class="btn-outline" style="margin-top: 0;">
+                    Explorar mi perfil
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 6px;"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+                </a>
+                <button onclick="openResumeModal()" class="btn-outline" style="margin-top: 0; border-color: var(--accent); color: var(--accent); background: rgba(16,185,129,0.05);">
+                    Ver hoja de vida
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 6px;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                </button>
+            </div>
         </section>
 
         <div class="content-wrapper">
@@ -993,6 +1088,12 @@
                     <h2 style="font-size: 2.5rem; font-weight: 800; margin-bottom: 12px; letter-spacing: -0.04em; color: var(--text-main);">¿Trabajamos juntos?</h2>
                     <p style="color: var(--text-muted); margin-bottom: 40px; font-size: 1.1rem; line-height: 1.6;">Hablemos de código, IA o cómo optimizar la tecnología de tu negocio.</p>
                     <button class="btn btn-primary" style="width: 100%; justify-content: center; padding: 20px;" onclick="openContact()">Contactar ahora</button>
+                    
+                    <!-- Botón para descargar toda la web como imagen -->
+                    <button onclick="downloadPageAsImage()" class="btn-capture">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+                        Descargar esta web como Imagen
+                    </button>
                 </div>
             </section>
 
@@ -1027,7 +1128,181 @@
         </div>
     </div>
 
+    <!-- Modal Hoja de Vida -->
+    <div id="resumeModal" class="modal resume-modal" onclick="closeModal('resumeModal', event)">
+        <div style="width: 100%; max-width: 850px; display: flex; flex-direction: column;" onclick="event.stopPropagation()">
+            <!-- Controles Flotantes para el PDF -->
+            <div class="resume-controls">
+                <button onclick="downloadPDF()" class="btn-glow" style="margin: 0; padding: 10px 24px;">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                    Descargar en PDF
+                </button>
+                <span class="close-btn" onclick="closeModal('resumeModal', 'force')" style="position: static; font-size: 40px; color: #fff;">&times;</span>
+            </div>
+            
+            <!-- Documento Aislado para el PDF -->
+            <div id="resumeDocument" class="resume-document">
+                <div class="resume-header">
+                    <h1>Shordy Simbaña</h1>
+                    <p>Desarrollador de soluciones personalizadas con IA | Estudiante Ing. en Sistemas</p>
+                    <div class="resume-contact">
+                        <span><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg> shordy46.58@gmail.com</span>
+                        <span><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg> +593 98 418 2834</span>
+                        <span><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg> linkedin.com/in/shordy</span>
+                        <span><svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg> github.com/ShordyEA</span>
+                    </div>
+                </div>
+
+                <div class="resume-body">
+                    <!-- Columna Izquierda (32%) -->
+                    <div class="resume-column-left">
+                        <div class="resume-section">
+                            <h2>Perfil Profesional</h2>
+                            <p class="resume-item-desc">Estudiante de la Licenciatura en Ingeniería en Sistemas Computacionales por UTEL, especializado en transformar tareas manuales en automatizadas a través de la tecnología, la optimización y el mantenimiento de sistemas con integración de Inteligencia Artificial (LLMs).</p>
+                        </div>
+                        
+                        <div class="resume-section">
+                            <h2>Habilidades & Tech</h2>
+                            <div class="resume-skills-grid">
+                                <div>
+                                    <strong style="color: var(--accent); font-size: 0.9rem;">Especialidades:</strong>
+                                    <ul class="resume-list">
+                                        <li>Desarrollo con IA & Prompt Eng.</li>
+                                        <li>Desarrollo Full Stack (Arq. modular)</li>
+                                        <li>Automatización de Procesos B2B</li>
+                                        <li>Soporte y Optimización Hardware</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <strong style="color: var(--accent); font-size: 0.9rem;">Tecnologías:</strong>
+                                    <p class="resume-item-desc" style="margin-top: 4px;">HTML5, CSS3, Python, Linux, Windows OS, VS Code, Google Cloud, Microsoft 365, Google Gemini.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="resume-section">
+                            <h2>Educación & Cert.</h2>
+                            <ul class="resume-list" style="padding-left: 0; list-style: none;">
+                                <li style="margin-bottom: 8px;"><strong>Ing. en Sistemas Computacionales</strong><br><span style="color: #6b7280;">UTEL Universidad (Estudiante)</span></li>
+                                <li style="margin-bottom: 8px;"><strong>Hackathon: Innovación E-commerce</strong><br><span style="color: #6b7280;">UTEL & Tiendanube (2026)</span></li>
+                                <li style="margin-bottom: 8px;"><strong>Informática Forense</strong><br><span style="color: #6b7280;">Academia Progenios (2025)</span></li>
+                                <li style="margin-bottom: 8px;"><strong>Customer Experience y Asistencia</strong><br><span style="color: #6b7280;">Remotos Academy / CertiProf (2025)</span></li>
+                                <li style="margin-bottom: 8px;"><strong>Intro. to Bionic Prostheses</strong><br><span style="color: #6b7280;">P4H Bionics (2024)</span></li>
+                                <li><strong>Gestión de RAEE (Parte 1 y 2)</strong><br><span style="color: #6b7280;">Ministerio del Ambiente (2025)</span></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Columna Derecha (Resto) -->
+                    <div class="resume-column-right">
+                        <div class="resume-section">
+                            <h2>Experiencia</h2>
+                            <div class="resume-item">
+                                <div class="resume-item-header">
+                                    <div>
+                                        <div class="resume-item-title">Fundador & Lead Developer</div>
+                                        <div class="resume-item-subtitle">LycodeLife</div>
+                                    </div>
+                                    <div class="resume-item-date">Presente</div>
+                                </div>
+                                <p class="resume-item-desc">Arquitectura B2B, desarrollo Full-Stack y automatización de procesos internos utilizando Inteligencia Artificial.</p>
+                            </div>
+                            <div class="resume-item">
+                                <div class="resume-item-header">
+                                    <div>
+                                        <div class="resume-item-title">Consultor Independiente</div>
+                                        <div class="resume-item-subtitle">Proyectos Autónomos</div>
+                                    </div>
+                                    <div class="resume-item-date">Presente</div>
+                                </div>
+                                <p class="resume-item-desc">Desarrollo UI/UX, integración de modelos de IA y optimización de hardware a medida para clientes locales.</p>
+                            </div>
+                            <div class="resume-item">
+                                <div class="resume-item-header">
+                                    <div>
+                                        <div class="resume-item-title">Asistente de Archivo</div>
+                                        <div class="resume-item-subtitle">Ministerio del Ambiente (Jóvenes en Acción)</div>
+                                    </div>
+                                    <div class="resume-item-date">Feb 2025</div>
+                                </div>
+                                <p class="resume-item-desc">Trabajé en el área de archivo, desarrollando habilidades para gestionar, crear y ordenar documentos históricos de gran importancia.</p>
+                            </div>
+                        </div>
+
+                        <div class="resume-section">
+                            <h2>Proyectos Destacados</h2>
+                            <div class="resume-item">
+                                <div class="resume-item-header">
+                                    <div>
+                                        <div class="resume-item-title">Hackathon - UTEL / Tiendanube</div>
+                                        <div class="resume-item-subtitle">Lead Developer & Project Manager</div>
+                                    </div>
+                                    <div class="resume-item-date">Marzo 2026</div>
+                                </div>
+                                <ul class="resume-list">
+                                    <li>Liderazgo técnico en frontend y arquitectura asegurando la calidad del código.</li>
+                                    <li>Uso de Gemini CLI para agilizar el desarrollo y la toma de decisiones bajo presión.</li>
+                                    <li>Diseño de la arquitectura de "NubIA", asistente inteligente para emprendedores.</li>
+                                </ul>
+                            </div>
+                            <div class="resume-item">
+                                <div class="resume-item-header">
+                                    <div>
+                                        <div class="resume-item-title">Digitalización Histórica - MAATE</div>
+                                        <div class="resume-item-subtitle">Gestión de Datos & Archivo</div>
+                                    </div>
+                                    <div class="resume-item-date">Proyecto (4 meses)</div>
+                                </div>
+                                <ul class="resume-list">
+                                    <li>Rescate patrimonial y digitalización de documentos que datan de 1850.</li>
+                                    <li>Construcción de base de datos consolidando registros e historiales de vida.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
+        // === LÓGICA DE LA HOJA DE VIDA (PDF & MODAL) ===
+        function openResumeModal() {
+            document.getElementById('resumeModal').classList.add('active');
+        }
+
+        function downloadPDF() {
+            // Selecciona el documento aislado de la hoja de vida
+            const element = document.getElementById('resumeDocument');
+            
+            // Opciones para la librería html2pdf
+            const opt = {
+                margin:       [10, 0, 10, 0], // Margen arriba, derecha, abajo, izquierda
+                filename:     'Hoja_de_Vida_Shordy_Simbana.pdf',
+                image:        { type: 'jpeg', quality: 1 },
+                html2canvas:  { scale: 2, useCORS: true, letterRendering: true },
+                jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            };
+            
+            // Llama a la librería
+            html2pdf().set(opt).from(element).save().then(() => {
+                console.log("PDF descargado correctamente.");
+            });
+        }
+
+        // === LÓGICA PARA CAPTURAR TODA LA WEB COMO IMAGEN ===
+        function downloadPageAsImage() {
+            const body = document.body;
+            // Usamos el engine de html2canvas que viene incluido dentro de html2pdf
+            html2pdf().set({ html2canvas: { scale: 2, useCORS: true, backgroundColor: '#040d0a' } }).from(body).outputImg('datauristring').then(function (pdfAsString) {
+                // Truco para extraer la imagen generada por canvas antes de que se haga PDF
+                var link = document.createElement('a');
+                link.download = 'Portafolio_Shordy_Simbana.png';
+                link.href = pdfAsString;
+                link.click();
+            });
+        }
+
         // === EFECTO DE LUZ EN EL RATÓN (Bento Hover) ===
         function handleMouseMove(e, element) {
             const rect = element.getBoundingClientRect();
