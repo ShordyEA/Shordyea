@@ -434,19 +434,27 @@
             gap: 16px; 
         }
 
+        /* MINIATURAS DE CERTIFICADOS CON ESQUINAS REDONDAS */
         .cert-thumb {
             display: none; 
             width: 70px;
             height: 50px;
-            border-radius: 8px;
+            border-radius: 10px; /* Esquinas redondas */
             object-fit: cover;
             box-shadow: 0 4px 10px rgba(0,0,0,0.5);
             flex-shrink: 0;
+            transition: all 0.4s ease;
         }
 
         .cert-item:hover, .cert-item.active {
             background: rgba(16,185,129,0.05);
             transform: translateX(12px);
+        }
+
+        /* RESPLANDOR LLAMATIVO PARA MINIATURA ACTIVA/HOVER */
+        .cert-item:hover .cert-thumb, .cert-item.active .cert-thumb {
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5), 0 0 15px rgba(16, 185, 129, 0.3);
+            border: 1px solid rgba(16, 185, 129, 0.4);
         }
 
         .cert-info h4 { font-size: 1.1rem; font-weight: 600; margin-bottom: 6px; color: var(--text-main); }
@@ -464,8 +472,23 @@
             box-shadow: 0 30px 60px rgba(0,0,0,0.5); cursor: zoom-in;
         }
 
-        .cert-preview-img { width: 100%; height: 100%; object-fit: contain; transition: opacity 0.4s ease, transform 0.4s ease; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));}
-        .cert-preview-area:hover .cert-preview-img { transform: scale(1.03); }
+        /* IMAGEN DE VISTA PREVIA: ESQUINAS REDONDAS Y RESPLANDOR */
+        .cert-preview-img { 
+            width: auto; 
+            height: auto; 
+            max-width: 95%; 
+            max-height: 95%;
+            object-fit: contain; 
+            border-radius: 16px; /* Esquinas redondas */
+            border: 1px solid rgba(16, 185, 129, 0.2); /* Borde sutil jade */
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5), 0 0 25px rgba(16, 185, 129, 0.15); /* Resplandor llamativo pero suave */
+            transition: opacity 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease; 
+        }
+        
+        .cert-preview-area:hover .cert-preview-img { 
+            transform: scale(1.03); 
+            box-shadow: 0 15px 40px rgba(0,0,0,0.6), 0 0 40px rgba(16, 185, 129, 0.3); /* Resplandor más fuerte en hover */
+        }
 
         .btn-more-certs {
             margin-top: 16px; width: 100%; text-align: center; padding: 20px;
@@ -587,7 +610,15 @@
             align-items: center; justify-content: center; opacity: 0; transition: opacity 0.4s ease;
         }
         .modal.active { display: flex; opacity: 1; }
-        .modal-content { max-width: 85%; max-height: 85vh; border-radius: 16px; box-shadow: 0 30px 60px rgba(0,0,0,0.8); }
+        
+        /* IMAGEN EXPANDIDA EN EL MODAL: ESQUINAS REDONDAS Y RESPLANDOR */
+        .modal-content { 
+            max-width: 85%; 
+            max-height: 85vh; 
+            border-radius: 16px; /* Esquinas redondas en modal */
+            box-shadow: 0 20px 60px rgba(0,0,0,0.8), 0 0 50px rgba(16, 185, 129, 0.2); /* Resplandor llamativo suave */
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
         
         /* Estilos de flechas de navegación de Galería */
         .nav-btn {
