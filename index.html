@@ -824,6 +824,31 @@
             .cover-name { font-size: 3rem; }
             .cover-photo { width: 160px; height: 160px; }
         }
+
+        /* === FUERZA ESTILOS DE PC PARA EL PDF GENERADO DESDE MÓVIL === */
+        /* Estas clases solo se aplican temporalmente durante la descarga */
+        .pdf-export-mode {
+            width: 794px !important;
+            max-width: 794px !important;
+            padding: 30px 40px !important;
+            background: #ffffff !important;
+        }
+        .pdf-export-mode .resume-body {
+            display: grid !important;
+            grid-template-columns: 32% 1fr !important;
+            gap: 20px !important;
+        }
+        .pdf-export-mode .resume-item-header {
+            display: flex !important;
+            flex-direction: row !important;
+            justify-content: space-between !important;
+            align-items: baseline !important;
+        }
+        .pdf-export-mode .resume-item-date {
+            text-align: right !important;
+            margin-bottom: 0 !important;
+            margin-left: 8px !important;
+        }
     </style>
 </head>
 <body class="locked">
@@ -1346,26 +1371,50 @@
         }
 
         function downloadPDF() {
-            // Selecciona el documento aislado de la hoja de vida
-            const element = document.getElementById('resumeDocument');
+            // 1. Seleccionamos el documento original
+            const originalElement = document.getElementById('resumeDocument');
+            
+            // 2. Creamos un CLON EXACTO para manipularlo sin dañar tu vista en el celular
+            const element = originalElement.cloneNode(true);
+            
+            // 3. Le añadimos una clase especial que anula el @media query del celular y fuerza la cuadrícula de PC
+            element.classList.add('pdf-export-mode'); 
+            
+            // 4. Creamos un contenedor temporal fuera de pantalla donde la librería hará la "foto"
+            const tempContainer = document.createElement('div');
+            tempContainer.style.position = 'absolute';
+            tempContainer.style.left = '-9999px'; // Lo escondemos fuera del viewport
+            tempContainer.style.top = '0';
+            tempContainer.style.width = '1200px'; // Le decimos al navegador que esto es un monitor de PC
+            tempContainer.appendChild(element);
+            
+            // Insertamos el clon invisible en el HTML
+            document.body.appendChild(tempContainer);
             
             // Opciones para la librería html2pdf
             const opt = {
-                margin:       0, // Eliminamos el margen externo para que se ajuste exactamente usando el padding CSS
+                margin:       0,
                 filename:     'Hoja_de_Vida_Shordy_Simbana.pdf',
                 image:        { type: 'jpeg', quality: 0.98 },
                 html2canvas:  { 
                     scale: 2, 
                     useCORS: true, 
                     letterRendering: true,
-                    scrollY: 0 // <-- ESTA ES LA MAGIA: Esto elimina el espacio gigante en blanco de arriba
+                    scrollY: 0,
+                    windowWidth: 1200 // Forzamos a html2canvas a tomar la foto como si fuera una pantalla grande
                 },
                 jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
             };
             
-            // Llama a la librería
+            // Generamos el PDF usando el CLON configurado como PC
             html2pdf().set(opt).from(element).save().then(() => {
-                console.log("PDF descargado correctamente.");
+                // Al terminar, eliminamos el clon del código sin que el usuario note nada
+                document.body.removeChild(tempContainer);
+                console.log("PDF descargado correctamente desde cualquier dispositivo.");
+            }).catch(err => {
+                // En caso de error, también limpiar el DOM
+                document.body.removeChild(tempContainer);
+                console.error("Error al generar PDF: ", err);
             });
         }
 
