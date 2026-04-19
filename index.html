@@ -829,11 +829,14 @@
         /* Estas clases solo se aplican temporalmente durante la descarga */
         .pdf-export-mode {
             width: 794px !important;
+            min-width: 794px !important; /* Mantiene el tamaño riguroso */
             max-width: 794px !important;
-            margin: 0 !important; /* FIX: Evita que el clon se centre dejando un hueco gigante a la izquierda */
+            margin: 0 !important; 
             padding: 30px 40px !important;
             background: #ffffff !important;
             box-sizing: border-box !important;
+            position: relative !important;
+            transform: none !important;
         }
         .pdf-export-mode .resume-body {
             display: grid !important;
@@ -1382,16 +1385,20 @@
             // 3. Le añadimos una clase especial que anula el @media query del celular y fuerza la cuadrícula de PC
             element.classList.add('pdf-export-mode'); 
             
-            // 4. Creamos un contenedor temporal fuera de pantalla donde la librería hará la "foto"
+            // 4. FIX: Envolver el clon en un contenedor posicionado absolutamente en la esquina superior izquierda.
+            // Esto evita que los márgenes del body o el scroll en el móvil distorsionen las coordenadas de la foto.
             const tempContainer = document.createElement('div');
             tempContainer.style.position = 'absolute';
-            tempContainer.style.left = '-9999px'; // Lo escondemos fuera del viewport
+            tempContainer.style.left = '0'; // Forzar posición a la izquierda sin valores negativos
             tempContainer.style.top = '0';
-            tempContainer.style.width = '794px'; // FIX: Ajustado al tamaño exacto de A4, no a 1200px
+            tempContainer.style.width = '794px'; 
+            tempContainer.style.minWidth = '794px'; 
+            tempContainer.style.zIndex = '-9999'; // Lo enviamos detrás de todo
+            tempContainer.style.opacity = '0';    // Lo hacemos invisible sin usar display:none (para que html2canvas lo lea)
+            tempContainer.style.pointerEvents = 'none';
             tempContainer.style.background = '#ffffff';
-            tempContainer.appendChild(element);
             
-            // Insertamos el clon invisible en el HTML
+            tempContainer.appendChild(element);
             document.body.appendChild(tempContainer);
             
             // Opciones para la librería html2pdf
@@ -1403,15 +1410,20 @@
                     scale: 2, 
                     useCORS: true, 
                     letterRendering: true,
+                    // FIX: Configuraciones clave para evitar el corte o márgenes fantasma en celulares
                     scrollY: 0,
-                    windowWidth: 794 // FIX: La captura se hace sobre el tamaño exacto, eliminando la banda blanca
+                    scrollX: 0, // Ignorar si el usuario ha hecho scroll hacia los lados
+                    x: 0,       // Indicar explícitamente que la "foto" arranca desde el pixel 0 en X
+                    y: 0,       // Y arranca desde el pixel 0 en Y
+                    windowWidth: 794, // Simular que estamos en un monitor
+                    width: 794        // Obligar al lienzo interno a medir exactamente 794px de ancho
                 },
                 jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
             };
             
             // Generamos el PDF usando el CLON configurado como PC
             html2pdf().set(opt).from(element).save().then(() => {
-                // Al terminar, eliminamos el clon del código sin que el usuario note nada
+                // Al terminar, eliminamos el clon del código sin dejar rastro
                 document.body.removeChild(tempContainer);
                 console.log("PDF descargado correctamente desde cualquier dispositivo.");
             }).catch(err => {
