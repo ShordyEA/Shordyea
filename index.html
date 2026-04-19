@@ -830,8 +830,10 @@
         .pdf-export-mode {
             width: 794px !important;
             max-width: 794px !important;
+            margin: 0 !important; /* FIX: Evita que el clon se centre dejando un hueco gigante a la izquierda */
             padding: 30px 40px !important;
             background: #ffffff !important;
+            box-sizing: border-box !important;
         }
         .pdf-export-mode .resume-body {
             display: grid !important;
@@ -1385,7 +1387,8 @@
             tempContainer.style.position = 'absolute';
             tempContainer.style.left = '-9999px'; // Lo escondemos fuera del viewport
             tempContainer.style.top = '0';
-            tempContainer.style.width = '1200px'; // Le decimos al navegador que esto es un monitor de PC
+            tempContainer.style.width = '794px'; // FIX: Ajustado al tamaño exacto de A4, no a 1200px
+            tempContainer.style.background = '#ffffff';
             tempContainer.appendChild(element);
             
             // Insertamos el clon invisible en el HTML
@@ -1401,7 +1404,7 @@
                     useCORS: true, 
                     letterRendering: true,
                     scrollY: 0,
-                    windowWidth: 1200 // Forzamos a html2canvas a tomar la foto como si fuera una pantalla grande
+                    windowWidth: 794 // FIX: La captura se hace sobre el tamaño exacto, eliminando la banda blanca
                 },
                 jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
             };
