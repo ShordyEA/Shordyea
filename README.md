@@ -43,6 +43,6 @@ Especialista en desarrollo potenciado por IA y soluciones B2B. Mi enfoque se cen
 
 * **Email:** [shordy46.58@gmail.com](mailto:shordy46.58@gmail.com)  
 * **WhatsApp:** [\+593 98 418 2834](https://wa.me/593984182834)  
-* **LinkedIn:** \[Tu Perfil de LinkedIn\]
+* **LinkedIn:** \[https://www.linkedin.com/in/shordy/]
 
 Desarrollado con precisión por **Shordy | LycodeLife**.
