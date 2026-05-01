@@ -3,9 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shordy Simbaña | Software & IA</title>
+    
+    <!-- === OPTIMIZACIÓN SEO BÁSICA === -->
+    <title>Shordy Simbaña | Desarrollador de Software B2B e IA | LyCodeLife</title>
+    <meta name="description" content="Portafolio de Shordy Simbaña, desarrollador de software B2B y especialista en Inteligencia Artificial en Ecuador. Fundador de la agencia LyCodeLife.">
+    <meta name="keywords" content="Shordy Simbaña, Desarrollador de software, Inteligencia Artificial, LyCodeLife, Automatización B2B, Programador Ecuador, Quito">
+    <meta name="author" content="Shordy Simbaña">
     <meta name="theme-color" content="#040d0a">
-    <meta name="description" content="Ingeniería de software B2B por Shordy Simbaña. Desarrollo potenciado por IA y soporte de hardware.">
+    
+    <!-- === OPTIMIZACIÓN PARA REDES SOCIALES (Open Graph) === -->
+    <meta property="og:title" content="Shordy Simbaña | Software & Inteligencia Artificial">
+    <meta property="og:description" content="Transformando ideas en herramientas B2B con desarrollo a medida y automatización IA.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://shordyea.github.io/">
+    <meta property="og:image" content="https://shordyea.github.io/imagenes/perfil.png"> 
     
     <!-- Tipografía Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,6 +25,67 @@
     
     <!-- Librería para exportar a PDF y capturar Imagen -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <!-- === DATOS ESTRUCTURADOS (JSON-LD) PARA GOOGLE Y LLMs (Día 2) === -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Shordy Simbaña",
+      "url": "https://shordyea.github.io/",
+      "jobTitle": "Lead Developer & Fundador",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "LyCodeLife",
+        "url": "https://lycodelife.github.io/LycodeLife/"
+      },
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "UTEL Universidad"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/in/shordy/",
+        "https://github.com/ShordyEA"
+      ],
+      "knowsAbout": [
+        "Inteligencia Artificial",
+        "Desarrollo de Software B2B",
+        "Automatización de Procesos",
+        "Python",
+        "Desarrollo Web"
+      ]
+    }
+    </script>
+
+    <!-- DATOS ESTRUCTURADOS PARA PREGUNTAS FRECUENTES (Rich Snippets) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [{
+        "@type": "Question",
+        "name": "¿Qué diferencia a LyCodeLife de las demás agencias de desarrollo?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Trabajamos de manera responsable, directa y desarrollamos herramientas de software B2B personalizadas exclusivamente para tus necesidades. No usamos plantillas genéricas; analizamos tu modelo de negocio y construimos soluciones a medida."
+        }
+      }, {
+        "@type": "Question",
+        "name": "¿Cómo puede la Inteligencia Artificial (IA) y la automatización mejorar mi empresa?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "En LyCodeLife integramos modelos de lenguaje (LLMs) y creamos flujos de automatización que eliminan tareas manuales repetitivas, permitiendo procesar datos en segundos y reducir costos operativos."
+        }
+      }, {
+        "@type": "Question",
+        "name": "¿Qué tipo de empresas se benefician de sus servicios de software a medida?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Nos especializamos en soluciones B2B (Business to Business). Ayudamos principalmente a pymes, startups y empresas tradicionales que buscan la transformación digital."
+        }
+      }]
+    }
+    </script>
 
     <style>
         /* === PALETA MINIMALISTA Y VARIABLES (Verde Jade Original) === */
@@ -329,7 +401,8 @@
             box-shadow: 0 20px 40px rgba(0,0,0,0.2);
             margin-bottom: 80px;
         }
-        .about-card h3 { font-size: 1.8rem; font-weight: 800; margin-bottom: 16px; color: var(--text-main); }
+        /* Ajuste SEO: Cambiado el selector de h3 a h2 para mantener la jerarquía */
+        .about-card h2 { font-size: 1.8rem; font-weight: 800; margin-bottom: 16px; color: var(--text-main); }
         .about-card p { font-size: 1.15rem; color: var(--text-muted); line-height: 1.8; }
         .about-card strong { color: var(--text-main); }
 
@@ -440,7 +513,8 @@
             border: 1px solid rgba(16, 185, 129, 0.4);
         }
 
-        .cert-info h4 { font-size: 1.1rem; font-weight: 600; margin-bottom: 6px; color: var(--text-main); }
+        /* Ajuste SEO: Cambiado de h4 a h3 para mantener la jerarquía semántica */
+        .cert-info h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 6px; color: var(--text-main); }
         .cert-info p { font-size: 0.95rem; color: var(--text-muted); }
         .cert-year {
             font-size: 0.9rem; font-weight: 700; color: var(--accent);
@@ -499,7 +573,9 @@
         .review-text { font-size: 1.15rem; color: var(--text-main); line-height: 1.7; font-style: italic; margin-bottom: 32px; font-weight: 500;}
         .review-author { display: flex; align-items: center; gap: 16px; }
         .review-avatar { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; }
-        .review-author-info h4 { font-size: 1.1rem; color: var(--text-main); margin-bottom: 2px;}
+        
+        /* Ajuste SEO: h4 modificado a strong */
+        .review-author-info strong { font-size: 1.1rem; color: var(--text-main); margin-bottom: 2px; display: block;}
         .review-author-info span { font-size: 0.9rem; color: var(--text-muted);}
         .google-icon { position: absolute; top: 40px; right: 40px; width: 24px; opacity: 0.5; }
 
@@ -876,42 +952,47 @@
     <!-- === HUD LATERAL (SIDEBAR) === -->
     <aside class="hud-sidebar">
         <div class="hud-profile">
-            <img src="imagenes/avatar.png" alt="Avatar Shordy" onerror="this.src='https://placehold.co/400x400/0a1813/10b981?text=Shordy'">
+            <!-- SEO Atributo Alt actualizado -->
+            <img src="imagenes/avatar.png" alt="Avatar Shordy Simbaña - Desarrollador B2B" onerror="this.src='https://placehold.co/400x400/0a1813/10b981?text=Shordy'">
         </div>
         
         <nav class="hud-nav">
-            <a href="#sobre-mi">Sobre Mí</a>
-            <a href="#proyectos">Proyectos</a>
-            <a href="#certificados">Credenciales</a>
-            <a href="#servicios">Servicios</a>
-            <a href="#experiencia">Experiencia</a>
-            <a href="#testimonios">Testimonios</a>
-            <a href="#faq">FAQ</a>
+            <!-- Atributos Title para el enlazado interno -->
+            <a href="#sobre-mi" title="Conoce más sobre Shordy Simbaña">Sobre Mí</a>
+            <a href="#proyectos" title="Explora mis proyectos destacados en software">Proyectos</a>
+            <a href="#certificados" title="Ver mis certificaciones académicas">Credenciales</a>
+            <a href="#servicios" title="Servicios de Desarrollo de Software a medida">Servicios</a>
+            <a href="#experiencia" title="Mi experiencia laboral y agencia LyCodeLife">Experiencia</a>
+            <a href="#testimonios" title="Opiniones y reseñas de clientes">Testimonios</a>
+            <a href="#faq" title="Preguntas frecuentes sobre mis servicios">FAQ</a>
         </nav>
 
         <div class="hud-footer">
             <div class="social-links">
-                <a href="https://github.com/ShordyEA" target="_blank" aria-label="GitHub"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
-                <a href="https://www.linkedin.com/in/shordy/" target="_blank" aria-label="LinkedIn"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
-                <a href="mailto:shordy46.58@gmail.com" aria-label="Email"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4C2.9 4 2.01 4.9 2.01 6L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></a>
+                <a href="https://github.com/ShordyEA" target="_blank" aria-label="Repositorio GitHub de Shordy Simbaña"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
+                <a href="https://www.linkedin.com/in/shordy/" target="_blank" aria-label="Perfil de LinkedIn de Shordy Simbaña"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+                <a href="mailto:shordy46.58@gmail.com" aria-label="Enviar Correo Electrónico"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4C2.9 4 2.01 4.9 2.01 6L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></a>
             </div>
             <span class="hud-footer-text">Talento orgullosamente Ecuatoriano</span>
         </div>
         
         <!-- Imagen de la bandera degradada al fondo de la barra lateral -->
-        <img src="imagenes/bandera.png" alt="Bandera Ecuador" class="sidebar-flag" onerror="this.src='https://images.unsplash.com/photo-1590089415225-401ed6f9db8e?q=80&w=600&auto=format&fit=crop'">
+        <!-- SEO Atributo Alt actualizado -->
+        <img src="imagenes/bandera.png" alt="Bandera de Ecuador - Programador de Quito" class="sidebar-flag" onerror="this.src='https://images.unsplash.com/photo-1590089415225-401ed6f9db8e?q=80&w=600&auto=format&fit=crop'">
     </aside>
 
     <!-- === CONTENIDO PRINCIPAL === -->
     <main class="content-area">
         
         <!-- INTRODUCCIÓN (Hero Section) -->
-        <section class="hero-section">
+        <!-- SEO Semantic Tag: Cambiado de <section> a <header> -->
+        <header class="hero-section">
             <div class="hero-bg-img"></div>
             <div class="hero-bg-gradient"></div>
             
-            <img src="imagenes/perfil.png" alt="Shordy Simbaña" class="hero-photo-main" onerror="this.src='https://placehold.co/400x400/0a1813/10b981?text=Shordy'">
+            <img src="imagenes/perfil.png" alt="Foto de Shordy Simbaña" class="hero-photo-main" onerror="this.src='https://placehold.co/400x400/0a1813/10b981?text=Shordy'">
             
+            <!-- Único y más importante H1 en la página -->
             <h1 class="hero-title">Shordy Simbaña</h1>
             <h2 class="hero-subtitle">Desarrollador de soluciones personalizadas con IA</h2>
             <p class="hero-desc">
@@ -920,27 +1001,28 @@
 
             <!-- Botones principales -->
             <div style="display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; z-index: 10;">
-                <a href="#sobre-mi" class="btn-outline" style="margin-top: 0;">
+                <a href="#sobre-mi" class="btn-outline" style="margin-top: 0;" title="Ir a la sección Sobre Mi">
                     Explorar mi perfil
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 6px;"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
                 </a>
-                <button onclick="openResumeModal()" class="btn-outline" style="margin-top: 0; border-color: var(--accent); color: var(--accent); background: rgba(16,185,129,0.05);">
+                <button onclick="openResumeModal()" class="btn-outline" style="margin-top: 0; border-color: var(--accent); color: var(--accent); background: rgba(16,185,129,0.05);" title="Ver y descargar la Hoja de Vida">
                     Ver hoja de vida
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 6px;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
                 </button>
-                <a href="https://github.com/ShordyEA" target="_blank" class="btn-outline" style="margin-top: 0;">
+                <a href="https://github.com/ShordyEA" target="_blank" class="btn-outline" style="margin-top: 0;" title="Ver Repositorio Oficial en GitHub">
                     Ver Repositorio
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 6px;"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
                 </a>
             </div>
-        </section>
+        </header>
 
-        <div class="content-wrapper">
+        <article class="content-wrapper">
             
             <!-- SECCIÓN 1: SOBRE MÍ HUMANIZADO (Reescrito y persuasivo) -->
             <section class="section" id="sobre-mi">
                 <div class="about-card">
-                    <h3>Más que código, visión a futuro.</h3>
+                    <!-- SEO: Cambiado de h3 a h2 para respetar la jerarquía -->
+                    <h2>Más que código, visión a futuro.</h2>
                     <p>
                         ¡Hola! Soy Shordy. Para mí, la tecnología no se trata solo de escribir código o arreglar computadoras, sino de construir soluciones que hagan la vida más fácil. Veo a las máquinas como las aliadas perfectas para transformar ideas sueltas en herramientas que realmente ayuden a tu negocio a crecer.<br><br>
                         
@@ -960,7 +1042,7 @@
                     <!-- Proyecto Nuevo: WhatsApp Life -->
                     <div class="project-card">
                         <div class="project-img-wrapper">
-                            <img src="imagenes/proyectos/whats.png" alt="WhatsApp Life" onclick="openSingleImage(this.src)" onerror="this.src='https://placehold.co/800x600/0a1813/10b981?text=WhatsApp+Life'">
+                            <img src="imagenes/proyectos/whats.png" alt="Proyecto de Software: WhatsApp Life" onclick="openSingleImage(this.src)" onerror="this.src='https://placehold.co/800x600/0a1813/10b981?text=WhatsApp+Life'">
                         </div>
                         <div class="project-info">
                             <h3>WhatsApp Life (by LyCodeLife)</h3>
@@ -972,7 +1054,7 @@
                                 <li><strong>Sistema Anti-Ban:</strong> Protege tu número con un motor de comportamiento orgánico que simula tiempos dinámicos de tipeo, pausas inter-mensajes y descansos naturales.</li>
                                 <li><strong>UX Premium:</strong> Experiencia de usuario totalmente moderna, minimalista y sin complicaciones técnicas.</li>
                             </ul>
-                            <a href="https://github.com/ShordyEA/WhatsApp-Life" target="_blank" class="btn-outline">
+                            <a href="https://github.com/ShordyEA/WhatsApp-Life" target="_blank" class="btn-outline" title="Repositorio del proyecto WhatsApp Life">
                                 Ver Repositorio
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
                             </a>
@@ -982,7 +1064,7 @@
                     <!-- Proyecto 1: Hackathon -->
                     <div class="project-card">
                         <div class="project-img-wrapper">
-                            <img src="imagenes/proyectos/tienda nube.png" alt="Hackathon UTEL Tiendanube" onclick="openSingleImage(this.src)" onerror="this.src='https://placehold.co/800x600/0a1813/10b981?text=Proyecto+NubIA'">
+                            <img src="imagenes/proyectos/tienda nube.png" alt="Hackathon UTEL Tiendanube por Shordy Simbaña" onclick="openSingleImage(this.src)" onerror="this.src='https://placehold.co/800x600/0a1813/10b981?text=Proyecto+NubIA'">
                         </div>
                         <div class="project-info">
                             <h3>Hackathon - UTEL / Tiendanube</h3>
@@ -993,7 +1075,7 @@
                                 <li><strong>Impulso con IA:</strong> Utilicé Gemini CLI para agilizar el desarrollo y la toma de decisiones bajo presión.</li>
                                 <li><strong>Nacimiento de "NubIA":</strong> Diseñé la arquitectura de este asistente inteligente para emprendedores.</li>
                             </ul>
-                            <a href="https://github.com/ShordyEA/hackathon-TiendaNube/tree/main" target="_blank" class="btn-outline">
+                            <a href="https://github.com/ShordyEA/hackathon-TiendaNube/tree/main" target="_blank" class="btn-outline" title="Repositorio del proyecto Hackathon">
                                 Ver Repositorio
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
                             </a>
@@ -1003,7 +1085,7 @@
                     <!-- Proyecto 2: MAATE -->
                     <div class="project-card">
                         <div class="project-img-wrapper">
-                            <img src="imagenes/proyectos/mate.png" alt="Digitalización Archivo MAATE" onclick="openSingleImage(this.src)" onerror="this.src='https://placehold.co/800x600/0a1813/10b981?text=Proyecto+MAATE'">
+                            <img src="imagenes/proyectos/mate.png" alt="Proyecto de Digitalización del Ministerio del Ambiente MAATE" onclick="openSingleImage(this.src)" onerror="this.src='https://placehold.co/800x600/0a1813/10b981?text=Proyecto+MAATE'">
                         </div>
                         <div class="project-info">
                             <h3>Digitalización Histórica - MAATE</h3>
@@ -1030,36 +1112,37 @@
                     <div class="certs-list" id="certList">
                         
                         <div class="cert-item active" data-img="imagenes/certificado-utel.png" onclick="openGallery(this)">
-                            <img src="imagenes/certificado-utel.png" class="cert-thumb" onerror="this.src='https://placehold.co/100x100/0a1813/10b981?text=Cert'">
+                            <img src="imagenes/certificado-utel.png" alt="Certificado Asesoría Computación UTEL" class="cert-thumb" onerror="this.src='https://placehold.co/100x100/0a1813/10b981?text=Cert'">
                             <div class="cert-info">
-                                <h4>Asesoría en Ing. en Computación</h4>
+                                <!-- SEO: Cambiado h4 a h3 para jerarquía -->
+                                <h3>Asesoría en Ing. en Computación</h3>
                                 <p>Utel Universidad</p>
                             </div>
                             <span class="cert-year">2025</span>
                         </div>
 
                         <div class="cert-item" data-img="imagenes/certificado-hackathon.png" onclick="openGallery(this)">
-                            <img src="imagenes/certificado-hackathon.png" class="cert-thumb" onerror="this.src='https://placehold.co/100x100/0a1813/10b981?text=Cert'">
+                            <img src="imagenes/certificado-hackathon.png" alt="Certificado de Hackathon en Innovación E-commerce" class="cert-thumb" onerror="this.src='https://placehold.co/100x100/0a1813/10b981?text=Cert'">
                             <div class="cert-info">
-                                <h4>Hackathon: Innovación E-commerce</h4>
+                                <h3>Hackathon: Innovación E-commerce</h3>
                                 <p>Utel & Tiendanube</p>
                             </div>
                             <span class="cert-year">2026</span>
                         </div>
 
                         <div class="cert-item" data-img="imagenes/certificado-forense.png" onclick="openGallery(this)">
-                            <img src="imagenes/certificado-forense.png" class="cert-thumb" onerror="this.src='https://placehold.co/100x100/0a1813/10b981?text=Cert'">
+                            <img src="imagenes/certificado-forense.png" alt="Certificado de Informática Forense" class="cert-thumb" onerror="this.src='https://placehold.co/100x100/0a1813/10b981?text=Cert'">
                             <div class="cert-info">
-                                <h4>Informática Forense</h4>
+                                <h3>Informática Forense</h3>
                                 <p>Academia Progenios</p>
                             </div>
                             <span class="cert-year">2025</span>
                         </div>
 
                         <div class="cert-item" data-img="imagenes/certificado-emotos.png" onclick="openGallery(this)">
-                            <img src="imagenes/certificado-emotos.png" class="cert-thumb" onerror="this.src='https://placehold.co/100x100/0a1813/10b981?text=Cert'">
+                            <img src="imagenes/certificado-emotos.png" alt="Certificado de Customer Experience" class="cert-thumb" onerror="this.src='https://placehold.co/100x100/0a1813/10b981?text=Cert'">
                             <div class="cert-info">
-                                <h4>Customer Experience y Asistencia</h4>
+                                <h3>Customer Experience y Asistencia</h3>
                                 <p>Remotos Academy / CertiProf</p>
                             </div>
                             <span class="cert-year">2025</span>
@@ -1067,16 +1150,16 @@
 
                         <!-- Certificados Ocultos inicialmente -->
                         <div class="cert-item hidden-cert" style="display: none;" data-img="imagenes/certificado-bionics.png" onclick="openGallery(this)">
-                            <img src="imagenes/certificado-bionics.png" class="cert-thumb" onerror="this.src='https://placehold.co/100x100/0a1813/10b981?text=Cert'">
-                            <div class="cert-info"><h4>Intro. to Bionic Prostheses</h4><p>P4H Bionics</p></div><span class="cert-year">2024</span>
+                            <img src="imagenes/certificado-bionics.png" alt="Certificado Bionics" class="cert-thumb" onerror="this.src='https://placehold.co/100x100/0a1813/10b981?text=Cert'">
+                            <div class="cert-info"><h3>Intro. to Bionic Prostheses</h3><p>P4H Bionics</p></div><span class="cert-year">2024</span>
                         </div>
                         <div class="cert-item hidden-cert" style="display: none;" data-img="imagenes/certificado-raee-1.png" onclick="openGallery(this)">
-                            <img src="imagenes/certificado-raee-1.png" class="cert-thumb" onerror="this.src='https://placehold.co/100x100/0a1813/10b981?text=Cert'">
-                            <div class="cert-info"><h4>Gestión de RAEE (Parte 1)</h4><p>Ministerio del Ambiente</p></div><span class="cert-year">2025</span>
+                            <img src="imagenes/certificado-raee-1.png" alt="Certificado Gestión RAEE 1" class="cert-thumb" onerror="this.src='https://placehold.co/100x100/0a1813/10b981?text=Cert'">
+                            <div class="cert-info"><h3>Gestión de RAEE (Parte 1)</h3><p>Ministerio del Ambiente</p></div><span class="cert-year">2025</span>
                         </div>
                         <div class="cert-item hidden-cert" style="display: none;" data-img="imagenes/certificado-raee-2.png" onclick="openGallery(this)">
-                            <img src="imagenes/certificado-raee-2.png" class="cert-thumb" onerror="this.src='https://placehold.co/100x100/0a1813/10b981?text=Cert'">
-                            <div class="cert-info"><h4>Gestión de RAEE (Parte 2)</h4><p>Ministerio del Ambiente</p></div><span class="cert-year">2025</span>
+                            <img src="imagenes/certificado-raee-2.png" alt="Certificado Gestión RAEE 2" class="cert-thumb" onerror="this.src='https://placehold.co/100x100/0a1813/10b981?text=Cert'">
+                            <div class="cert-info"><h3>Gestión de RAEE (Parte 2)</h3><p>Ministerio del Ambiente</p></div><span class="cert-year">2025</span>
                         </div>
                         
                         <button class="btn-more-certs" id="btnToggleCerts" onclick="toggleCerts()">+ Ver 3 credenciales más</button>
@@ -1084,7 +1167,7 @@
 
                     <!-- Área de previsualización (Solo visible en Desktop) -->
                     <div class="cert-preview-area" onclick="openLightboxPreview()">
-                        <img id="mainPreviewImg" src="imagenes/certificado-utel.png" class="cert-preview-img" onerror="this.src='https://placehold.co/600x400/0a1813/10b981?text=Certificado'">
+                        <img id="mainPreviewImg" src="imagenes/certificado-utel.png" alt="Vista previa ampliada del certificado de Shordy Simbaña" class="cert-preview-img" onerror="this.src='https://placehold.co/600x400/0a1813/10b981?text=Certificado'">
                     </div>
                 </div>
             </section>
@@ -1148,11 +1231,11 @@
                 </div>
                 
                 <div class="hero-cta-card">
-                    <img src="imagenes/lycodelife.png" alt="LyCodeLife Agencia" onerror="this.src='https://placehold.co/400x300/0a1813/10b981?text=LyCodeLife'">
+                    <img src="imagenes/lycodelife.png" alt="Agencia de Desarrollo de Software LyCodeLife" onerror="this.src='https://placehold.co/400x300/0a1813/10b981?text=LyCodeLife'">
                     <div class="hero-cta-content">
                         <h3>Descubre LyCodeLife</h3>
                         <p>Además de mi perfil técnico, dirijo mi propia agencia, donde ofrezco <strong>servicios de creación de software B2B personalizados</strong>. Explora demos interactivas y descubre cómo transformo ideas en tecnología funcional para empresas.</p>
-                        <a href="https://lycodelife.github.io/LycodeLife/" target="_blank" class="btn-glow">
+                        <a href="https://lycodelife.github.io/LycodeLife/" target="_blank" class="btn-glow" title="Visitar la agencia LyCodeLife de Shordy Simbaña">
                             Visitar LyCodeLife
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-left:4px;"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
                         </a>
@@ -1164,7 +1247,7 @@
                     <div class="timeline">
                         <div class="timeline-item">
                             <h3 class="timeline-title">Fundador & Lead Developer</h3>
-                            <a href="https://lycodelife.github.io/LycodeLife/" target="_blank" class="timeline-company">LycodeLife ↗</a>
+                            <a href="https://lycodelife.github.io/LycodeLife/" target="_blank" class="timeline-company" title="Visita LyCodeLife Agencia de Desarrollo B2B">LycodeLife ↗</a>
                             <p class="timeline-desc">Arquitectura B2B, desarrollo Full-Stack y automatización de procesos internos utilizando Inteligencia Artificial.</p>
                         </div>
                         <div class="timeline-item">
@@ -1197,17 +1280,18 @@
                         <p class="review-text">"Una experiencia increíble, me ahorré horas y soy más productiva gracias a LyCodeLife recomendadisimoooo"</p>
                         
                         <div class="review-author">
-                            <img src="imagenes/g/1.png" alt="Dayana Velasco" class="review-avatar" onerror="this.src='https://placehold.co/100x100/10b981/ffffff?text=D'">
+                            <img src="imagenes/g/1.png" alt="Dayana Velasco - Testimonio Google" class="review-avatar" onerror="this.src='https://placehold.co/100x100/10b981/ffffff?text=D'">
                             <div class="review-author-info">
-                                <h4>Dayana Velasco</h4>
+                                <!-- SEO: Cambiado de h4 a strong -->
+                                <strong>Dayana Velasco</strong>
                                 <span>1 opinión en Google</span>
                             </div>
                         </div>
 
                         <!-- Botones de Google -->
                         <div style="margin-top: 24px; display: flex; gap: 12px; flex-wrap: wrap;">
-                            <a href="https://www.google.com/search?q=LyCodeLife" target="_blank" class="btn-outline" style="margin-top: 0; padding: 8px 16px; font-size: 0.85rem;">Ver en Google</a>
-                            <a href="https://www.google.com/search?q=LyCodeLife" target="_blank" class="btn-outline" style="margin-top: 0; padding: 8px 16px; font-size: 0.85rem; border-color: var(--text-muted); color: var(--text-muted);">Dejar una opinión</a>
+                            <a href="https://www.google.com/search?q=LyCodeLife" target="_blank" class="btn-outline" style="margin-top: 0; padding: 8px 16px; font-size: 0.85rem;" title="Ver reseñas de LyCodeLife en Google">Ver en Google</a>
+                            <a href="https://www.google.com/search?q=LyCodeLife" target="_blank" class="btn-outline" style="margin-top: 0; padding: 8px 16px; font-size: 0.85rem; border-color: var(--text-muted); color: var(--text-muted);" title="Añade tu opinión sobre los servicios de LyCodeLife">Dejar una opinión</a>
                         </div>
                     </div>
                 </div>
@@ -1285,7 +1369,8 @@
     <div id="imageModal" class="modal" onclick="closeModal('imageModal', event)">
         <span class="close-btn" onclick="closeModal('imageModal', 'force')">&times;</span>
         <span class="nav-btn prev-btn" id="prevBtn" onclick="navGallery(-1, event)">&#10094;</span>
-        <img class="modal-content" id="expandedImg">
+        <!-- SEO Alt Atributo en Modal -->
+        <img class="modal-content" id="expandedImg" alt="Vista previa de imagen ampliada">
         <span class="nav-btn next-btn" id="nextBtn" onclick="navGallery(1, event)">&#10095;</span>
     </div>
 
@@ -1318,7 +1403,7 @@
             <!-- Documento Aislado para el PDF -->
             <div id="resumeDocument" class="resume-document">
                 <div class="resume-header">
-                    <h1>Shordy Simbaña</h1>
+                    <h2>Shordy Simbaña</h2>
                     <p>Desarrollador de software B2B con IA | Estudiante Ing. en Sistemas</p>
                     <div class="resume-contact">
                         <!-- Iconos SVG con parámetros explicitos en Verde Jade (#10b981) -->
@@ -1334,12 +1419,12 @@
                     <!-- Columna Izquierda (32%) -->
                     <div class="resume-column-left">
                         <div class="resume-section">
-                            <h2>Perfil Profesional</h2>
+                            <h3>Perfil Profesional</h3>
                             <p class="resume-item-desc">Para mí, una computadora es más que una máquina; es un aliado para construir el futuro. Me apasiona conectar ideas sueltas y transformarlas en el software definitivo que tu negocio necesita. Tengo la visión para ver más allá y la creatividad para hacer que la tecnología trabaje a tu favor.</p>
                         </div>
                         
                         <div class="resume-section">
-                            <h2>Servicios & Tech</h2>
+                            <h3>Servicios & Tech</h3>
                             <div class="resume-skills-grid">
                                 <div>
                                     <strong style="color: var(--accent); font-size: 0.9rem;">Especialidades:</strong>
@@ -1358,7 +1443,7 @@
                         </div>
 
                         <div class="resume-section">
-                            <h2>Educación & Cert.</h2>
+                            <h3>Educación & Cert.</h3>
                             <ul class="resume-list" style="padding-left: 0; list-style: none;">
                                 <li style="margin-bottom: 4px;"><strong>Ing. en Sistemas Computacionales</strong><br><span style="color: #6b7280;">UTEL Universidad (Estudiante)</span></li>
                                 <li style="margin-bottom: 4px;"><strong>Hackathon: Innovación E-commerce</strong><br><span style="color: #6b7280;">UTEL & Tiendanube (2026)</span></li>
@@ -1373,7 +1458,7 @@
                     <!-- Columna Derecha (Resto) -->
                     <div class="resume-column-right">
                         <div class="resume-section">
-                            <h2>Experiencia</h2>
+                            <h3>Experiencia</h3>
                             <div class="resume-item">
                                 <div class="resume-item-header">
                                     <div>
@@ -1407,7 +1492,7 @@
                         </div>
 
                         <div class="resume-section">
-                            <h2>Proyectos Destacados</h2>
+                            <h3>Proyectos Destacados</h3>
                             <div class="resume-item">
                                 <div class="resume-item-header">
                                     <div>
