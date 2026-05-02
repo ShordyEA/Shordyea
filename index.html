@@ -52,7 +52,8 @@
         "Desarrollo de Software B2B",
         "Automatización de Procesos",
         "Python",
-        "Desarrollo Web"
+        "Desarrollo Web",
+        "SEO para IA"
       ]
     }
     </script>
@@ -1102,7 +1103,7 @@
                             <h3>Digitalización Histórica - MAATE</h3>
                             <span class="project-role">Gestión de Datos & Archivo (Proyecto de 4 meses)</span>
                             <ul>
-                                <li><strong>Rescate patrimonial:</strong> Nos sumergimos en la historia para extraer y preservar información invaluable, ¡algunos documentos databan del año 1850!</li>
+                                <li><strong>Rescate patrimonial:</strong> Nos sumergimos en la historia para extraer y preservamos información invaluable, ¡algunos documentos databan del año 1850!</li>
                                 <li><strong>Estructuración de datos:</strong> Construimos una sólida base de datos consolidando miles de registros, cédulas y hojas de vida de ex-empleados.</li>
                                 <li><strong>Transformación digital:</strong> Ayudé a modernizar el archivo físico, convirtiendo enormes cantidades de papel en información estructurada, segura y de fácil acceso.</li>
                             </ul>
@@ -1132,6 +1133,16 @@
                             <span class="cert-year">2025</span>
                         </div>
 
+                        <!-- NUEVA CERTIFICACIÓN AÑADIDA: SEO -->
+                        <div class="cert-item" data-img="imagenes/seo.png" onclick="openGallery(this)">
+                            <img src="imagenes/seo.png" alt="Certificado Curso de SEO 2026 para IA y Google" class="cert-thumb" onerror="this.src='https://placehold.co/100x100/0a1813/10b981?text=Cert'">
+                            <div class="cert-info">
+                                <h3>SEO para IA y Google</h3>
+                                <p>BIG School / BIGSEO</p>
+                            </div>
+                            <span class="cert-year">2026</span>
+                        </div>
+
                         <div class="cert-item" data-img="imagenes/certificado-hackathon.png" onclick="openGallery(this)">
                             <img src="imagenes/certificado-hackathon.png" alt="Certificado Hackathon Tiendanube" class="cert-thumb" onerror="this.src='https://placehold.co/100x100/0a1813/10b981?text=Cert'">
                             <div class="cert-info">
@@ -1150,7 +1161,8 @@
                             <span class="cert-year">2025</span>
                         </div>
 
-                        <div class="cert-item" data-img="imagenes/certificado-emotos.png" onclick="openGallery(this)">
+                        <!-- Certificados Ocultos inicialmente -->
+                        <div class="cert-item hidden-cert" style="display: none;" data-img="imagenes/certificado-emotos.png" onclick="openGallery(this)">
                             <img src="imagenes/certificado-emotos.png" alt="Certificado de Customer Experience" class="cert-thumb" onerror="this.src='https://placehold.co/100x100/0a1813/10b981?text=Cert'">
                             <div class="cert-info">
                                 <h3>Customer Experience y Asistencia</h3>
@@ -1159,7 +1171,6 @@
                             <span class="cert-year">2025</span>
                         </div>
 
-                        <!-- Certificados Ocultos inicialmente -->
                         <div class="cert-item hidden-cert" style="display: none;" data-img="imagenes/certificado-bionics.png" onclick="openGallery(this)">
                             <img src="imagenes/certificado-bionics.png" alt="Certificado Bionics" class="cert-thumb" onerror="this.src='https://placehold.co/100x100/0a1813/10b981?text=Cert'">
                             <div class="cert-info"><h3>Intro. to Bionic Prostheses</h3><p>P4H Bionics</p></div><span class="cert-year">2024</span>
@@ -1173,7 +1184,7 @@
                             <div class="cert-info"><h3>Gestión de RAEE (Parte 2)</h3><p>Ministerio del Ambiente</p></div><span class="cert-year">2025</span>
                         </div>
                         
-                        <button class="btn-more-certs" id="btnToggleCerts" onclick="toggleCerts()">+ Ver 3 credenciales más</button>
+                        <button class="btn-more-certs" id="btnToggleCerts" onclick="toggleCerts()">+ Ver 4 credenciales más</button>
                     </div>
 
                     <!-- Área de previsualización (Solo visible en Desktop) -->
@@ -1457,6 +1468,8 @@
                             <h3>Educación & Cert.</h3>
                             <ul class="resume-list" style="padding-left: 0; list-style: none;">
                                 <li style="margin-bottom: 4px;"><strong>Ing. en Sistemas Computacionales</strong><br><span style="color: #6b7280;">UTEL Universidad (Estudiante)</span></li>
+                                <!-- NUEVA LÍNEA AÑADIDA AL PDF -->
+                                <li style="margin-bottom: 4px;"><strong>SEO para IA y Google</strong><br><span style="color: #6b7280;">BIG School / BIGSEO (2026)</span></li>
                                 <li style="margin-bottom: 4px;"><strong>Hackathon: Innovación E-commerce</strong><br><span style="color: #6b7280;">UTEL & Tiendanube (2026)</span></li>
                                 <li style="margin-bottom: 4px;"><strong>Informática Forense</strong><br><span style="color: #6b7280;">Academia Progenios (2025)</span></li>
                                 <li style="margin-bottom: 4px;"><strong>Customer Experience y Asistencia</strong><br><span style="color: #6b7280;">Remotos Academy / CertiProf (2025)</span></li>
@@ -1655,7 +1668,7 @@
                 btn.innerText = '- Ver menos';
             } else {
                 hiddens.forEach(el => { el.style.display = 'none'; });
-                btn.innerText = '+ Ver 3 credenciales más';
+                btn.innerText = '+ Ver 4 credenciales más'; // Actualizado el número de credenciales
             }
         }
 
